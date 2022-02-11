@@ -8,9 +8,11 @@
 # include "../libft/libft.h"
 # include "../constants.h"
 # include "../error/error.h"
+# include "../map/map.h"
 
 void	validate(int ac ,char **av);
 int		split_size(char **arr);
+t_map	*parse_map(char	*path);
 
 # define C_CUB	".cub"
 # define C_XPM	".xpm"

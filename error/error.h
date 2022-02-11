@@ -18,6 +18,7 @@ void	put_ext_error_exit(char *obj, char *msg);
 # define ERR_MAP_FORMAT	"config file must be *.cub"
 # define ERR_TEXTURE	"wall texture not defined"
 # define ERR_XPM_FORMAT	"config file: the wall texture should be *.xpm"
+# define ERR_COL_FORMAT	"color format error (0-255,0-255,0-255 reqired)"
 # define ERR_NO_F_COL	"floor color not set"
 # define ERR_NO_C_COL	"ceiling color not set"
 # define ERR_F_COL		"floor color is in wrong format"
