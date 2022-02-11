@@ -1,21 +1,22 @@
 NAME		=	cub3d
 CC			=	gcc -g
 
-LIBFT		=	libft/libft.a
-LIBFT_DIR	=	libft
 CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 OBJS		=	$(SRCS:%.c=%.o)
 
-LIBS_DIR	= ./libs/
-LIB			= -L $(LIBS_DIR)
+LIBS_DIR	= ./libs
+LIB			= -L '$(LIBS_DIR)'
 
-MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit -lz
+LIBFT		=	libft/libft.a
+LIBFT_DIR	=	libft
+
+MLXFLAGS	=	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
 MLXDIR		=	./mlx/
 MLXNAME		=	libmlx.a
 
 ifeq ($(shell uname), Linux)
-MLXFLAGS	=	-lmlx -Ilmlx -lXext -lX11
+MLXFLAGS	=	-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
 MLXDIR		=	./mlx_linux/
 MLXNAME		=	libmlx_Linux.a
 endif
@@ -28,7 +29,7 @@ SRCS		=	cub.c
 all:		$(NAME)
 
 $(NAME):	$(OBJS) libft mlx
-			$(CC) $(CFLAGS) $(SRCS) $(LIB) $(MLXFLAGS) -o $(NAME)
+			$(CC) $(SRCS) $(LIB) $(MLXFLAGS) $(CFLAGS) -o $(NAME)
 
 mlx:
 			@mkdir -p $(LIBS_DIR)
