@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+         #
+#    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 14:16:17 by tyamcha           #+#    #+#              #
-#    Updated: 2022/02/09 13:23:03 by tyamcha          ###   ########.fr        #
+#    Updated: 2022/02/11 12:26:27 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,11 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEADER)
-	$(LIBC) $(NAME) $(OBJ) 
-	$(LIBR) $(NAME) 
+	@$(LIBC) $(NAME) $(OBJ) 
+	@$(LIBR) $(NAME) 
 	
 %.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) $< -o $@ 
+	@$(CC) $(CFLAGS) $< -o $@ 
 
 bonus :
 	@make TEMP=1 all
