@@ -1,7 +1,8 @@
 #include "cub.h"
 
-int	main(void)
+int	main(int ac, char **av) 
 {
-	ft_putendl_fd(get_next_line(0), 2);
+	validate(ac ,av);
+	ft_free();
 	return (0);
 }

@@ -1,14 +1,17 @@
-NAME		=	cub3d
+NAME		=	cub3D
 
 HEADERS		=	cub.h \
 				constants.h \
+				error.h \
 				./parsing/parsing.h
 
 MAIN		=	cub.c
 
+ERROR		=	./error/error.c
+
 PARSING		=	./parsing/parsing.c
 
-SRCS		=	$(MAIN)		$(PARSING)
+SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)
 
 OBJS		=	$(SRCS:%.c=%.o)
 
