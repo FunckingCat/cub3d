@@ -1,19 +1,21 @@
 NAME		=	cub3d
-CC			=	gcc
+CC			=	gcc -g
 
 LIBFT		=	libft/libft.a
+LIBFT_DIR	=	libft
 CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 OBJS		=	$(SRCS:%.c=%.o)
 
 LIBS_DIR	= ./libs/
+LIB			= -L $(LIBS_DIR)
 
-MLXFLAGS	=	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
+MLXFLAGS	=	-lmlx -framework OpenGL -framework AppKit -lz
 MLXDIR		=	./mlx/
 MLXNAME		=	libmlx.a
 
 ifeq ($(shell uname), Linux)
-MLXFLAGS	=	-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
+MLXFLAGS	=	-lmlx -Ilmlx -lXext -lX11
 MLXDIR		=	./mlx_linux/
 MLXNAME		=	libmlx_linux.a
 endif
@@ -25,32 +27,34 @@ SRCS		=	cub.c
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
-			@make -C ./libft
+$(NAME):	$(OBJS) libft mlx
+			$(CC) $(CFLAGS) $(SRCS) $(LIB) $(MLXFLAGS) -o $(NAME)
+
+mlx:
+			@mkdir -p $(LIBS_DIR)
 			@make -C $(MLXDIR)
-			$(CC) $(SRCS) $(LIBFT) $(MLXFLAGS) $(CFLAGS) -o $(NAME)
+			@cp $(MLXDIR)/$(MLXNAME) $(LIBS_DIR)
+
+libft:
+			@mkdir -p $(LIBS_DIR)
+			@make -C $(LIBFT_DIR)
+			@cp $(LIBFT) $(LIBS_DIR)
 
 %o:			%.c $(HEADERS)
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-run:		all
-			./$(NAME) maps/map_bonus.ber
-
 clean:
 			$(RM) $(OBJS)
+			make clean -C $(LIBFT_DIR)
+			make clean -C $(MLXDIR)
 
 fclean:		clean
 			$(RM) $(NAME)
+			rm -rf $(LIBS_DIR)
 			$(RM) *.out
-			make fclean -C libft/
+			make fclean -C $(LIBFT_DIR)
+			make clean -C $(MLXDIR)
 
 re:			fclean all
 
-git:
-	@git add .
-	@git commit -m "$m"
-	@git push
-	@echo "Commit sent to github"
-# To call: make git m="my commit"
-
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re libft mlx
