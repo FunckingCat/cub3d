@@ -42,6 +42,36 @@ void	validate_conf(int fd)
 	}
 }
 
+void	validate_map(int fd)
+{
+	int		status;
+	char	*str;
+	char	*tmp;
+
+	str = gnl(fd);
+	while (str && ft_strlen(ft_strtrim(str, " ")) == 0)
+		str = gnl(fd);
+	while (str && ft_strlen(ft_strtrim(str, " ")) != 0)
+	{
+		printf("%s\n",str);
+		tmp = ft_strdup(str);
+		while (*str)
+		{
+			if (!ft_strchr(MAP_SYMBOLS, *str))
+				put_ext_error_exit(ERR_UNEXP_NEAR, tmp);
+			str++;
+		}
+		str = gnl(fd);
+	}
+	str = gnl(fd);
+	while (str)
+	{
+		if (str && ft_strlen(ft_strtrim(str, " ")) != 0)
+			put_ext_error_exit(ERR_CONF_UNEXP, str);
+		str = gnl(fd);
+	}
+}
+
 void	validate(int ac ,char **av)
 {
 	int	conf;
@@ -56,5 +86,6 @@ void	validate(int ac ,char **av)
 	if (conf == -1)
 		put_ext_error_exit(av[1], ERR_FILE);
 	validate_conf(conf);
+	validate_map(conf);
 	close(conf);
 }

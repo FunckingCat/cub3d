@@ -12,6 +12,7 @@ void	put_ext_error_exit(char *obj, char *msg);
 # define ERR_FILE		"no such file or directory"
 # define ERR_READ		"error while reading file"
 # define ERR_CONFIG		"config file not valid"
+# define ERR_UNEXP_NEAR	"config file: unexpected value near"
 # define ERR_CONF_UNEXP	"config file: unexpected value"
 # define ERR_CONF_TAB	"conif file can't contain tabs"
 # define ERR_MAP_FORMAT	"config file must be *.cub"
