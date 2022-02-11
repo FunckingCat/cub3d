@@ -53,7 +53,6 @@ void	validate_map(int fd)
 		str = gnl(fd);
 	while (str && ft_strlen(ft_strtrim(str, " ")) != 0)
 	{
-		printf("%s\n",str);
 		tmp = ft_strdup(str);
 		while (*str)
 		{

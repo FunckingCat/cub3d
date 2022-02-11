@@ -3,16 +3,20 @@ NAME		=	cub3D
 HEADERS		=	cub.h \
 				constants.h \
 				./error/error.h \
+				./map/map.h \
 				./parsing/parsing.h
 
 MAIN		=	cub.c
 
 ERROR		=	./error/error.c
 
-PARSING		=	./parsing/parsing.c \
-				./parsing/parse_utils.c
+PARSING		=	./parsing/parse_map.c \
+				./parsing/parse_utils.c \
+				./parsing/validate.c
 
-SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)
+MAP			=	./map/map.c
+
+SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP)
 
 OBJS		=	$(SRCS:%.c=%.o)
 
