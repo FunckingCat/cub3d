@@ -13,6 +13,17 @@ int	validate_conf_str(char *str)
 	split = ft_split(str, ' ');
 	if (split_size(split) != 2)
 		put_ext_error_exit(ERR_CONF_UNEXP, str);
+	if (ft_strcmp(split[0], C_NO)
+		&& ft_strcmp(split[0], C_SO)
+		&& ft_strcmp(split[0], C_WE)
+		&& ft_strcmp(split[0], C_EA)
+		&& ft_strcmp(split[0], C_F)
+		&& ft_strcmp(split[0], C_C))
+		put_ext_error_exit(ERR_CONF_UNEXP, str);
+	if (split_size(ft_split(split[1], ',')) == 3)
+		return (1);
+	if (ft_strcmp(C_XPM, ft_strrchr(split[1], '.')))
+		put_ext_error_exit(ERR_XPM_FORMAT, str);
 	return (1);
 }
 
