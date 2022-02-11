@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:39:28 by unix              #+#    #+#             */
-/*   Updated: 2022/02/11 13:52:59 by david            ###   ########.fr       */
+/*   Updated: 2022/02/11 13:58:15 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,14 @@ char	*ft_move_to_nl(char	*rd)
 	while (rd[i] && rd[i] != '\n')
 		i++;
 	if (!rd[i])
-	{
-		free(rd);
 		return (0);
-	}
-	res = malloc(sizeof(char) * ((gnl_strlen(rd) - i) + 1));
+	res = ft_malloc(sizeof(char) * ((gnl_strlen(rd) - i) + 1));
 	if (!res)
 		return (0);
 	i++;
 	while (rd[i])
 		res[j++] = rd[i++];
 	res[j] = '\0';
-	free(rd);
 	return (res);
 }
 
@@ -50,7 +46,7 @@ char	*ft_getres(char *rd)
 		return (NULL);
 	while (rd[i] && rd[i] != '\n')
 		i++;
-	res = malloc(i + 2);
+	res = ft_malloc(i + 2);
 	if (!res)
 		return (NULL);
 	gnl_memmove(res, rd, i);
@@ -70,7 +66,6 @@ char	*ft_get_buffer(int fd, char *buffer)
 		buf[r] = '\0';
 		tmp = buffer;
 		buffer = gnl_strjoin(tmp, buf);
-		free(tmp);
 		if (gnl_strchr(buffer, '\n'))
 		{
 			break ;

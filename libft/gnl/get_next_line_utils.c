@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:39:28 by unix              #+#    #+#             */
-/*   Updated: 2022/02/11 13:52:06 by david            ###   ########.fr       */
+/*   Updated: 2022/02/11 13:57:58 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	*gnl_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	res_len = gnl_strlen(s1) + gnl_strlen(s2) + 1;
-	res = (char *)malloc(res_len);
+	res = (char *)ft_malloc(res_len);
 	if (!res)
 		return (NULL);
 	gnl_memmove(res, s1, gnl_strlen(s1));
