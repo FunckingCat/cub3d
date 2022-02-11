@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:39:28 by unix              #+#    #+#             */
-/*   Updated: 2022/02/11 13:58:15 by david            ###   ########.fr       */
+/*   Updated: 2022/02/11 18:06:37 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*ft_get_buffer(int fd, char *buffer)
 	return (buffer);
 }
 
-char	*get_next_line(int fd)
+char	*gnl(int fd)
 {
 	static char	*buffer;
 	char		*res;

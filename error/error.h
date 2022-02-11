@@ -13,6 +13,7 @@ void	put_ext_error_exit(char *obj, char *msg);
 # define ERR_READ		"error while reading file"
 # define ERR_CONFIG		"config file not valid"
 # define ERR_CONF_UNEXP	"config file: unexpected value"
+# define ERR_CONF_TAB	"conif file can't contain tabs"
 # define ERR_MAP_FORMAT	"config file must be *.cub"
 # define ERR_TEXTURE	"wall texture not defined"
 # define ERR_XPM_FORMAT	"the wall texture should be in the format"

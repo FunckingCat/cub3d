@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:20:53 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/02/11 13:52:38 by david            ###   ########.fr       */
+/*   Updated: 2022/02/11 18:06:19 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "./ft_malloc/ft_malloc.h"
 
-char	*get_next_line(int fd);
+char	*gnl(int fd);
 
 int		ft_isalpha(int ch);
 int		ft_isdigit(int ch);
