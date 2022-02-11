@@ -6,7 +6,7 @@
 #    By: david <david@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 14:16:17 by tyamcha           #+#    #+#              #
-#    Updated: 2022/02/11 12:26:27 by david            ###   ########.fr        #
+#    Updated: 2022/02/11 13:54:19 by david            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,15 @@ SRC_FILES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_calloc.c ft_strdup.c \
 	ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 	ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-	ft_strcmp.c ft_remove_char.c ./ft_malloc/ft_malloc.c ./ft_isstrdigit.c
+	ft_strcmp.c ft_remove_char.c ./ft_malloc/ft_malloc.c ./ft_isstrdigit.c \
+	./gnl/get_next_line_utils.c ./gnl/get_next_line.c
 BONUS_FILES = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 OBJECTS = $(SRC_FILES:.c=.o)
 BON_OBJECTS = $(BONUS_FILES:.c=.o)
 
-HEADER = libft.h
+HEADER = libft.h gnl/get_next_line.h
 LIBC = ar -rc
 LIBR = ranlib
 
