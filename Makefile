@@ -17,7 +17,7 @@ MLXNAME		=	libmlx.a
 ifeq ($(shell uname), Linux)
 MLXFLAGS	=	-lmlx -Ilmlx -lXext -lX11
 MLXDIR		=	./mlx_linux/
-MLXNAME		=	libmlx_linux.a
+MLXNAME		=	libmlx_Linux.a
 endif
 
 HEADERS		=	cub.h \
