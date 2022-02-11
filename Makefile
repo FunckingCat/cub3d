@@ -1,14 +1,19 @@
 NAME		=	cub3d
-CC			=	gcc -g
-CFLAGS		=	-Wall -Wextra -Werror
 
 HEADERS		=	cub.h \
 				constants.h \
+				./parsing/parsing.h
 
-SRCS		=	cub.c
+MAIN		=	cub.c
+
+PARSING		=	./parsing/parsing.c
+
+SRCS		=	$(MAIN)		$(PARSING)
 
 OBJS		=	$(SRCS:%.c=%.o)
 
+CC			=	gcc -g
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
 LIBFT		=	libft/libft.a
@@ -27,7 +32,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			@make -s -C $(MLXDIR)
 			@make -s -C $(LIBFT_DIR)
-			$(CC) $(SRCS) $(LIBFT) $(MLXFLAGS) $(CFLAGS) -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLXFLAGS)
 
 %o:			%.c $(HEADERS) Makefile
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@
