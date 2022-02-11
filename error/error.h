@@ -3,6 +3,9 @@
 
 # include "../libft/libft.h"
 
+void	put_error_exit(char *msg);
+void	put_ext_error_exit(char *obj, char *msg);
+
 // VALIDATION / PARSING ERRORS
 # define ERR_ARGS_M		"too many arguments"
 # define ERR_ARGS_F		"no config file provided"
@@ -23,8 +26,5 @@
 # define ERR_NOT_ONE_P	"there is more than one player on the map"
 # define ERR_NOT_CLOSED	"map must be surrounded by walls"
 # define ERR		""
-
-void	put_error_exit(char *msg);
-void	put_ext_error_exit(char *obj, char *msg);
 
 #endif

@@ -2,14 +2,15 @@ NAME		=	cub3D
 
 HEADERS		=	cub.h \
 				constants.h \
-				error.h \
+				./error/error.h \
 				./parsing/parsing.h
 
 MAIN		=	cub.c
 
 ERROR		=	./error/error.c
 
-PARSING		=	./parsing/parsing.c
+PARSING		=	./parsing/parsing.c \
+				./parsing/parse_utils.c
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)
 
@@ -51,6 +52,6 @@ fclean:		clean
 re:			fclean all
 
 run:		all
-			./cub3d
+			./cub3D ./maps/test_map.cub
 
 .PHONY:		all clean fclean re run
