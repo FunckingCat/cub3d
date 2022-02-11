@@ -2,6 +2,7 @@ NAME		=	cub3d
 CC			=	gcc
 
 LIBFT		=	libft/libft.a
+LIBFT_DIR	=	libft
 CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 OBJS		=	$(SRCS:%.c=%.o)
@@ -25,10 +26,18 @@ SRCS		=	cub.c
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
-			@make -C ./libft
-			@make -C $(MLXDIR)
+$(NAME):	$(OBJS) libft mlx
 			$(CC) $(SRCS) $(LIBFT) $(MLXFLAGS) $(CFLAGS) -o $(NAME)
+
+mlx:
+			@mkdir -p $(LIBS_DIR)
+			@make -C $(MLXDIR)
+			cp $(MLXDIR)/$(MLXNAME) $(LIBS_DIR)
+
+libft:
+			@mkdir -p $(LIBS_DIR)
+			@make -C $(LIBFT_DIR)
+			@cp $(LIBFT) $(LIBS_DIR)
 
 %o:			%.c $(HEADERS)
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@
@@ -53,4 +62,4 @@ git:
 	@echo "Commit sent to github"
 # To call: make git m="my commit"
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re libft mlx
