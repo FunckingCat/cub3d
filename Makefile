@@ -13,7 +13,7 @@ SRCS		=	$(MAIN)		$(PARSING)
 OBJS		=	$(SRCS:%.c=%.o)
 
 CC			=	gcc -g
-CFLAGS		=	-Wall -Wextra -Werror
+# CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
 LIBFT		=	libft/libft.a
@@ -47,4 +47,7 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+run:		all
+			./cub3d
+
+.PHONY:		all clean fclean re run

@@ -2,6 +2,6 @@
 
 int	main(void)
 {
-	printf("It works");
+	ft_putendl_fd("It works", 2);
 	return (0);
 }
