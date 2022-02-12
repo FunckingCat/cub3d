@@ -2,7 +2,7 @@
 
 int	endgame(t_state *state)
 {
-	(void)state;
+	mlx_destroy_window(state->mlx, state->win);
 	ft_free();
 	exit (EXIT_SUCCESS);
 }
