@@ -6,6 +6,7 @@
 		"readline.h": "c",
 		"redirect.h": "c",
 		"history.h": "c",
-		"signal.h": "c"
+		"signal.h": "c",
+		"player.h": "c"
 	}
 }

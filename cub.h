@@ -8,5 +8,6 @@
 # include "./parsing/parsing.h"
 # include "./state/state.h"
 # include "./hooks/hooks.h"
+# include "./player/player.c"
 
 #endif

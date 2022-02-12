@@ -6,7 +6,8 @@ HEADERS		=	cub.h \
 				./map/map.h \
 				./parsing/parsing.h \
 				./hooks/hooks.h \
-				./state/state.h
+				./state/state.h \
+				./player/player.h
 
 MAIN		=	cub.c
 
@@ -24,14 +25,16 @@ HOOKS		=	./hooks/keypress.c \
 
 MAP			=	./map/map.c
 
+PLAYER		=	./player/player.c
+
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
-				$(STATE)	$(HOOKS)
+				$(STATE)	$(HOOKS)	#$(PLAYER)
 
 
 OBJS		=	$(SRCS:%.c=%.o)
 
 CC			=	gcc -g
-CFLAGS		=	-Wall -Wextra -Werror
+# CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
 LIBFT		=	libft/libft.a
