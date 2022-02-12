@@ -4,9 +4,13 @@ HEADERS		=	cub.h \
 				constants.h \
 				./error/error.h \
 				./map/map.h \
-				./parsing/parsing.h
+				./parsing/parsing.h \
+				./hooks/hooks.h \
+				./state/state.h
 
 MAIN		=	cub.c
+
+STATE		=	./state/state.c
 
 ERROR		=	./error/error.c
 
@@ -15,9 +19,13 @@ PARSING		=	./parsing/parse_map.c \
 				./parsing/validate.c \
 				./parsing/check_map.c
 
+HOOKS		=	./hooks/keypress.c
+
 MAP			=	./map/map.c
 
-SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP)
+SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
+				$(STATE)	$(HOOKS)
+
 
 OBJS		=	$(SRCS:%.c=%.o)
 

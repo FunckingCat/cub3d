@@ -7,5 +7,6 @@
 # include "./map/map.h"
 # include "./parsing/parsing.h"
 # include "./state/state.h"
+# include "./hooks/hooks.h"
 
 #endif
