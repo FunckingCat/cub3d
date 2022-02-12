@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:23:30 by david             #+#    #+#             */
-/*   Updated: 2022/02/10 18:23:31 by david            ###   ########.fr       */
+/*   Updated: 2022/02/12 10:29:18 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	*ft_malloc(size_t size)
 	if (!ptr)
 		alloc_error(size);
 	add(ptr);
+	ft_bzero(ptr, size);
 	return (ptr);
 }
 
