@@ -13,6 +13,7 @@
 void	validate(int ac ,char **av);
 int		split_size(char **arr);
 t_map	*parse_map(char	*path);
+void	check_map(t_map *map);
 
 # define C_CUB	".cub"
 # define C_XPM	".xpm"

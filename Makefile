@@ -12,7 +12,8 @@ ERROR		=	./error/error.c
 
 PARSING		=	./parsing/parse_map.c \
 				./parsing/parse_utils.c \
-				./parsing/validate.c
+				./parsing/validate.c \
+				./parsing/check_map.c
 
 MAP			=	./map/map.c
 

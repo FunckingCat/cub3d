@@ -84,5 +84,7 @@ t_map	*parse_map(char *path)
 		put_ext_error_exit(path, ERR_FILE);
 	read_props(map, fd);
 	read_map(map, fd);
+	close(fd);
+	check_map(map);
 	return (map);
 }
