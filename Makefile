@@ -57,6 +57,6 @@ fclean:		clean
 re:			fclean all
 
 run:		all
-			./cub3D ./maps/test_map.cub
+			./cub3D ./maps/map1.cub
 
 .PHONY:		all clean fclean re run
