@@ -26,6 +26,7 @@ void	put_ext_error_exit(char *obj, char *msg);
 # define ERR_NO_MAP		"there is no map in the config file"
 # define ERR_MAP		"map not valid"
 # define ERR_MAP_FORB	"the map contains forbidden symbols"
+# define ERR_NO_PLAYER	"there no player on the map"
 # define ERR_NOT_ONE_P	"there is more than one player on the map"
 # define ERR_NOT_CLOSED	"map must be surrounded by walls"
 # define ERR		""

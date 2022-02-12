@@ -37,9 +37,11 @@ void	check_spaces(char **map, size_t i, size_t j)
 
 void	check_zeros(t_map *map)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
+	int		count;
 
+	count = 0;
 	i = 0;
 	while (i < map->height)
 	{
@@ -48,10 +50,16 @@ void	check_zeros(t_map *map)
 		{
 			if (ft_strchr("0NSEW", map->map[i][j]))
 				check_spaces(map->map, i, j);
+			if (ft_strchr("NSEW", map->map[i][j]))
+				count++;
 			j++;
 		}
 		i++;
 	}
+	if (count < 1)
+		put_ext_error_exit(ERR_MAP, ERR_NO_PLAYER);
+	if (count > 1)
+		put_ext_error_exit(ERR_MAP, ERR_NOT_ONE_P);
 }
 
 void	check_map(t_map *map)
