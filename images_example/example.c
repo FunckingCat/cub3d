@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   example.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarques <lmarques@student.42.fr>          +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/18 03:51:42 by lmarques          #+#    #+#             */
-/*   Updated: 2017/04/18 23:27:10 by lmarques         ###   ########.fr       */
+/*   Updated: 2022/02/12 17:03:14 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 int	main(void)
 {
-	t_mlx	mlx; //Here I first create my struct that will contains all the "MLX stuff"
+	t_mlx	mlx;
 	int		count_w;
 	int		count_h;
 
 	count_h = -1;
-	//First you need to call mlx_init and store its return value.
 	mlx.mlx_ptr = mlx_init();
-	//Now do the same with mlx_new_window
 	mlx.win = mlx_new_window(mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "A simple example");
-	//One more time with mlx_new_image
 	mlx.img.img_ptr = mlx_new_image(mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	/*
 	 Now the important part :

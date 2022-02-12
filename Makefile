@@ -75,4 +75,7 @@ re:			fclean all
 run:		all
 			./cub3D ./maps/map1.cub
 
-.PHONY:		all clean fclean re run
+val:		all
+			valgrind ./cub3D ./maps/map1.cub
+
+.PHONY:		all clean fclean re run val
