@@ -56,7 +56,7 @@ size_t	map_to_list(t_list **list, int fd)
 void	read_map(t_map *map, int fd)
 {
 	t_list	*list;
-	int		i;
+	size_t		i;
 
 	list = ft_lstnew(NULL);
 	map->width = map_to_list(&list, fd);

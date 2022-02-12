@@ -22,7 +22,7 @@ SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP)
 OBJS		=	$(SRCS:%.c=%.o)
 
 CC			=	gcc -g
-# CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
 LIBFT		=	libft/libft.a

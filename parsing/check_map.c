@@ -22,14 +22,35 @@ void	check_border(t_map *map)
 	}
 }
 
-void	check_spaces_tb(t_map *map)
+void	check_spaces(char **map, size_t i, size_t j)
+{
+	if (map[i-1][j-1] == ' ' ||
+		map[i+1][j+1] == ' ' ||
+		map[i+1][j-1] == ' ' ||
+		map[i-1][j+1] == ' ' ||
+		map[i][j-1] == ' ' ||
+		map[i][j+1] == ' ' ||
+		map[i-1][j] == ' ' ||
+		map[i+1][j] == ' ')
+		put_ext_error_exit(ERR_MAP, ERR_NOT_CLOSED);
+}
+
+void	check_zeros(t_map *map)
 {
 	size_t i;
+	size_t j;
 
-	i = 1;
-	while (i < map->width)
+	i = 0;
+	while (i < map->height)
 	{
-		
+		j = 0;
+		while (j < map->width)
+		{
+			if (ft_strchr("0NSEW", map->map[i][j]))
+				check_spaces(map->map, i, j);
+			j++;
+		}
+		i++;
 	}
 }
 
@@ -44,5 +65,5 @@ void	check_map(t_map *map)
 		ft_strcmp(C_XPM, ft_strrchr(map->ea_path, '.')))
 		put_error_exit(ERR_XPM_FORMAT);
 	check_border(map);
-	check_spaces(map);
+	check_zeros(map);
 }

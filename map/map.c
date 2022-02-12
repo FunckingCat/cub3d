@@ -41,7 +41,7 @@ t_map	*new_map(void)
 
 void	print_map(t_map *map)
 {
-	int i;
+	size_t i;
 
 	printf("-------  MAP  --------\n");
 	printf("NO\t%s\n",map->no_path);
@@ -50,8 +50,8 @@ void	print_map(t_map *map)
 	printf("EA\t%s\n",map->ea_path);
 	printf("FLOOR\t%d\n",map->floor_col);
 	printf("CEILING\t%d\n",map->ceiling_color);
-	printf("WIDTH\t%d\n",map->width);
-	printf("HEIGHT\t%d\n",map->height);
+	printf("WIDTH\t%ld\n",map->width);
+	printf("HEIGHT\t%ld\n",map->height);
 	i = -1;
 	while (++i < map->height)
 		printf("%s\n", map->map[i]);

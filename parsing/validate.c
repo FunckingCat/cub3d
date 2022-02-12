@@ -44,7 +44,6 @@ void	validate_conf(int fd)
 
 void	validate_map(int fd)
 {
-	int		status;
 	char	*str;
 	char	*tmp;
 
