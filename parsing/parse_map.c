@@ -34,36 +34,41 @@ void	read_props(t_map *map, int fd)
 	}
 }
 
-void	read_map(t_map *map, int fd)
+size_t	map_to_list(t_list **list, int fd)
 {
-	t_list	*list;
-	char	*str;
-	int		i;
 	size_t	len;
+	char	*str;
 
 	str = gnl(fd);
 	while (ft_strlen(ft_strtrim(str, " ")) == 0)
 		str = gnl(fd);
 	len = 0;
-	list = ft_lstnew(NULL);
 	while (str && ft_strlen(ft_strtrim(str, " ")) != 0)
 	{
 		if (len < ft_strlen(str))
 			len = ft_strlen(str);
-		ft_lstadd_back(&list, ft_lstnew(str));
+		ft_lstadd_back(list, ft_lstnew(str));
 		str = gnl(fd);
 	}
+	return (len);
+}
+
+void	read_map(t_map *map, int fd)
+{
+	t_list	*list;
+	int		i;
+
+	list = ft_lstnew(NULL);
+	map->width = map_to_list(&list, fd);
 	map->height = ft_lstsize(list) - 1;
-	map->width = len;
 	map->map = ft_malloc(sizeof(char *) * ft_lstsize(list));
 	i = 0;
 	while (i < map->height)
 	{
 		list = list->next;
-		map->map[i] = ft_malloc(sizeof(char) * (len + 1));
-		ft_memset(map->map[i], ' ', len);
+		map->map[i] = ft_malloc(sizeof(char) * (map->width + 1));
+		ft_memset(map->map[i], ' ', map->width);
 		ft_memmove(map->map[i], list->content, ft_strlen(list->content));
-		printf("map: '%s'\n", map->map[i]);
 		i++;
 	}
 }

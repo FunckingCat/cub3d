@@ -41,12 +41,19 @@ t_map	*new_map(void)
 
 void	print_map(t_map *map)
 {
+	int i;
+
 	printf("-------  MAP  --------\n");
 	printf("NO\t%s\n",map->no_path);
 	printf("SO\t%s\n",map->so_path);
 	printf("WE\t%s\n",map->we_path);
 	printf("EA\t%s\n",map->ea_path);
 	printf("FLOOR\t%d\n",map->floor_col);
-	printf("CEIL\t%d\n",map->ceiling_color);
-	printf("----------------------\n");
+	printf("CEILING\t%d\n",map->ceiling_color);
+	printf("WIDTH\t%d\n",map->width);
+	printf("HEIGHT\t%d\n",map->height);
+	i = -1;
+	while (++i < map->height)
+		printf("%s\n", map->map[i]);
+	printf("------------------------------\n");
 }
