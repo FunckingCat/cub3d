@@ -2,7 +2,6 @@
 
 void	set_map_prop(t_map *map, char **arr)
 {
-	printf("%s\t%s\n", arr[0], arr[1]);
 	if (!ft_strcmp(C_NO, arr[0]) && map->no_path == NULL)
 		map->no_path = arr[1];
 	else if (!ft_strcmp(C_SO, arr[0]) && map->so_path == NULL)
@@ -35,6 +34,40 @@ void	read_props(t_map *map, int fd)
 	}
 }
 
+void	read_map(t_map *map, int fd)
+{
+	t_list	*list;
+	char	*str;
+	int		i;
+	size_t	len;
+
+	str = gnl(fd);
+	while (ft_strlen(ft_strtrim(str, " ")) == 0)
+		str = gnl(fd);
+	len = 0;
+	list = ft_lstnew(NULL);
+	while (str && ft_strlen(ft_strtrim(str, " ")) != 0)
+	{
+		if (len < ft_strlen(str))
+			len = ft_strlen(str);
+		ft_lstadd_back(&list, ft_lstnew(str));
+		str = gnl(fd);
+	}
+	map->height = ft_lstsize(list) - 1;
+	map->width = len;
+	map->map = ft_malloc(sizeof(char *) * ft_lstsize(list));
+	i = 0;
+	while (i < map->height)
+	{
+		list = list->next;
+		map->map[i] = ft_malloc(sizeof(char) * (len + 1));
+		ft_memset(map->map[i], ' ', len);
+		ft_memmove(map->map[i], list->content, ft_strlen(list->content));
+		printf("map: '%s'\n", map->map[i]);
+		i++;
+	}
+}
+
 t_map	*parse_map(char *path)
 {
 	t_map	*map;
@@ -45,5 +78,6 @@ t_map	*parse_map(char *path)
 	if (fd == -1)
 		put_ext_error_exit(path, ERR_FILE);
 	read_props(map, fd);
+	read_map(map, fd);
 	return (map);
 }
