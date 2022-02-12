@@ -19,7 +19,8 @@ PARSING		=	./parsing/parse_map.c \
 				./parsing/validate.c \
 				./parsing/check_map.c
 
-HOOKS		=	./hooks/keypress.c
+HOOKS		=	./hooks/keypress.c \
+				./hooks/set_hooks.c
 
 MAP			=	./map/map.c
 
