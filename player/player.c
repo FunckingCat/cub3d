@@ -25,6 +25,7 @@ t_player	*new_player(t_map *map)
 					pl->a = 180;
 				if (map->map[i][j] == 'N')
 					pl->a = 270;
+				map->map[i][j] = '0';
 			}
 			j++;
 		}

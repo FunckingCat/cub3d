@@ -2,19 +2,20 @@
 
 int	key_press(int keycode, t_state *state)
 {
-	if (keycode == A_KEY)
-		printf("pressed A\n");
-	if (keycode == D_KEY)
-		printf("pressed D\n");
-	if (keycode == S_KEY)
-		printf("pressed S\n");
 	if (keycode == W_KEY)
-		printf("pressed W\n");
+		state->pl->x += 0.1;
+	if (keycode == S_KEY)
+		state->pl->x -= 0.1;
+	if (keycode == A_KEY)
+		state->pl->y -= 0.1;
+	if (keycode == D_KEY)
+		state->pl->y += 0.1;
 	if (keycode == Q_KEY)
-		printf("pressed Q\n");
+		state->pl->a += 1;
 	if (keycode == E_KEY)
-		printf("pressed E\n");
+		state->pl->a -= 1;
 	if (keycode == ESC)
 		endgame(state);
+	print_player(state->pl);
 	return (0);
 }

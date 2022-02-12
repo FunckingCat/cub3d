@@ -7,7 +7,6 @@ int	main(int ac, char **av)
 	validate(ac ,av);
 	state.map = parse_map(av[1]);
 	state.pl = new_player(state.map);
-	print_player(state.pl);
 	state.mlx = mlx_init();
 	state.win = mlx_new_window(state.mlx, RES_X, RES_Y, "cub3D");
 	set_hooks(&state);
