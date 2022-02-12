@@ -2,17 +2,18 @@
 
 void	set_map_prop(t_map *map, char **arr)
 {
-	if (ft_strcmp(C_NO, arr[0]) && map->no_path == NULL)
+	printf("%s\t%s\n", arr[0], arr[1]);
+	if (!ft_strcmp(C_NO, arr[0]) && map->no_path == NULL)
 		map->no_path = arr[1];
-	else if (ft_strcmp(C_SO, arr[0]) && map->so_path == NULL)
+	else if (!ft_strcmp(C_SO, arr[0]) && map->so_path == NULL)
 		map->so_path = arr[1];
-	else if (ft_strcmp(C_WE, arr[0]) && map->we_path == NULL)
+	else if (!ft_strcmp(C_WE, arr[0]) && map->we_path == NULL)
 		map->we_path = arr[1];
-	else if (ft_strcmp(C_EA, arr[0]) && map->ea_path == NULL)
+	else if (!ft_strcmp(C_EA, arr[0]) && map->ea_path == NULL)
 		map->ea_path = arr[1];
-	else if (ft_strcmp(C_F, arr[0]) && map->floor_col == 0)
+	else if (!ft_strcmp(C_F, arr[0]) && map->floor_col == 0)
 		map->floor_col = char_to_hex(ft_split(arr[1], ','));
-	else if (ft_strcmp(C_C, arr[0]) && map->ceiling_color == 0)
+	else if (!ft_strcmp(C_C, arr[0]) && map->ceiling_color == 0)
 		map->ceiling_color = char_to_hex(ft_split(arr[1], ','));
 	else
 		put_ext_error_exit(ERR_CONF_UNEXP, arr[0]);

@@ -2,6 +2,7 @@
 # define MAP_H
 
 # include <stdlib.h>
+# include <stdio.h>
 # include "../libft/libft.h"
 #include "../error/error.h"
 
@@ -22,5 +23,6 @@ int		rgb_to_hex(int r, int g, int b);
 int		char_to_hex(char **arr);
 int		split_size(char **arr);
 t_map	*new_map(void);
+void	print_map(t_map *map);
 
 #endif

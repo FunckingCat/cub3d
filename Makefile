@@ -39,7 +39,7 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			@make -s -C $(MLXDIR)
-			@make -s -C $(LIBFT_DIR)
+			@make bonus -s -C $(LIBFT_DIR)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLXFLAGS)
 
 %o:			%.c $(HEADERS) Makefile

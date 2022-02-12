@@ -38,3 +38,15 @@ t_map	*new_map(void)
 	map->ceiling_color = 0;
 	return (map);
 }
+
+void	print_map(t_map *map)
+{
+	printf("-------  MAP  --------\n");
+	printf("NO\t%s\n",map->no_path);
+	printf("SO\t%s\n",map->so_path);
+	printf("WE\t%s\n",map->we_path);
+	printf("EA\t%s\n",map->ea_path);
+	printf("FLOOR\t%d\n",map->floor_col);
+	printf("CEIL\t%d\n",map->ceiling_color);
+	printf("----------------------\n");
+}
