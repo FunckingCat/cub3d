@@ -32,7 +32,7 @@ void	check_spaces(char **map, size_t i, size_t j)
 		map[i][j+1] == ' ' ||
 		map[i-1][j] == ' ' ||
 		map[i+1][j] == ' ')
-		put_ext_error_exit(ERR_MAP, ERR_NOT_CLOSED);
+		put_ext_error_exit(ft_itoa(i), ERR_NOT_CLOSED);
 }
 
 void	check_zeros(t_map *map)
