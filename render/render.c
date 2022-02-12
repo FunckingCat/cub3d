@@ -13,7 +13,7 @@ void	render(t_state *state)
 		j = 0;
 		while (j < RES_Y)
 		{
-			put_pixel(img, i, j, 0xFFFFFF);
+			put_pixel(img, i, j, COL_BLUE);
 			j++;
 		}
 		i++;

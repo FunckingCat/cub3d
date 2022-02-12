@@ -14,7 +14,6 @@ t_img	*new_img(void *mlx)
 void	free_img(void *mlx, t_img *img)
 {
 	mlx_destroy_image(mlx, img->img_ptr);
-	free(img->data);
 	free(img);
 }
 

@@ -7,6 +7,15 @@
 # include "../constants.h"
 # include "../state/state.h"
 
+# define COL_WHITE	0xffffff
+# define COL_BLACK	0x000000
+# define COL_DGRAY	0x303030
+# define COL_LGRAY	0x919191
+# define COL_RED	0xFF7E7E
+# define COL_YELLOW	0xFFF700
+# define COL_BLUE	0x000d85
+# define COL_GREEN	0x2d752e
+
 typedef struct	s_img
 {
 	void		*img_ptr;
