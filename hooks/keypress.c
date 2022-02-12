@@ -17,5 +17,6 @@ int	key_press(int keycode, t_state *state)
 	if (keycode == ESC)
 		endgame(state);
 	print_player(state->pl);
+	render(state);
 	return (0);
 }

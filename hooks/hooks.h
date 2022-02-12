@@ -6,6 +6,7 @@
 # include "../state/state.h"
 # include "../constants.h"
 # include "../error/error.h"
+# include "../render/render.h"
 
 void	set_hooks(t_state *state);
 int		key_press(int keycode, t_state *state);

@@ -7,7 +7,8 @@ HEADERS		=	cub.h \
 				./parsing/parsing.h \
 				./hooks/hooks.h \
 				./state/state.h \
-				./player/player.h
+				./player/player.h \
+				./render/render.h
 
 MAIN		=	cub.c
 
@@ -27,8 +28,11 @@ MAP			=	./map/map.c
 
 PLAYER		=	./player/player.c
 
+RENDER		=	./render/render.c \
+				./render/image.c
+
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
-				$(STATE)	$(HOOKS)	#$(PLAYER)
+				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER)
 
 
 OBJS		=	$(SRCS:%.c=%.o)
