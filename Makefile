@@ -1,7 +1,7 @@
 NAME		=	cub3D
 
-HEADERS		=	cub.h \
-				constants.h \
+HEADERS		=	./cub.h \
+				./constants.h \
 				./error/error.h \
 				./map/map.h \
 				./parsing/parsing.h \
@@ -10,7 +10,7 @@ HEADERS		=	cub.h \
 				./player/player.h \
 				./render/render.h
 
-MAIN		=	cub.c
+MAIN		=	./cub.c
 
 STATE		=	./state/state.c
 
@@ -54,12 +54,12 @@ endif
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) $(HEADERS)
 			@make -s -C $(MLXDIR)
 			@make bonus -s -C $(LIBFT_DIR)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLXFLAGS)
 
-%o:			%.c $(HEADERS) Makefile
+%.o : %.c $(HEADERS)
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 clean:

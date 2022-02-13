@@ -25,6 +25,15 @@ typedef struct	s_img
 	int			endian;
 }				t_img;
 
+typedef struct	s_rec
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	color;
+}	t_rec;
+
 void	render(t_state *state);
 
 t_img	*new_img(void *mlx);
