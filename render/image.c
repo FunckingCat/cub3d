@@ -19,5 +19,7 @@ void	free_img(void *mlx, t_img *img)
 
 void	put_pixel(t_img *img, int x, int y, int color)
 {
+	if (x >= RES_X || y >= RES_Y)
+		return ;
 	img->data[y * RES_X + x] = color;
 }
