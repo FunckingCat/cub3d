@@ -45,12 +45,14 @@ typedef	struct s_ray
 	double	end_y;
 	double	dx;
 	double	dy;
-	double	steps_x;
-	double	steps_y;
 	double	scale_x;
 	double	scale_y;
 	double	dir_x;
 	double	dir_y;
+	double	steps_x;
+	double	steps_y;
+	double	dist_x;
+	double	dist_y;
 }	t_ray;
 
 

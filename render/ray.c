@@ -15,8 +15,8 @@ t_ray	*new_ray(t_state *state, double angle)
 	ray->end_x = ray->st_x + ray->dx;
 	ray->end_y = ray->st_y + ray->dy;
 	ray->angle = angle;
-	ray->scale_x = sqrt(1 + pow((ray->dy, ray->dx), 2));
-	ray->scale_y = sqrt(1 + pow((ray->dx, ray->dy), 2));
+	ray->scale_x = sqrt(1 + pow((ray->dy /ray->dx), 2));
+	ray->scale_y = sqrt(1 + pow((ray->dx / ray->dy), 2));
 	ray->dir_x = 1;
 	if (ray->st_x - ray->end_x < 0)
 		ray->dir_x = -1;
