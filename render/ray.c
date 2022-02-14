@@ -1,14 +1,14 @@
 #include "./render.h"
 
-t_ray	*new_ray(t_state *state, double angle)
+t_ray	*new_ray(t_state *st, double angle)
 {
 	t_ray	*ray;
 
 	ray = ft_malloc(sizeof(t_ray));
 	ray->angle = angle;
-	ray->size = (double)RES_X / (double)state->map->width;
-	ray->st_x = state->pl->x;
-	ray->st_y = state->pl->y;
+	ray->size = (double)RES_X / (double)st->map->width;
+	ray->st_x = st->pl->x;
+	ray->st_y = st->pl->y;
 	ray->length = sqrt(pow(RES_X, 2) + pow(RES_Y, 2));
 	ray->dx = ray->length * cos(angle);
 	ray->dy = ray->length * sin(angle);
@@ -22,8 +22,8 @@ t_ray	*new_ray(t_state *state, double angle)
 	ray->dir_y = 1;
 	if (ray->st_y - ray->end_y > 0)
 		ray->dir_y = 0;
-	ray->steps_x = 0;
-	ray->steps_y = 0;
+	ray->sc_x = (ray->st_x - (st->pl->grid_x + ray->dir_x) * ray->size) / ray->size;
+	ray->sc_y = (ray->st_y - (st->pl->grid_y + ray->dir_y) * ray->size) / ray->size;
 	return (ray);
 }
 

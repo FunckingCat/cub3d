@@ -1,15 +1,19 @@
 #include "./render.h"
 
-void	throw_ray(t_state *state, double angle)
+void	throw_ray(t_state *st, double angle)
 {
 	t_ray	*ray;
 	double	len;
 
-	ray = new_ray(state, angle);
-	print_map(state->map);
-	print_player(state->pl);
+	ray = new_ray(st, angle);
+	print_map(st->map);
+	print_player(st->pl);
 	print_ray(ray);
 	len = 0;
+	printf("init scale\t%f %f\n", ray->sc_x, ray->sc_y);
+	ray->len_x = ray->sc_x * ray->scale_x;
+	ray->len_y = ray->sc_y * ray->scale_y;
+	printf("len\t%f %f\n", ray->len_x, ray->len_y);
 
 }
 

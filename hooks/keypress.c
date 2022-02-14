@@ -11,9 +11,9 @@ int	key_press(int keycode, t_state *state)
 	if (keycode == D_KEY)
 		state->pl->x += state->pl->size / 3;
 	if (keycode == Q_KEY)
-		state->pl->a -= 0.1;
+		state->pl->a -= (double)PI / (double)90;
 	if (keycode == E_KEY)
-		state->pl->a += 0.1;
+		state->pl->a += (double)PI / (double)90;
 	if (keycode == ESC)
 		endgame(state);
 	state->pl->grid_x = grid_coord(state->pl, state->pl->x);
