@@ -14,17 +14,19 @@ void	throw_ray(t_state *st, double angle, t_img *img)
 	ray->len_x = ray->size * ray->sc_x * ray->scale_x;
 	ray->len_y = ray->size * ray->sc_y * ray->scale_y;
 	print_ray(ray);
+	printf("%f - %f\n", ray->angle, 28.28 * cos(ray->angle));
 	if (ray->len_x < ray->len_y)
 	{
-		x = ray->st_x + (ray->sc_x * ray->size) * cos(ray->angle);
-		y = ray->st_y + (ray->sc_x * ray->size) * sin(ray->angle);
+		x = ray->st_x + (ray->len_x) * cos(ray->angle);
+		y = ray->st_y + (ray->len_x) * sin(ray->angle);
 	}
 	else
 	{
-		x = ray->st_x + (ray->sc_y * ray->size) * cos(ray->angle);
-		y = ray->st_y + (ray->sc_y * ray->size) * sin(ray->angle);
+		x = ray->st_x + (ray->len_y) * cos(ray->angle);
+		y = ray->st_y + (ray->len_y) * sin(ray->angle);
 	}
 	printf("X %d Y %d\n", (int)x, (int)y);
+	put_pixel(img, 1080, 480, COL_RED);
 	put_pixel(img, (int)x, (int)y, COL_YELLOW);
 	// wall_found = 0;
 	// while ((ray->len_x < ray->length || ray->len_y < ray->length) && !wall_found)
