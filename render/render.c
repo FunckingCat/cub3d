@@ -1,39 +1,62 @@
 #include "./render.h"
 
-void	throw_ray(t_state *st, double angle)
+void	throw_ray(t_state *st, double angle, t_img *img)
 {
 	t_ray	*ray;
-	int		count;
-	int		x;
-	int		y;
+	int		wall_found;
+	double	x;
+	double	y;
 
 	ray = new_ray(st, angle);
 	print_map(st->map);
 	print_player(st->pl);
 	print_ray(ray);
-	count = 0;
 	ray->len_x = ray->size * ray->sc_x * ray->scale_x;
 	ray->len_y = ray->size * ray->sc_y * ray->scale_y;
-	printf("--->init scale\t%f %f\n", ray->sc_x, ray->sc_y);
-	printf("lenx %f len y %f len %f\n", ray->len_x, ray->len_y, ray->length);
-	while (ray->len_x < ray->length || ray->len_y < ray->length)
+	print_ray(ray);
+	if (ray->len_x < ray->len_y)
 	{
-		if (ray->len_x > ray->len_y)
-			ray->sc_y += 1;
-		else
-			ray->sc_x += 1;
-		ray->len_x = ray->size * ray->sc_x * ray->scale_x;
-		ray->len_y = ray->size * ray->sc_y * ray->scale_y;
-		printf("%d init scale\t%f %f\n", count, ray->sc_x, ray->sc_y);
-		printf("lenx %f len y %f len %f\n", ray->len_x, ray->len_y, ray->length);
-		if (count++ > 10)
-			break;
+		x = ray->st_x + (ray->sc_x * ray->size) * cos(ray->angle);
+		y = ray->st_y + (ray->sc_x * ray->size) * sin(ray->angle);
 	}
+	else
+	{
+		x = ray->st_x + (ray->sc_y * ray->size) * cos(ray->angle);
+		y = ray->st_y + (ray->sc_y * ray->size) * sin(ray->angle);
+	}
+	printf("X %d Y %d\n", (int)x, (int)y);
+	put_pixel(img, (int)x, (int)y, COL_YELLOW);
+	// wall_found = 0;
+	// while ((ray->len_x < ray->length || ray->len_y < ray->length) && !wall_found)
+	// {
+	// 	if (ray->len_x > ray->len_y)
+	// 		ray->sc_y += 1;
+	// 	else
+	// 		ray->sc_x += 1;
+	// 	ray->len_x = ray->size * ray->sc_x * ray->scale_x;
+	// 	ray->len_y = ray->size * ray->sc_y * ray->scale_y;
+	// 	print_ray(ray);
+	// 	if (ray->len_x < ray->len_y)
+	// 	{
+	// 		a = tan(ray->angle);
+	// 		x = ray->st_x + ray->sc_x * ray->size;
+	// 		y = ray->st_y + a * (ray->sc_x * ray->size);
+	// 	}
+	// 	else
+	// 	{
+	// 		a = cos(ray->angle) / sin(ray->angle);
+	// 		y = ray->st_y + ray->sc_y * ray->size;
+	// 		x = ray->st_x + a * (ray->sc_y * ray->size);
+	// 	}
+	// 	printf("X %d Y %d ang %f\n", (int)x, (int)y, a);
+	// 	put_pixel(img, (int)x, (int)y, COL_RED);
+	// 	break;
+	// }
 }
 
 void	render_rays(t_state *state, t_img *img)
 {
-	throw_ray(state, state->pl->a);
+	throw_ray(state, state->pl->a, img);
 }
 
 void	render_player(t_state *state, t_img *img)

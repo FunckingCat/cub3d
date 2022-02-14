@@ -22,13 +22,14 @@ t_ray	*new_ray(t_state *st, double angle)
 	ray->dir_y = 1;
 	if (ray->st_y - ray->end_y > 0)
 		ray->dir_y = 0;
-	ray->sc_x = (ray->st_x - (st->pl->grid_x + ray->dir_x) * ray->size) / ray->size;
-	ray->sc_y = (ray->st_y - (st->pl->grid_y + ray->dir_y) * ray->size) / ray->size;
+	ray->sc_x = -1 * (ray->st_x - (st->pl->grid_x + ray->dir_x) * ray->size) / ray->size;
+	ray->sc_y = -1 * (ray->st_y - (st->pl->grid_y + ray->dir_y) * ray->size) / ray->size;
 	return (ray);
 }
 
 void	print_ray(t_ray *ray)
 {
+	printf("========= RAY =========\n");
 	printf("LEN\t%f\n", ray->length);
 	printf("ANG\t%f\n", ray->angle);
 	printf("SIZE\t%f\n", ray->size);
@@ -42,4 +43,9 @@ void	print_ray(t_ray *ray)
 	printf("SCALE Y\t%f\n", ray->scale_y);
 	printf("DIR X\t%d\n", ray->dir_x);
 	printf("DIR Y\t%d\n", ray->dir_y);
+	printf("SC X\t%f\n", ray->sc_x);
+	printf("SC Y\t%f\n", ray->sc_y);
+	printf("LEN X\t%f\n", ray->len_x);
+	printf("LEN Y\t%f\n", ray->len_y);
+	printf("=======================\n");
 }

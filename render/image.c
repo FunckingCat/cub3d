@@ -21,5 +21,7 @@ void	put_pixel(t_img *img, int x, int y, int color)
 {
 	if (x >= RES_X || y >= RES_Y)
 		return ;
+	if (x < 0 || y < 0)
+		return ;
 	img->data[y * RES_X + x] = color;
 }
