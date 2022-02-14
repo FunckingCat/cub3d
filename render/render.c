@@ -1,5 +1,43 @@
 #include "./render.h"
 
+void	throw_ray(t_state *state, double angle)
+{
+	t_ray	*ray;
+
+	ray = new_ray(state, angle);
+	print_map(state->map);
+	print_player(state->pl);
+	print_ray(ray);
+}
+
+void	render_rays(t_state *state, t_img *img)
+{
+	throw_ray(state, state->pl->a);
+}
+
+void	render_player(t_state *state, t_img *img)
+{
+	size_t	size = (RES_X / state->map->width);
+	size_t	pl_size = size / 3;
+	size_t	pl_x = state->pl->x * size + size / 2;
+	size_t	pl_y = state->pl->y * size + size / 2;
+	int		dx;
+	int		dy;
+	int		count = 0;
+
+	for (size_t i = pl_x - pl_size; i < pl_x + pl_size; i++)
+	{
+		count += 5;
+		for (size_t j = pl_y - pl_size; j < pl_y + pl_size; j++)
+		{
+			dx = i - pl_x;
+			dy = j - pl_y;
+			if (dx * dx + dy * dy < pl_size * pl_size)
+				put_pixel(img, i, j, COL_GREEN + count);
+		}
+	}
+}
+
 void	draw_rec(t_img *img, t_rec *rec)
 {
 	for (int i = rec->x; i < rec->width; i++)
@@ -11,10 +49,9 @@ void	draw_rec(t_img *img, t_rec *rec)
 	}
 }
 
-void	render_map(t_state *state)
+void	render_map(t_state *state, t_img *img)
 {
 	size_t	size = RES_X / state->map->width;
-	t_img	*img = new_img(state->mlx);
 	t_rec	rec;
 
 	for (size_t i = 0; i < state->map->height; i++)
@@ -32,11 +69,17 @@ void	render_map(t_state *state)
 			draw_rec(img, &rec);
 		}
 	}
-	mlx_put_image_to_window(state->mlx, state->win, img->img_ptr, 0, 0);
 }
 
 void	render(t_state *state)
 {
-	render_map(state);
+	t_img	*frame;
+	
+	frame = new_img(state->mlx);
+	render_map(state, frame);
+	render_player(state, frame);
+	render_rays(state, frame);
+	mlx_put_image_to_window(state->mlx, state->win, frame->img_ptr, 0, 0);
+	free_img(state->mlx, frame);
 	return ;
 }

@@ -29,7 +29,8 @@ MAP			=	./map/map.c
 PLAYER		=	./player/player.c
 
 RENDER		=	./render/render.c \
-				./render/image.c
+				./render/image.c \
+				./render/ray.c
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER)
@@ -57,7 +58,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS) $(HEADERS)
 			@make -s -C $(MLXDIR)
 			@make bonus -s -C $(LIBFT_DIR)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLXFLAGS)
+			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLXFLAGS) -lm
 
 %.o : %.c $(HEADERS)
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@

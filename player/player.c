@@ -15,16 +15,16 @@ t_player	*new_player(t_map *map)
 		{
 			if (ft_strchr("SNWE", map->map[i][j]))
 			{
-				pl->x = i;
-				pl->y = j;
+				pl->y = i;
+				pl->x = j;
 				if (map->map[i][j] == 'E')
 					pl->a = 0;
 				if (map->map[i][j] == 'S')
-					pl->a = 90;
+					pl->a = PI / 2;
 				if (map->map[i][j] == 'W')
-					pl->a = 180;
+					pl->a = PI;
 				if (map->map[i][j] == 'N')
-					pl->a = 270;
+					pl->a = (3 * PI) / 2;
 				map->map[i][j] = '0';
 			}
 			j++;
