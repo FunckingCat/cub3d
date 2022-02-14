@@ -2,27 +2,25 @@
 
 t_vec	find_intersection(t_vec plr, t_vec dir, float dist)
 {
-	t_vec ret;
-	t_vec ray;
-	float tmp;
-
-	
+	t_vec	ret;
+	t_vec	ray;
 
 	ray = vec_mul(dir, dist);
-	//printf(("test %f %f\n", ray.x, ray.y);
 	ret = vec_add(plr, ray);
-	//printf(("test2 %f %f\n", ret.x, ret.y);
-	// tmp = ret.x;
-	// ret.x = ret.y;
-	// ret.y = tmp;
 	return (ret);
+}
+
+float	absf(float num)
+{
+	if (num < 0)
+		num *= -1;
+	return (num);
 }
 
 t_vec	raycasting(t_state *state, t_vec dir)
 {
 	t_vec	plr;
 	t_vec	map_check;
-	// t_vec	dir;
 	t_vec	plane;
 	t_vec	unit_step;
 	t_vec	step;
@@ -42,7 +40,7 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	// dir = vec_new(1.0f, 0.0f); // later add 
 	vec_norm(&dir);
 	plane = vec_new(0.0f, 0.66f);
-	unit_step = vec_new(abs(1.0f / dir.x), abs(1.0f / dir.y));
+	unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
 	map_check = plr;
 	if (dir.x < 0)
 	{
@@ -65,7 +63,7 @@ t_vec	raycasting(t_state *state, t_vec dir)
 		ray_lend.y = (map_check.y + 1 - plr.y) * unit_step.y;
 	}
 	foundWall = 0;
-	max_dist = 100.0f;
+	max_dist = 1000.0f;
 	dist = 0.0f;
 	while (!foundWall && dist < max_dist)
 	{
@@ -116,9 +114,9 @@ t_vec	**raycasting_fov(t_state *state)
 	t_vec	**rays;
 
 	j = 0;
-	rays = (t_vec **)ft_malloc(sizeof(t_vec *) * 67 * 2);
-	i = -65;
-	while (++i < 65)
+	rays = (t_vec **)ft_malloc(sizeof(t_vec *) * 60 * 2);
+	i = -58;
+	while (++i < 58)
 	{
 		t_vec plane = vec_new(0.0f, i / 100.0f);
 		t_vec dir = vec_rot(vec_add(vec_new(-1.0f, 0.0f), plane), state->pl->a * 3.14f / 180.0f);
@@ -126,6 +124,6 @@ t_vec	**raycasting_fov(t_state *state)
 		*ray = raycasting(state, dir);
 		rays[j++] = ray;
 	}
-	rays[130] = NULL;
+	rays[110] = NULL;
 	return (rays);
 }

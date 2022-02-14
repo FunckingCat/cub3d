@@ -31,6 +31,7 @@ void	render(t_state *state)
 
 	img = new_img(state->mlx);
 	i = 0;
+
 	draw_some_shit(state, img);
 	mlx_put_image_to_window(state->mlx, state->win, img->img_ptr, 0, 0);
 	free_img(state->mlx, img);
