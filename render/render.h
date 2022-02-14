@@ -6,6 +6,8 @@
 # include "../mlx/mlx.h"
 # include "../constants.h"
 # include "../state/state.h"
+// # include "../draw/draw.h"
+# include "../raycasting/raycasting.h"
 
 # define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000
@@ -19,7 +21,7 @@
 typedef struct	s_img
 {
 	void		*img_ptr;
-	int			*data;
+	char		*data;
 	int			bpp;
 	int			size_l;
 	int			endian;

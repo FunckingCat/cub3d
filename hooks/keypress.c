@@ -11,9 +11,9 @@ int	key_press(int keycode, t_state *state)
 	if (keycode == D_KEY)
 		state->pl->y += 0.1;
 	if (keycode == Q_KEY)
-		state->pl->a += 1;
+		state->pl->a += 5.0f;
 	if (keycode == E_KEY)
-		state->pl->a -= 1;
+		state->pl->a -= 5.0f;
 	if (keycode == ESC)
 		endgame(state);
 	print_player(state->pl);
