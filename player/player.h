@@ -8,6 +8,8 @@
 typedef struct s_player
 {
 	double	size;
+	int		grid_x;
+	int		grid_y;
 	double	x;
 	double	y;
 	double	a;
@@ -15,5 +17,6 @@ typedef struct s_player
 
 t_player	*new_player(t_map *map);
 void		print_player(t_player *pl);
+int			grid_coord(t_player *pl, double c);
 
 #endif

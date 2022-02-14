@@ -16,6 +16,8 @@ t_player	*new_player(t_map *map)
 		{
 			if (ft_strchr("SNWE", map->map[i][j]))
 			{
+				pl->grid_x = j;
+				pl->grid_y = i;
 				pl->y = i * pl->size + pl->size / 2;
 				pl->x = j * pl->size + pl->size / 2;
 				if (map->map[i][j] == 'E')
@@ -40,6 +42,18 @@ void	print_player(t_player *pl)
 	printf("-------  PLAYER  --------\n");
 	printf("player x\t%f\n", pl->x);
 	printf("player y\t%f\n", pl->y);
+	printf("grid x\t%d\n", pl->grid_x);
+	printf("grid y\t%d\n", pl->grid_y);
 	printf("player ang\t%f\n", pl->a);
 	printf("--------------------------\n");
+}
+
+int	grid_coord(t_player *pl, double c)
+{
+	int res;
+
+	res = 0;
+	while ((double)res * pl->size < c)
+		res++;
+	return (res - 1);
 }

@@ -3,11 +3,14 @@
 void	throw_ray(t_state *state, double angle)
 {
 	t_ray	*ray;
+	double	len;
 
 	ray = new_ray(state, angle);
 	print_map(state->map);
 	print_player(state->pl);
 	print_ray(ray);
+	len = 0;
+
 }
 
 void	render_rays(t_state *state, t_img *img)
