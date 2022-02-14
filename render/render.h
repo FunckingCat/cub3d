@@ -47,8 +47,8 @@ typedef	struct s_ray
 	double	dy;
 	double	scale_x;
 	double	scale_y;
-	double	dir_x;
-	double	dir_y;
+	int		dir_x;
+	int		dir_y;
 	double	steps_x;
 	double	steps_y;
 	double	dist_x;

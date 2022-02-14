@@ -18,10 +18,10 @@ t_ray	*new_ray(t_state *state, double angle)
 	ray->scale_y = sqrt(1 + pow((ray->dx / ray->dy), 2));
 	ray->dir_x = 1;
 	if (ray->st_x - ray->end_x > 0)
-		ray->dir_x = -1;
+		ray->dir_x = 0;
 	ray->dir_y = 1;
 	if (ray->st_y - ray->end_y > 0)
-		ray->dir_y = -1;
+		ray->dir_y = 0;
 	ray->steps_x = 0;
 	ray->steps_y = 0;
 	return (ray);
@@ -40,6 +40,6 @@ void	print_ray(t_ray *ray)
 	printf("DY\t%f\n", ray->dy);
 	printf("SCALE X\t%f\n", ray->scale_x);
 	printf("SCALE Y\t%f\n", ray->scale_y);
-	printf("DIR X\t%f\n", ray->dir_x);
-	printf("DIR Y\t%f\n", ray->dir_y);
+	printf("DIR X\t%d\n", ray->dir_x);
+	printf("DIR Y\t%d\n", ray->dir_y);
 }
