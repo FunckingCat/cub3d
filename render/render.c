@@ -85,7 +85,10 @@ void	draw_rec(t_img *img, t_rec *rec)
 	{
 		for (int j = rec->y; j < rec->height; j++)
 		{
-			put_pixel(img, i, j, rec->color);
+			if (i == rec->x || j == rec->y)
+				put_pixel(img, i, j, COL_DGRAY);
+			else
+				put_pixel(img, i, j, rec->color);
 		}
 	}
 }
