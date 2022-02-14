@@ -3,34 +3,40 @@
 void	throw_ray(t_state *st, double angle, t_img *img)
 {
 	t_ray	*ray;
-	int		wall_found;
-	double	x;
-	double	y;
-
 	ray = new_ray(st, angle);
-	print_map(st->map);
-	print_player(st->pl);
-	print_ray(ray);
-	wall_found = 0;
-	while ((ray->len_x < ray->length || ray->len_y < ray->length) && !wall_found)
+	float x1, y1, x2,y2;
+	int i, L, xstart, ystart, xend, yend;
+	float dX, dY, x[100000], y[100000];
+
+	x1 = ray->st_x;
+	y1 = ray->st_y;
+	x2 = ray->end_x;
+	y2 = ray->end_y;
+	xstart = roundf(x1);
+	ystart = roundf(y1);
+	xend = roundf(x2);
+	yend = roundf(y2);
+	L = fmax(abs(xend-xstart), abs(yend-ystart));
+	printf("L %d\n", L);
+	dX = (x2-x1) / L;
+	dY = (y2-y1) / L;
+	i = 0;
+	x[i] = x1;
+	y[i] = y1;
+	i++;
+	while (i < L)
 	{
-		ray->len_x = ray->size * ray->sc_x * ray->scale_x;
-		ray->len_y = ray->size * ray->sc_y * ray->scale_y;
-		if (ray->len_x < ray->len_y)
-		{
-			x = ray->st_x + (ray->len_x) * cos(ray->angle);
-			y = ray->st_y + (ray->len_x) * sin(ray->angle);
-			ray->sc_x += 1;
-		}
-		else
-		{
-			x = ray->st_x + (ray->len_y) * cos(ray->angle);
-			y = ray->st_y + (ray->len_y) * sin(ray->angle);
-			ray->sc_y += 1;
-		}
-		//code that find wall
-		printf("X %d Y %d\n", (int)x, (int)y);
-		put_pixel(img, (int)x, (int)y, COL_YELLOW);
+		x[i] = x[i-1] + dX;
+		y[i] = y[i-1] + dY;
+		i++;
+	}
+	x[i] = x2;
+	y[i] = y2;
+	i = 0;
+	while (i <= L)
+	{
+		put_pixel (img, roundf(x[i]), roundf(y[i]), COL_YELLOW);
+		i++;
 	}
 }
 
