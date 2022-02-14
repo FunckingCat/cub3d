@@ -3,13 +3,13 @@
 int	key_press(int keycode, t_state *state)
 {
 	if (keycode == W_KEY)
-		state->pl->y -= 0.1;
+		state->pl->y -= state->pl->size / 3;
 	if (keycode == S_KEY)
-		state->pl->y += 0.1;
+		state->pl->y += state->pl->size / 3;
 	if (keycode == A_KEY)
-		state->pl->x -= 0.1;
+		state->pl->x -= state->pl->size / 3;
 	if (keycode == D_KEY)
-		state->pl->x += 0.1;
+		state->pl->x += state->pl->size / 3;
 	if (keycode == Q_KEY)
 		state->pl->a -= 0.1;
 	if (keycode == E_KEY)

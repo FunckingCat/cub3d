@@ -7,6 +7,7 @@ t_player	*new_player(t_map *map)
 	size_t		j;
 
 	pl = ft_malloc(sizeof(t_player));
+	pl->size = (double)RES_X / (double)map->width;
 	i = 0;
 	while (i < map->height)
 	{
@@ -15,8 +16,8 @@ t_player	*new_player(t_map *map)
 		{
 			if (ft_strchr("SNWE", map->map[i][j]))
 			{
-				pl->y = i;
-				pl->x = j;
+				pl->y = i * pl->size + pl->size / 2;
+				pl->x = j * pl->size + pl->size / 2;
 				if (map->map[i][j] == 'E')
 					pl->a = 0;
 				if (map->map[i][j] == 'S')

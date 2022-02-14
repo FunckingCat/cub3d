@@ -7,8 +7,8 @@ t_ray	*new_ray(t_state *state, double angle)
 	ray = ft_malloc(sizeof(t_ray));
 	ray->angle = angle;
 	ray->size = (double)RES_X / (double)state->map->width;
-	ray->st_x = state->pl->x * ray->size + ray->size / 2;
-	ray->st_y = state->pl->y * ray->size + ray->size / 2;
+	ray->st_x = state->pl->x;
+	ray->st_y = state->pl->y;
 	ray->length = sqrt(pow(RES_X, 2) + pow(RES_Y, 2));
 	ray->dx = ray->length * cos(angle);
 	ray->dy = ray->length * sin(angle);

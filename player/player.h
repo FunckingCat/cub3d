@@ -7,6 +7,7 @@
 
 typedef struct s_player
 {
+	double	size;
 	double	x;
 	double	y;
 	double	a;

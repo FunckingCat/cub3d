@@ -19,19 +19,17 @@ void	render_player(t_state *state, t_img *img)
 {
 	size_t	size = (RES_X / state->map->width);
 	size_t	pl_size = size / 3;
-	size_t	pl_x = state->pl->x * size + size / 2;
-	size_t	pl_y = state->pl->y * size + size / 2;
 	int		dx;
 	int		dy;
 	int		count = 0;
 
-	for (size_t i = pl_x - pl_size; i < pl_x + pl_size; i++)
+	for (size_t i = state->pl->x - pl_size; i < state->pl->x + pl_size; i++)
 	{
 		count += 5;
-		for (size_t j = pl_y - pl_size; j < pl_y + pl_size; j++)
+		for (size_t j = state->pl->y - pl_size; j < state->pl->y + pl_size; j++)
 		{
-			dx = i - pl_x;
-			dy = j - pl_y;
+			dx = i - state->pl->x;
+			dy = j - state->pl->y;
 			if (dx * dx + dy * dy < pl_size * pl_size)
 				put_pixel(img, i, j, COL_GREEN + count);
 		}
