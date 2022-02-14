@@ -6,7 +6,6 @@
 # include "../mlx/mlx.h"
 # include "../constants.h"
 # include "../state/state.h"
-// # include "../draw/draw.h"
 # include "../raycasting/raycasting.h"
 
 # define COL_WHITE	0xffffff
@@ -26,6 +25,7 @@ typedef struct	s_img
 	int			size_l;
 	int			endian;
 }				t_img;
+# include "../draw/draw.h"
 
 void	render(t_state *state);
 

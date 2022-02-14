@@ -6,7 +6,7 @@
 /*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 09:12:04 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/14 02:35:41 by rusty            ###   ########.fr       */
+/*   Updated: 2022/02/14 07:15:37 by rusty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ t_vec	vec_mul(t_vec v, float mul);
 t_vec	vec_new(float x, float y);
 void	vec_norm(t_vec *v);
 t_vec	vec_rot(t_vec v, float alfa);
+t_vec	vec_sub(t_vec v1, t_vec v2);
+float	vec_dist(t_vec v1, t_vec v2);
 
 #endif

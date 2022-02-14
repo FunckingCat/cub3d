@@ -9,9 +9,9 @@ t_vec	find_intersection(t_vec plr, t_vec dir, float dist)
 	
 
 	ray = vec_mul(dir, dist);
-	printf("test %f %f\n", ray.x, ray.y);
+	//printf(("test %f %f\n", ray.x, ray.y);
 	ret = vec_add(plr, ray);
-	printf("test2 %f %f\n", ret.x, ret.y);
+	//printf(("test2 %f %f\n", ret.x, ret.y);
 	// tmp = ret.x;
 	// ret.x = ret.y;
 	// ret.y = tmp;
@@ -87,8 +87,8 @@ t_vec	raycasting(t_state *state, t_vec dir)
 			// ft_strchr(" 1", state->map->map[i][j]
 			if (ft_strchr(" 1", state->map->map[(int)map_check.y][(int)map_check.x]))
 				foundWall = 1;
-			if (foundWall == 1)
-				printf("ray found wall in y %d x %d\n", (int)map_check.y, (int)map_check.x);
+			// if (foundWall == 1)
+				//printf(("ray found wall in y %d x %d\n", (int)map_check.y, (int)map_check.x);
 		}
 	}
 	intersection.x = 0;
@@ -96,12 +96,12 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	intersection.color = 0xFF0000;
 	if (foundWall == 1)
 	{
-		printf("player is on x %f y %f\n", plr.x, plr.y);
-		printf("dir x %f y %f len %f\n", dir.x, dir.y, vec_len(dir));
+		//printf(("player is on x %f y %f\n", plr.x, plr.y);
+		//printf((("dir x %f y %f len %f\n", dir.x, dir.y, vec_len(dir));
 		intersection = find_intersection(plr, dir, dist);
 		intersection.color = 0xFF0000;
-		printf("ray hit the wall in x %f y %f\n len from plr to wall %f\n", intersection.x, intersection.y, vec_len(intersection));
-
+		printf("ray hit the wall in x %f y %f\n", intersection.x, intersection.y);
+		printf("len from plr to wall %f\n", vec_dist(plr, intersection));
 		// intersection.x = RES_X / intersection.x;
 		// intersection.y = RES_Y / intersection.y;
 	}

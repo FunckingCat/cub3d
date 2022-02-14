@@ -47,7 +47,9 @@ VECT		=	./vector/vec_add.c \
 				./vector/vec_mul.c \
 				./vector/vec_new.c \
 				./vector/vec_norm.c \
-				./vector/vec_rot.c
+				./vector/vec_rot.c \
+				./vector/vec_sub.c \
+				./vector/vec_dist.c
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER) \
