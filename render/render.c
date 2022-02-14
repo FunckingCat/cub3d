@@ -1,48 +1,13 @@
 #include "./render.h"
 
-void	throw_ray(t_state *st, double angle, t_img *img)
-{
-	t_ray	*ray;
-	ray = new_ray(st, angle);
-	float x1, y1, x2,y2;
-	int i, L, xstart, ystart, xend, yend;
-	float dX, dY, x[100000], y[100000];
-
-	x1 = ray->st_x;
-	y1 = ray->st_y;
-	x2 = ray->end_x;
-	y2 = ray->end_y;
-	xstart = roundf(x1);
-	ystart = roundf(y1);
-	xend = roundf(x2);
-	yend = roundf(y2);
-	L = fmax(abs(xend-xstart), abs(yend-ystart));
-	printf("L %d\n", L);
-	dX = (x2-x1) / L;
-	dY = (y2-y1) / L;
-	i = 0;
-	x[i] = x1;
-	y[i] = y1;
-	i++;
-	while (i < L)
-	{
-		x[i] = x[i-1] + dX;
-		y[i] = y[i-1] + dY;
-		i++;
-	}
-	x[i] = x2;
-	y[i] = y2;
-	i = 0;
-	while (i <= L)
-	{
-		put_pixel (img, roundf(x[i]), roundf(y[i]), COL_YELLOW);
-		i++;
-	}
-}
-
 void	render_rays(t_state *state, t_img *img)
 {
-	throw_ray(state, state->pl->a, img);
+	t_vec **rays = raycasting_fov(state);
+	float size = RES_X / state->map->width;
+
+	for (int i = 0; rays[i]; ++i) {
+		put_pixel(img, rays[i]->x, rays[i]->y, COL_YELLOW);
+	}
 }
 
 void	render_player(t_state *state, t_img *img)
