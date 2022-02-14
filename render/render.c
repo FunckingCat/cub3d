@@ -26,7 +26,6 @@ void	throw_ray(t_state *st, double angle, t_img *img)
 		y = ray->st_y + (ray->len_y) * sin(ray->angle);
 	}
 	printf("X %d Y %d\n", (int)x, (int)y);
-	put_pixel(img, 1080, 480, COL_RED);
 	put_pixel(img, (int)x, (int)y, COL_YELLOW);
 	// wall_found = 0;
 	// while ((ray->len_x < ray->length || ray->len_y < ray->length) && !wall_found)
