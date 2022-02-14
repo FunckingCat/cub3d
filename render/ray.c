@@ -22,8 +22,8 @@ t_ray	*new_ray(t_state *st, double angle)
 	ray->dir_y = 1;
 	if (ray->st_y - ray->end_y > 0)
 		ray->dir_y = 1;
-	ray->sc_x = (ray->st_x - (st->pl->grid_x + ray->dir_x) * ray->size) / ray->size;
-	ray->sc_y = (ray->st_y - (st->pl->grid_y + ray->dir_y) * ray->size) / ray->size;
+	ray->sc_x = (ray->st_x - st->pl->grid_x * ray->size) / ray->size;
+	ray->sc_y = (ray->st_y - st->pl->grid_y * ray->size) / ray->size;
 	return (ray);
 }
 

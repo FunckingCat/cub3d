@@ -87,6 +87,8 @@ void	draw_rec(t_img *img, t_rec *rec)
 		{
 			if (i == rec->x || j == rec->y)
 				put_pixel(img, i, j, COL_DGRAY);
+			else if (i == rec->width - 1 || j == rec->height - 1)
+				put_pixel(img, i, j, COL_DGRAY);
 			else
 				put_pixel(img, i, j, rec->color);
 		}
