@@ -17,10 +17,10 @@ t_ray	*new_ray(t_state *state, double angle)
 	ray->scale_x = sqrt(1 + pow((ray->dy /ray->dx), 2));
 	ray->scale_y = sqrt(1 + pow((ray->dx / ray->dy), 2));
 	ray->dir_x = 1;
-	if (ray->st_x - ray->end_x < 0)
+	if (ray->st_x - ray->end_x > 0)
 		ray->dir_x = -1;
 	ray->dir_y = 1;
-	if (ray->st_y - ray->end_y < 0)
+	if (ray->st_y - ray->end_y > 0)
 		ray->dir_y = -1;
 	ray->steps_x = 0;
 	ray->steps_y = 0;
