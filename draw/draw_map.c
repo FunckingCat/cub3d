@@ -6,7 +6,7 @@
 /*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 01:31:57 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/14 05:11:56 by rusty            ###   ########.fr       */
+/*   Updated: 2022/02/14 06:30:49 by rusty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_map(t_state *state, t_img *img)
 {
-	size_t	size = 1;//RES_X / state->map->width;
+	size_t	size = RES_X / state->map->width;
 	// t_img	*img = new_img(state->mlx);
 	t_rec	rec;
 
