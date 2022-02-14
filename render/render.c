@@ -3,18 +3,32 @@
 void	throw_ray(t_state *st, double angle)
 {
 	t_ray	*ray;
-	double	len;
+	int		count;
+	int		x;
+	int		y;
 
 	ray = new_ray(st, angle);
 	print_map(st->map);
 	print_player(st->pl);
 	print_ray(ray);
-	len = 0;
-	printf("init scale\t%f %f\n", ray->sc_x, ray->sc_y);
-	ray->len_x = ray->sc_x * ray->scale_x;
-	ray->len_y = ray->sc_y * ray->scale_y;
-	printf("len\t%f %f\n", ray->len_x, ray->len_y);
-
+	count = 0;
+	ray->len_x = ray->size * ray->sc_x * ray->scale_x;
+	ray->len_y = ray->size * ray->sc_y * ray->scale_y;
+	printf("--->init scale\t%f %f\n", ray->sc_x, ray->sc_y);
+	printf("lenx %f len y %f len %f\n", ray->len_x, ray->len_y, ray->length);
+	while (ray->len_x < ray->length || ray->len_y < ray->length)
+	{
+		if (ray->len_x > ray->len_y)
+			ray->sc_y += 1;
+		else
+			ray->sc_x += 1;
+		ray->len_x = ray->size * ray->sc_x * ray->scale_x;
+		ray->len_y = ray->size * ray->sc_y * ray->scale_y;
+		printf("%d init scale\t%f %f\n", count, ray->sc_x, ray->sc_y);
+		printf("lenx %f len y %f len %f\n", ray->len_x, ray->len_y, ray->length);
+		if (count++ > 10)
+			break;
+	}
 }
 
 void	render_rays(t_state *state, t_img *img)
