@@ -11,48 +11,27 @@ void	throw_ray(t_state *st, double angle, t_img *img)
 	print_map(st->map);
 	print_player(st->pl);
 	print_ray(ray);
-	ray->len_x = ray->size * ray->sc_x * ray->scale_x;
-	ray->len_y = ray->size * ray->sc_y * ray->scale_y;
-	print_ray(ray);
-	printf("%f - %f\n", ray->angle, 28.28 * cos(ray->angle));
-	if (ray->len_x < ray->len_y)
+	wall_found = 0;
+	while ((ray->len_x < ray->length || ray->len_y < ray->length) && !wall_found)
 	{
-		x = ray->st_x + (ray->len_x) * cos(ray->angle);
-		y = ray->st_y + (ray->len_x) * sin(ray->angle);
+		ray->len_x = ray->size * ray->sc_x * ray->scale_x;
+		ray->len_y = ray->size * ray->sc_y * ray->scale_y;
+		if (ray->len_x < ray->len_y)
+		{
+			x = ray->st_x + (ray->len_x) * cos(ray->angle);
+			y = ray->st_y + (ray->len_x) * sin(ray->angle);
+			ray->sc_x += 1;
+		}
+		else
+		{
+			x = ray->st_x + (ray->len_y) * cos(ray->angle);
+			y = ray->st_y + (ray->len_y) * sin(ray->angle);
+			ray->sc_y += 1;
+		}
+		//code that find wall
+		printf("X %d Y %d\n", (int)x, (int)y);
+		put_pixel(img, (int)x, (int)y, COL_YELLOW);
 	}
-	else
-	{
-		x = ray->st_x + (ray->len_y) * cos(ray->angle);
-		y = ray->st_y + (ray->len_y) * sin(ray->angle);
-	}
-	printf("X %d Y %d\n", (int)x, (int)y);
-	put_pixel(img, (int)x, (int)y, COL_YELLOW);
-	// wall_found = 0;
-	// while ((ray->len_x < ray->length || ray->len_y < ray->length) && !wall_found)
-	// {
-	// 	if (ray->len_x > ray->len_y)
-	// 		ray->sc_y += 1;
-	// 	else
-	// 		ray->sc_x += 1;
-	// 	ray->len_x = ray->size * ray->sc_x * ray->scale_x;
-	// 	ray->len_y = ray->size * ray->sc_y * ray->scale_y;
-	// 	print_ray(ray);
-	// 	if (ray->len_x < ray->len_y)
-	// 	{
-	// 		a = tan(ray->angle);
-	// 		x = ray->st_x + ray->sc_x * ray->size;
-	// 		y = ray->st_y + a * (ray->sc_x * ray->size);
-	// 	}
-	// 	else
-	// 	{
-	// 		a = cos(ray->angle) / sin(ray->angle);
-	// 		y = ray->st_y + ray->sc_y * ray->size;
-	// 		x = ray->st_x + a * (ray->sc_y * ray->size);
-	// 	}
-	// 	printf("X %d Y %d ang %f\n", (int)x, (int)y, a);
-	// 	put_pixel(img, (int)x, (int)y, COL_RED);
-	// 	break;
-	// }
 }
 
 void	render_rays(t_state *state, t_img *img)
