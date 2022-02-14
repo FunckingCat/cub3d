@@ -6,6 +6,7 @@
 # include "../mlx/mlx.h"
 # include "../constants.h"
 # include "../state/state.h"
+# include "../vector/vector.h"
 
 # define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000

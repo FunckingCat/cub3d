@@ -1,42 +1,38 @@
 #include "./render.h"
 
-void	throw_ray(t_state *st, double angle, t_img *img)
+t_vec	*cast_ray(t_state *st, float an, t_img *img)
 {
-	t_ray	*ray;
-	int		wall_found;
-	double	x;
-	double	y;
+	float	x;
+	float	y;
+	int		tx;
+	int		ty;
+	t_vec	*vec;
 
-	ray = new_ray(st, angle);
-	print_map(st->map);
-	print_player(st->pl);
-	print_ray(ray);
-	wall_found = 0;
-	while ((ray->len_x < ray->length || ray->len_y < ray->length) && !wall_found)
+	vec = ft_malloc(sizeof(t_vec));
+	for (float c = 0; ; c+=1)
 	{
-		ray->len_x = ray->size * ray->sc_x * ray->scale_x;
-		ray->len_y = ray->size * ray->sc_y * ray->scale_y;
-		if (ray->len_x < ray->len_y)
-		{
-			x = ray->st_x + (ray->len_x) * cos(ray->angle);
-			y = ray->st_y + (ray->len_x) * sin(ray->angle);
-			ray->sc_x += 1;
-		}
-		else
-		{
-			x = ray->st_x + (ray->len_y) * cos(ray->angle);
-			y = ray->st_y + (ray->len_y) * sin(ray->angle);
-			ray->sc_y += 1;
-		}
-		//code that find wall
-		printf("X %d Y %d\n", (int)x, (int)y);
+		y = st->pl->y + c * sin(an);
+		x = st->pl->x + c * cos(an);
+		tx = (int)floor(x / st->pl->size);
+		ty = (int)floor(y / st->pl->size);
+		if (tx < 0 || tx > st->map->width || ty < 0 || ty > st->map->height)
+			continue;
+		if (st->map->map[ty][tx] == '1')
+			break;
 		put_pixel(img, (int)x, (int)y, COL_YELLOW);
 	}
+	vec->x = x;
+	vec->y = y;
+	return (vec);
 }
 
-void	render_rays(t_state *state, t_img *img)
+void	render_rays(t_state *st, t_img *img)
 {
-	throw_ray(state, state->pl->a, img);
+	float x;
+	float y;
+
+	for (int i = 0; i < FOV; i++)
+		cast_ray(st, st->pl->a + (i * DEG), img);
 }
 
 void	render_player(t_state *state, t_img *img)

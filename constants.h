@@ -5,7 +5,8 @@
 # define RES_Y		700
 # define TILE		128
 # define PL_HEIGHT	64
-# define FOV		60
 # define PI			3.141592653
+# define DEG		PI / 180
+# define FOV		60
 
 #endif

@@ -8,6 +8,7 @@ HEADERS		=	./cub.h \
 				./hooks/hooks.h \
 				./state/state.h \
 				./player/player.h \
+				./vector/vector.h \
 				./render/render.h
 
 MAIN		=	./cub.c
@@ -15,6 +16,16 @@ MAIN		=	./cub.c
 STATE		=	./state/state.c
 
 ERROR		=	./error/error.c
+
+VECT		=	./vector/vec_add.c \
+				./vector/vec_dot.c \
+				./vector/vec_len.c \
+				./vector/vec_mul.c \
+				./vector/vec_new.c \
+				./vector/vec_norm.c \
+				./vector/vec_rot.c \
+				./vector/vec_sub.c \
+				./vector/vec_dist.c
 
 PARSING		=	./parsing/parse_map.c \
 				./parsing/parse_utils.c \
@@ -33,7 +44,8 @@ RENDER		=	./render/render.c \
 				./render/ray.c
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
-				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER)
+				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER) \
+				$(VECT)
 
 
 OBJS		=	$(SRCS:%.c=%.o)
