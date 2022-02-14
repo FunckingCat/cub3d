@@ -7,6 +7,10 @@
 		"redirect.h": "c",
 		"history.h": "c",
 		"signal.h": "c",
-		"player.h": "c"
+		"player.h": "c",
+		"array": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"utility": "c"
 	}
 }

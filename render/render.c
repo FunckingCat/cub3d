@@ -21,19 +21,18 @@ void	render_player(t_state *state, t_img *img)
 	size_t	pl_size = size / 3;
 	int		dx;
 	int		dy;
-	int		count = 0;
 
 	for (size_t i = state->pl->x - pl_size; i < state->pl->x + pl_size; i++)
 	{
-		count += 5;
 		for (size_t j = state->pl->y - pl_size; j < state->pl->y + pl_size; j++)
 		{
 			dx = i - state->pl->x;
 			dy = j - state->pl->y;
 			if (dx * dx + dy * dy < pl_size * pl_size)
-				put_pixel(img, i, j, COL_GREEN + count);
+				put_pixel(img, i, j, COL_GREEN);
 		}
 	}
+	put_pixel(img, state->pl->x, state->pl->y, COL_RED);
 }
 
 void	draw_rec(t_img *img, t_rec *rec)
@@ -49,17 +48,16 @@ void	draw_rec(t_img *img, t_rec *rec)
 
 void	render_map(t_state *state, t_img *img)
 {
-	size_t	size = RES_X / state->map->width;
 	t_rec	rec;
 
 	for (size_t i = 0; i < state->map->height; i++)
 	{
 		for (size_t j = 0; j < state->map->width; j++)
 		{
-			rec.x = j * size;
-			rec.y = i * size;
-			rec.width = rec.x + size;
-			rec.height = rec.y + size;
+			rec.x = (int)(j * state->pl->size);
+			rec.y = (int)(i * state->pl->size);
+			rec.width = (int)(rec.x + state->pl->size);
+			rec.height = (int)(rec.y + state->pl->size);
 			if (ft_strchr(" 1", state->map->map[i][j]))
 				rec.color = COL_DGRAY;
 			else
