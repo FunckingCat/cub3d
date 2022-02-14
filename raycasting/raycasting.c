@@ -32,7 +32,7 @@ t_vec	raycasting(t_state *state, t_vec dir)
 
 	t_vec	intersection;
 
-	plr = vec_new(state->pl->y, state->pl->x);
+	plr = vec_new(state->pl->grid_y, state->pl->grid_x);
 /*
 **				a to radians or sm like that or a affects on dir
 */
@@ -103,15 +103,16 @@ t_vec	raycasting(t_state *state, t_vec dir)
 		// intersection.x = RES_X / intersection.x;
 		// intersection.y = RES_Y / intersection.y;
 	}
-
+	intersection.x *= state->pl->size;
+	intersection.y *= state->pl->size;
 	return (intersection);
 }
 
 t_vec	**raycasting_fov(t_state *state)
 {
+	t_vec	**rays;
 	int		i;
 	int		j;
-	t_vec	**rays;
 
 	j = 0;
 	rays = (t_vec **)ft_malloc(sizeof(t_vec *) * 60 * 2);
