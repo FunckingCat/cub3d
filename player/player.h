@@ -10,13 +10,13 @@ typedef struct s_player
 	double	size;
 	int		grid_x;
 	int		grid_y;
-	double	x;
-	double	y;
-	double	a;
+	float	x;
+	float	y;
+	float	a;
 }	t_player;
 
 t_player	*new_player(t_map *map);
 void		print_player(t_player *pl);
-int			grid_coord(t_player *pl, double c);
+int			grid_coord(t_player *pl, float c);
 
 #endif

@@ -51,14 +51,13 @@ void	render_rays(t_state *state, t_img *img)
 	t_vec **rays = raycasting_fov(state);
 	float size = RES_X / state->map->width;
 
+	printf("%f \n", rays[100]->x);
+	printf("%f \n", rays[100]->y);
+
 	for (int i = 0; rays[i]; ++i) {
 		rays[i]->x = rays[i]->x * size;
 		rays[i]->y = rays[i]->y * size;
-		if (i <= FOV / 2 + 5 && i >= FOV / 2 - 5)
-			rays[i]->color = COL_RED;
-		else
-			rays[i]->color = COL_YELLOW;
-		put_pixel(img, rays[i]->x, rays[i]->y, rays[i]->color);
+		put_pixel(img, rays[i]->x, rays[i]->y, COL_YELLOW);
 	}
 }
 

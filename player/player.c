@@ -49,12 +49,12 @@ void	print_player(t_player *pl)
 	printf("--------------------------\n");
 }
 
-int	grid_coord(t_player *pl, double c)
+int	grid_coord(t_player *pl, float c)
 {
 	int res;
 
 	res = 0;
-	while ((double)res * pl->size < c)
+	while ((float)res * pl->size < c)
 		res++;
 	return (res - 1);
 }

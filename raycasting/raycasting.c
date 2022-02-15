@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/15 07:03:40 by rusty            ###   ########.fr       */
+/*   Updated: 2022/02/15 22:25:00 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	t_vec	unit_step;
 	t_vec	step;
 	t_vec	ray_lend;
-
+	t_vec	intersection;
 	int		foundWall;
 	float	dist;
 	float	max_dist;
 
-	t_vec	intersection;
 
 	plr = vec_new(state->pl->y, state->pl->x);
 	unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
@@ -69,7 +68,7 @@ t_vec	raycasting(t_state *state, t_vec dir)
 		ray_lend.y = (map_check.y + 1 - plr.y) * unit_step.y;
 	}
 	foundWall = 0;
-	max_dist = 500.0f;
+	max_dist = 50000.0f;
 	dist = 0.0f;
 	while (!foundWall && dist < max_dist)
 	{
@@ -117,20 +116,19 @@ t_vec	**raycasting_fov(t_state *state)
 	int		i;
 	int		j;
 	t_vec	**rays;
-
 	float		steps;
 
 	steps = (float)FOV / RES_X;
 	float start = - FOV / 2;
 	j = 0;
 	rays = (t_vec **)ft_malloc(sizeof(t_vec *) * RES_X + 1);
-	i = -RES_X / 2;
-	while (++i < (RES_X / 2) - 1)
-	{	
+	i = -1;
+	while (++i < RES_X - 1)
+	{
 		t_vec dir = vec_rot(vec_new(-1.0f, 0.0f), state->pl->a + start);
 		t_vec *ray = ft_malloc(sizeof(t_vec));
 		*ray = raycasting(state, dir);
-		ray->angle = state->pl->a + (float)i;
+		ray->angle = state->pl->a + start;
 		rays[j++] = ray;
 		start += steps;
 	}
