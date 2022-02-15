@@ -51,6 +51,7 @@ void	render_rays(t_state *state, t_img *img)
 	t_vec **rays = raycasting_fov(state);
 	float size = RES_X / state->map->width;
 
+	print_player(state->pl);
 	printf("%f \n", rays[100]->x);
 	printf("%f \n", rays[100]->y);
 
