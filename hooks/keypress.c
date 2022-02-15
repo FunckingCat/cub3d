@@ -12,13 +12,13 @@ int	key_press(int keycode, t_state *state)
 		state->pl->y += 0.4;
 	if (keycode == E_KEY)
 	{
-		state->pl->a += 5.0f;
+		state->pl->a += 4.0f;
 		if (state->pl->a == 360.0f)
 			state->pl->a = 0.0f;
 	}
 	if (keycode == Q_KEY)
 	{
-		state->pl->a -= 5.0f;
+		state->pl->a -= 4.0f;
 		if (state->pl->a == 0.0f)
 			state->pl->a = 360.0f;
 	}
