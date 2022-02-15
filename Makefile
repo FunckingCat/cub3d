@@ -43,6 +43,11 @@ PLAYER		=	./player/player.c
 RENDER		=	./render/render.c \
 				./render/image.c
 
+DRAW		=	./draw/draw_map.c \
+				./draw/line.c \
+				./draw/line_utils.c \
+				./draw/rectangle.c
+
 RAYCAST		=	./raycasting/raycasting.c
 
 VECT		=	./vector/vec_add.c \
