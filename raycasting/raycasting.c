@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
+/*   Updated: 2022/02/15 07:03:40 by rusty            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "raycasting.h"
 
 t_vec	find_intersection(t_vec plr, t_vec dir, float dist)
@@ -17,11 +29,6 @@ float	absf(float num)
 	return (num);
 }
 
-// void	init_ray(t_state *state, t_vec dir)
-// {
-
-// }
-
 t_vec	raycasting(t_state *state, t_vec dir)
 {
 	t_vec	plr;
@@ -38,13 +45,6 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	t_vec	intersection;
 
 	plr = vec_new(state->pl->y, state->pl->x);
-/*
-**				a to radians or sm like that or a affects on dir
-*/
-	// dir = vec_rot(vec_new(-1.0f, 0.0f), state->pl->a * 3.14f / 180.0f); // later add 
-	// dir = vec_new(1.0f, 0.0f); // later add 
-	// vec_norm(&dir);
-	// plane = vec_new(0.0f, 0.66f);
 	unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
 	map_check.x = (int)plr.x;
 	map_check.y = (int)plr.y;
@@ -88,11 +88,8 @@ t_vec	raycasting(t_state *state, t_vec dir)
 		if (map_check.x >= 0 && map_check.y >= 0 && \
 		map_check.x < state->map->width && map_check.y < state->map->height)
 		{
-			// ft_strchr(" 1", state->map->map[i][j]
 			if (ft_strchr(" 1", state->map->map[(int)map_check.y][(int)map_check.x]))
 				foundWall = 1;
-			// if (foundWall == 1)
-				//printf(("ray found wall in y %d x %d\n", (int)map_check.y, (int)map_check.x);
 		}
 	}
 	intersection.x = 0;
@@ -112,7 +109,6 @@ t_vec	raycasting(t_state *state, t_vec dir)
 		// intersection.x = RES_X / intersection.x;
 		// intersection.y = RES_Y / intersection.y;
 	}
-
 	return (intersection);
 }
 
@@ -122,22 +118,21 @@ t_vec	**raycasting_fov(t_state *state)
 	int		j;
 	t_vec	**rays;
 
-	int		steps;
+	float		steps;
 
-	steps = FOV / RES_X;
+	steps = (float)FOV / RES_X;
+	float start = - FOV / 2;
 	j = 0;
-	rays = (t_vec **)ft_malloc(sizeof(t_vec *) * FOV);
-	i = -FOV / 2;
-	while (++i < (FOV / 2) - 1)
-	{
-		// t_vec plane = vec_new(0.0f, i / 100.0f);
-		// t_vec dir = vec_rot(vec_add(vec_new(-1.0f, 0.0f), plane), state->pl->a * 3.14f / 180.0f);
-		
-		t_vec dir = vec_rot(vec_new(-1.0f, 0.0f), (state->pl->a + (float)i));
+	rays = (t_vec **)ft_malloc(sizeof(t_vec *) * RES_X + 1);
+	i = -RES_X / 2;
+	while (++i < (RES_X / 2) - 1)
+	{	
+		t_vec dir = vec_rot(vec_new(-1.0f, 0.0f), state->pl->a + start);
 		t_vec *ray = ft_malloc(sizeof(t_vec));
 		*ray = raycasting(state, dir);
 		ray->angle = state->pl->a + (float)i;
 		rays[j++] = ray;
+		start += steps;
 	}
 	rays[j] = NULL;
 	return (rays);
