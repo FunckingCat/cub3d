@@ -6,7 +6,7 @@
 /*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 03:51:29 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/15 06:55:34 by rusty            ###   ########.fr       */
+/*   Updated: 2022/02/15 07:02:09 by rusty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ float	vec_scal_prod(float angle, t_vec projected)
 {
 	float	alfa;
 
-	alfa =  to_rad(angle) - to_rad(projected.angle);
+	alfa = to_rad(angle) - to_rad(projected.angle);
 	return (projected.dist * cosf(alfa));
 }
