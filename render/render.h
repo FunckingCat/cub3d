@@ -6,6 +6,7 @@
 # include "../mlx/mlx.h"
 # include "../constants.h"
 # include "../state/state.h"
+# include "../vector/vector.h"
 # include "../raycasting/raycasting.h"
 
 # define COL_WHITE	0xffffff
@@ -27,10 +28,44 @@ typedef struct	s_img
 }				t_img;
 # include "../draw/draw.h"
 
+typedef struct	s_rec
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	color;
+}	t_rec;
+
+typedef	struct s_ray
+{
+	double	length;
+	double	angle;
+	double	size;
+	double	st_x;
+	double	st_y;
+	double	end_x;
+	double	end_y;
+	double	dx;
+	double	dy;
+	double	scale_x;
+	double	scale_y;
+	int		dir_x;
+	int		dir_y;
+	double	sc_x;
+	double	sc_y;
+	double	len_x;
+	double	len_y;
+}	t_ray;
+
+
 void	render(t_state *state);
 
 t_img	*new_img(void *mlx);
 void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
+
+t_ray	*new_ray(t_state *state, double angle);
+void	print_ray(t_ray *ray);
 
 #endif

@@ -3,15 +3,20 @@
 
 # include "../libft/libft.h"
 # include "../map/map.h"
+# include "../constants.h"
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
-	float	a;
+	double	size;
+	int		grid_x;
+	int		grid_y;
+	double	x;
+	double	y;
+	double	a;
 }	t_player;
 
 t_player	*new_player(t_map *map);
-void	print_player(t_player *pl);
+void		print_player(t_player *pl);
+int			grid_coord(t_player *pl, double c);
 
 #endif

@@ -1,7 +1,7 @@
 NAME		=	cub3D
 
-HEADERS		=	cub.h \
-				constants.h \
+HEADERS		=	./cub.h \
+				./constants.h \
 				./error/error.h \
 				./map/map.h \
 				./parsing/parsing.h \
@@ -13,11 +13,21 @@ HEADERS		=	cub.h \
 				./draw/draw.h \
 				./raycasting/raycasting.h
 
-MAIN		=	cub.c
+MAIN		=	./cub.c
 
 STATE		=	./state/state.c
 
 ERROR		=	./error/error.c
+
+VECT		=	./vector/vec_add.c \
+				./vector/vec_dot.c \
+				./vector/vec_len.c \
+				./vector/vec_mul.c \
+				./vector/vec_new.c \
+				./vector/vec_norm.c \
+				./vector/vec_rot.c \
+				./vector/vec_sub.c \
+				./vector/vec_dist.c
 
 PARSING		=	./parsing/parse_map.c \
 				./parsing/parse_utils.c \
@@ -32,7 +42,8 @@ MAP			=	./map/map.c
 PLAYER		=	./player/player.c
 
 RENDER		=	./render/render.c \
-				./render/image.c
+				./render/image.c \
+				./render/ray.c
 
 DRAW		=	./draw/draw_map.c \
 				./draw/line.c \
@@ -56,7 +67,6 @@ SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER) \
 				$(DRAW)		$(RAYCAST)	$(VECT)
 
-
 OBJS		=	$(SRCS:%.c=%.o)
 
 CC			=	gcc -g -fsanitize=address
@@ -76,12 +86,12 @@ endif
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) $(HEADERS)
 			@make -s -C $(MLXDIR)
 			@make bonus -s -C $(LIBFT_DIR)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLXFLAGS) -lm
 
-%o:			%.c $(HEADERS) Makefile
+%.o : %.c $(HEADERS)
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 clean:

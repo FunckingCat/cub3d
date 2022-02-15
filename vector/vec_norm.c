@@ -17,7 +17,7 @@ void	vec_norm(t_vec *v)
 	float	l;
 
 	l = vec_len(*v);
-	if (l <= 0)
+	if (l != 0)
 	{
 		v->x /= l;
 		v->y /= l;

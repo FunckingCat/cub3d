@@ -16,7 +16,6 @@ t_vec	vec_rot(t_vec v, float alfa)
 {
 	t_vec	ret;
 
-	alfa = alfa * 3.14f / 180.0f;
 	ret.x = v.x * cos(alfa) + v.y * -sin(alfa);
 	ret.y = v.x * sin(alfa) + v.y * cos(alfa);
 	return (ret);
