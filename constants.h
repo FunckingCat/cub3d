@@ -1,8 +1,8 @@
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
 
-# define RES_X		1200
-# define RES_Y		700
+# define RES_X		480
+# define RES_Y		320
 # define TILE		128
 # define PL_HEIGHT	64
 # define PI			3.141592653

@@ -1,6 +1,8 @@
 #ifndef RENDER_H
 # define RENDER_H
 
+typedef struct s_img t_img;
+
 # include <math.h>
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
@@ -8,6 +10,7 @@
 # include "../state/state.h"
 # include "../vector/vector.h"
 # include "../raycasting/raycasting.h"
+# include "../draw/draw.h"
 
 # define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000
@@ -18,23 +21,23 @@
 # define COL_BLUE	0x000d85
 # define COL_GREEN	0x2d752e
 
-typedef struct	s_img
+struct	s_img
 {
 	void	*img_ptr;
 	int		*data;
 	int		bpp;
 	int		size_l;
 	int		endian;
-}			t_img;
+};
 
-typedef struct	s_rec
-{
-	int	x;
-	int	y;
-	int	width;
-	int	height;
-	int	color;
-}	t_rec;
+// typedef struct	s_rec
+// {
+// 	int	x;
+// 	int	y;
+// 	int	width;
+// 	int	height;
+// 	int	color;
+// }	t_rec;
 
 void	render(t_state *state);
 
