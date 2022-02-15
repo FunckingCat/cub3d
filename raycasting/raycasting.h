@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_norm.c                                         :+:      :+:    :+:   */
+/*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 22:26:59 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/14 21:57:40 by rusty            ###   ########.fr       */
+/*   Created: 2022/02/13 23:21:32 by rusty             #+#    #+#             */
+/*   Updated: 2022/02/14 22:15:40 by rusty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#ifndef RAYCASTING_H
+# define RAYCASTING_H
 
-void	vec_norm(t_vec *v)
+# include "../vector/vector.h"
+# include "../state/state.h"
+# include "../map/map.h"
+# include "../libft/libft.h"
+
+# include "../constants.h"
+
+t_vec	raycasting(t_state *state, t_vec dir);
+t_vec	**raycasting_fov(t_state *state);
+
+struct	s_ray
 {
-	float	l;
+	t_vec	start_point;
+	t_vec	map_check_digit;
+	t_vec	unit_step;
+	t_vec	stap_digit;
+};
 
-	l = vec_len(*v);
-	if (l != 0)
-	{
-		v->x /= l;
-		v->y /= l;
-	}
-}
+#endif

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_norm.c                                         :+:      :+:    :+:   */
+/*   rectangle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 22:26:59 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/14 21:57:40 by rusty            ###   ########.fr       */
+/*   Created: 2022/02/14 02:01:36 by rusty             #+#    #+#             */
+/*   Updated: 2022/02/14 02:02:02 by rusty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "draw.h"
 
-void	vec_norm(t_vec *v)
+void	draw_rec(t_img *img, t_rec *rec)
 {
-	float	l;
-
-	l = vec_len(*v);
-	if (l != 0)
+	for (int i = rec->x; i < rec->width; i++)
 	{
-		v->x /= l;
-		v->y /= l;
+		for (int j = rec->y; j < rec->height; j++)
+		{
+			put_pixel(img, i, j, rec->color);
+		}
 	}
 }
