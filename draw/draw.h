@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 01:52:21 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/15 22:58:29 by rusty            ###   ########.fr       */
+/*   Updated: 2022/02/15 23:08:21 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	bresenham_2(t_img *img, t_vec start, t_vec end);
 void	putline_bresenham(t_img *img, t_vec start, t_vec end);
 
 /*rectangle*/
-void	draw_rec(t_img *img, t_rec *rec);
+void	put_rec(t_img *img, t_rec *rec);
 
 /*map*/
 void	draw_map(t_state *state, t_img *img);

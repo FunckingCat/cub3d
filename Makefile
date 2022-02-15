@@ -10,6 +10,7 @@ HEADERS		=	./cub.h \
 				./player/player.h \
 				./render/render.h \
 				./vector/vector.h \
+				./draw/draw.h \
 				./raycasting/raycasting.h
 
 MAIN		=	./cub.c
@@ -63,7 +64,7 @@ VECT		=	./vector/vec_add.c \
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER) \
-				$(RAYCAST)	$(VECT)
+				$(RAYCAST)	$(VECT)		$(DRAW)
 
 OBJS		=	$(SRCS:%.c=%.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 01:31:57 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/14 21:47:20 by rusty            ###   ########.fr       */
+/*   Updated: 2022/02/15 23:08:21 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_map(t_state *state, t_img *img)
 				rec.color = 0xFF0000;
 			else
 				rec.color = COL_LGRAY;
-			draw_rec(img, &rec);
+			put_rec(img, &rec);
 		}
 	}
 	// mlx_put_image_to_window(state->mlx, state->win, img->img_ptr, 0, 0);

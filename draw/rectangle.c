@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rectangle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 02:01:36 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/14 02:02:02 by rusty            ###   ########.fr       */
+/*   Updated: 2022/02/15 23:08:21 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "draw.h"
 
-void	draw_rec(t_img *img, t_rec *rec)
+void	put_rec(t_img *img, t_rec *rec)
 {
 	for (int i = rec->x; i < rec->width; i++)
 	{
