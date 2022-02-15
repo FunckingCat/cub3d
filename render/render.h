@@ -20,13 +20,12 @@
 
 typedef struct	s_img
 {
-	void		*img_ptr;
-	char		*data;
-	int			bpp;
-	int			size_l;
-	int			endian;
-}				t_img;
-# include "../draw/draw.h"
+	void	*img_ptr;
+	int		*data;
+	int		bpp;
+	int		size_l;
+	int		endian;
+}			t_img;
 
 typedef struct	s_rec
 {
@@ -37,35 +36,10 @@ typedef struct	s_rec
 	int	color;
 }	t_rec;
 
-typedef	struct s_ray
-{
-	double	length;
-	double	angle;
-	double	size;
-	double	st_x;
-	double	st_y;
-	double	end_x;
-	double	end_y;
-	double	dx;
-	double	dy;
-	double	scale_x;
-	double	scale_y;
-	int		dir_x;
-	int		dir_y;
-	double	sc_x;
-	double	sc_y;
-	double	len_x;
-	double	len_y;
-}	t_ray;
-
-
 void	render(t_state *state);
 
 t_img	*new_img(void *mlx);
 void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
-
-t_ray	*new_ray(t_state *state, double angle);
-void	print_ray(t_ray *ray);
 
 #endif

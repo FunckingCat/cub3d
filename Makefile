@@ -10,7 +10,6 @@ HEADERS		=	./cub.h \
 				./player/player.h \
 				./render/render.h \
 				./vector/vector.h \
-				./draw/draw.h \
 				./raycasting/raycasting.h
 
 MAIN		=	./cub.c
@@ -42,13 +41,7 @@ MAP			=	./map/map.c
 PLAYER		=	./player/player.c
 
 RENDER		=	./render/render.c \
-				./render/image.c \
-				./render/ray.c
-
-DRAW		=	./draw/draw_map.c \
-				./draw/line.c \
-				./draw/line_utils.c \
-				./draw/rectangle.c
+				./render/image.c
 
 RAYCAST		=	./raycasting/raycasting.c
 
@@ -65,7 +58,7 @@ VECT		=	./vector/vec_add.c \
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER) \
-				$(DRAW)		$(RAYCAST)	$(VECT)
+				$(RAYCAST)	$(VECT)
 
 OBJS		=	$(SRCS:%.c=%.o)
 
