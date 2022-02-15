@@ -17,6 +17,11 @@ float	absf(float num)
 	return (num);
 }
 
+// void	init_ray(t_state *state, t_vec dir)
+// {
+
+// }
+
 t_vec	raycasting(t_state *state, t_vec dir)
 {
 	t_vec	plr;
@@ -38,32 +43,33 @@ t_vec	raycasting(t_state *state, t_vec dir)
 */
 	// dir = vec_rot(vec_new(-1.0f, 0.0f), state->pl->a * 3.14f / 180.0f); // later add 
 	// dir = vec_new(1.0f, 0.0f); // later add 
-	vec_norm(&dir);
-	plane = vec_new(0.0f, 0.66f);
+	// vec_norm(&dir);
+	// plane = vec_new(0.0f, 0.66f);
 	unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
-	map_check = plr;
+	map_check.x = (int)plr.x;
+	map_check.y = (int)plr.y;
 	if (dir.x < 0)
 	{
-		step.x = -1;
+		step.x = -1.0f;
 		ray_lend.x = (plr.x - map_check.x) * unit_step.x;
 	}
 	else
 	{
-		step.x = 1;
+		step.x = 1.0f;
 		ray_lend.x = (map_check.x + 1 - plr.x) * unit_step.x;
 	}
 	if (dir.y < 0)
 	{
-		step.y = -1;
+		step.y = -1.0f;
 		ray_lend.y = (plr.y - map_check.y) * unit_step.y;
 	}
 	else
 	{
-		step.y = 1;
+		step.y = 1.0f;
 		ray_lend.y = (map_check.y + 1 - plr.y) * unit_step.y;
 	}
 	foundWall = 0;
-	max_dist = 1000.0f;
+	max_dist = 500.0f;
 	dist = 0.0f;
 	while (!foundWall && dist < max_dist)
 	{
@@ -94,12 +100,15 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	intersection.color = 0xFF0000;
 	if (foundWall == 1)
 	{
-		//printf(("player is on x %f y %f\n", plr.x, plr.y);
+		// printf("player is on x %f y %f\n", plr.x, plr.y);
 		//printf((("dir x %f y %f len %f\n", dir.x, dir.y, vec_len(dir));
 		intersection = find_intersection(plr, dir, dist);
 		intersection.color = 0xFF0000;
-		printf("ray hit the wall in x %f y %f\n", intersection.x, intersection.y);
-		printf("len from plr to wall %f\n", vec_dist(plr, intersection));
+		intersection.dist = dist;
+		// printf("ray hit the wall in x %f y %f\n", intersection.x, intersection.y);
+		// printf("len from plr to wall %f\n", vec_dist(plr, intersection));
+		// printf("len from plr to wall %f\n", dist);
+
 		// intersection.x = RES_X / intersection.x;
 		// intersection.y = RES_Y / intersection.y;
 	}
@@ -113,17 +122,23 @@ t_vec	**raycasting_fov(t_state *state)
 	int		j;
 	t_vec	**rays;
 
+	int		steps;
+
+	steps = FOV / RES_X;
 	j = 0;
-	rays = (t_vec **)ft_malloc(sizeof(t_vec *) * 60 * 2);
-	i = -58;
-	while (++i < 58)
+	rays = (t_vec **)ft_malloc(sizeof(t_vec *) * FOV);
+	i = -FOV / 2;
+	while (++i < (FOV / 2) - 1)
 	{
-		t_vec plane = vec_new(0.0f, i / 100.0f);
-		t_vec dir = vec_rot(vec_add(vec_new(-1.0f, 0.0f), plane), state->pl->a * 3.14f / 180.0f);
+		// t_vec plane = vec_new(0.0f, i / 100.0f);
+		// t_vec dir = vec_rot(vec_add(vec_new(-1.0f, 0.0f), plane), state->pl->a * 3.14f / 180.0f);
+		
+		t_vec dir = vec_rot(vec_new(-1.0f, 0.0f), (state->pl->a + (float)i));
 		t_vec *ray = ft_malloc(sizeof(t_vec));
 		*ray = raycasting(state, dir);
+		ray->angle = state->pl->a + (float)i;
 		rays[j++] = ray;
 	}
-	rays[110] = NULL;
+	rays[j] = NULL;
 	return (rays);
 }

@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.h                                       :+:      :+:    :+:   */
+/*   vec_scal_prod.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 23:21:32 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/14 22:15:40 by rusty            ###   ########.fr       */
+/*   Created: 2022/02/15 03:51:29 by rusty             #+#    #+#             */
+/*   Updated: 2022/02/15 03:59:15 by rusty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAYCASTING_H
-# define RAYCASTING_H
+#include "vector.h"
 
-# include "../vector/vector.h"
-# include "../state/state.h"
-# include "../map/map.h"
-# include "../libft/libft.h"
-
-# include "../constants.h"
-
-t_vec	raycasting(t_state *state, t_vec dir);
-t_vec	**raycasting_fov(t_state *state);
-
-struct	s_ray
+float	vec_scal_prod(float angle, t_vec projected)
 {
-	t_vec	start_point;
-	t_vec	map_check_digit;
-	t_vec	unit_step;
-	t_vec	stap_digit;
-};
+	float	alfa;
 
-#endif
+	alfa = angle - projected.angle;
+	alfa = alfa * 3.14f / 180.0f;
+	return (projected.dist * cos(alfa));
+}
