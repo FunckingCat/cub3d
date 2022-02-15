@@ -13,7 +13,7 @@ void	draw_player(t_state *state, t_img *img)
 	draw_rec(img, &rec);
 }
 
-draw_rays(t_state *state, t_vec **rays, t_img *img)
+void	draw_rays(t_state *state, t_vec **rays, t_img *img)
 {
 	float size = RES_X / state->map->width;
 
