@@ -8,7 +8,10 @@ HEADERS		=	cub.h \
 				./hooks/hooks.h \
 				./state/state.h \
 				./player/player.h \
-				./render/render.h
+				./render/render.h \
+				./vector/vector.h \
+				./draw/draw.h \
+				./raycasting/raycasting.h
 
 MAIN		=	cub.c
 
@@ -31,13 +34,32 @@ PLAYER		=	./player/player.c
 RENDER		=	./render/render.c \
 				./render/image.c
 
+DRAW		=	./draw/draw_map.c \
+				./draw/line.c \
+				./draw/line_utils.c \
+				./draw/rectangle.c
+
+RAYCAST		=	./raycasting/raycasting.c
+
+VECT		=	./vector/vec_add.c \
+				./vector/vec_dot.c \
+				./vector/vec_len.c \
+				./vector/vec_mul.c \
+				./vector/vec_new.c \
+				./vector/vec_norm.c \
+				./vector/vec_rot.c \
+				./vector/vec_sub.c \
+				./vector/vec_dist.c \
+				./vector/vec_scal_prod.c
+
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
-				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER)
+				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER) \
+				$(DRAW)		$(RAYCAST)	$(VECT)
 
 
 OBJS		=	$(SRCS:%.c=%.o)
 
-CC			=	gcc -g
+CC			=	gcc -g -fsanitize=address
 # CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
@@ -57,7 +79,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			@make -s -C $(MLXDIR)
 			@make bonus -s -C $(LIBFT_DIR)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLXFLAGS)
+			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLXFLAGS) -lm
 
 %o:			%.c $(HEADERS) Makefile
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@
