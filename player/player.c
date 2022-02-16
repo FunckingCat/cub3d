@@ -23,11 +23,11 @@ t_player	*new_player(t_map *map)
 				if (map->map[i][j] == 'E')
 					pl->a = 0;
 				if (map->map[i][j] == 'S')
-					pl->a = PI / 2;
+					pl->a = (3 * PI) / 2;
 				if (map->map[i][j] == 'W')
 					pl->a = PI;
 				if (map->map[i][j] == 'N')
-					pl->a = (3 * PI) / 2;
+					pl->a = PI / 2;
 				map->map[i][j] = '0';
 			}
 			j++;

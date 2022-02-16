@@ -33,16 +33,17 @@ void draw_walls(t_state *state, t_vec **rays, t_img *img)
 	float	scalar_prod;
 	int		i;
 
-	i = -1;
-	while (rays[++i] != NULL)
+	i = 0;
+	while (i < RES_X)
 	{
 		// abs angle ??? 
 		// #fix should fix fisheye ray dist or something in vec scal prod goes wrong
-		scalar_prod = vec_scal_prod(state->pl->a, *(rays[i]));
-		// draw_scaled_wall(img, scalar_prod, i);
+		//scalar_prod = vec_scal_prod(state->pl->a, *(rays[i]));
+		//draw_scaled_wall(img, scalar_prod, i);
 		
 		// fish eye
 		draw_scaled_wall(img, rays[i]->dist, i);
+		i++;
 	}
 }
 
@@ -118,13 +119,18 @@ void	render(t_state *state)
 {
 	t_img	*frame;
 	t_vec	**rays = raycasting_fov(state);
+	int		i;
 	
 	frame = new_img(state->mlx);
-	render_map(state, frame);
-	render_player(state, frame);
-	render_rays(state, frame, rays);
-	//draw_walls(state, rays, frame);
+	// render_map(state, frame);
+	// render_player(state, frame);
+	// render_rays(state, frame, rays);
+	draw_walls(state, rays, frame);
 	mlx_put_image_to_window(state->mlx, state->win, frame->img_ptr, 0, 0);
 	free_img(state->mlx, frame);
+	i = 0;
+	while (i < RES_X)
+		free(rays[i++]);
+	free(rays);
 	return ;
 }
