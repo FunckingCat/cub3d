@@ -50,7 +50,7 @@ void	render_rays(t_state *state, t_img *img, t_vec **rays)
 {
 	float size = RES_X / state->map->width;
 
-	for (int i = 0; rays[i]; ++i) {
+	for (int i = 0; i < RES_X - 1; i++) {
 		rays[i]->x = rays[i]->x * size;
 		rays[i]->y = rays[i]->y * size;
 		put_pixel(img, rays[i]->x, rays[i]->y, COL_YELLOW);
