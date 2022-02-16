@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/16 17:16:21 by david            ###   ########.fr       */
+/*   Updated: 2022/02/16 17:29:03 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,10 @@ t_vec	**raycasting_fov(t_state *state)
 	t_vec	**rays;
 	t_vec	*ray;
 	int		i;
-	float	steps;
+	float	step;
 
 	rays = (t_vec **)malloc(sizeof(t_vec *) * RES_X);
-	steps = (float)FOV / RES_X;
+	step = (float)FOV / RES_X;
 	float start = - FOV / 2;
 	i = 0;
 	while (i < RES_X)
@@ -129,7 +129,7 @@ t_vec	**raycasting_fov(t_state *state)
 		*ray = raycasting(state, dir);
 		rays[i] = ray;
 		rays[i]->angle = state->pl->a + start;
-		start += steps;
+		start += step;
 		i++;
 	}
 	return (rays);

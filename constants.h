@@ -7,6 +7,6 @@
 # define PL_HEIGHT	64
 # define PI			3.141592653
 # define DEG		PI / 180.0f
-# define FOV		PI / 3.0f
+# define FOV		PI
 
 #endif

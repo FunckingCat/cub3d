@@ -28,7 +28,6 @@ t_player	*new_player(t_map *map)
 					pl->a = PI;
 				if (map->map[i][j] == 'N')
 					pl->a = (3 * PI) / 2;
-				pl->a = PI / 4;
 				map->map[i][j] = '0';
 			}
 			j++;
