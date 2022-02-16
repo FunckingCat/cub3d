@@ -46,9 +46,8 @@ void draw_walls(t_state *state, t_vec **rays, t_img *img)
 	}
 }
 
-void	render_rays(t_state *state, t_img *img)
+void	render_rays(t_state *state, t_img *img, t_vec **rays)
 {
-	t_vec **rays = raycasting_fov(state);
 	float size = RES_X / state->map->width;
 
 	for (int i = 0; rays[i]; ++i) {
@@ -118,13 +117,13 @@ void	render_map(t_state *state, t_img *img)
 void	render(t_state *state)
 {
 	t_img	*frame;
+	t_vec	**rays = raycasting_fov(state);
 	
 	frame = new_img(state->mlx);
-	// render_map(state, frame);
-	// render_player(state, frame);
-	// render_rays(state, frame);
-	t_vec **rays = raycasting_fov(state);
-	draw_walls(state, rays, frame);
+	render_map(state, frame);
+	render_player(state, frame);
+	render_rays(state, frame, rays);
+	//draw_walls(state, rays, frame);
 	mlx_put_image_to_window(state->mlx, state->win, frame->img_ptr, 0, 0);
 	free_img(state->mlx, frame);
 	return ;
