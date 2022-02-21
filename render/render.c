@@ -122,10 +122,10 @@ void	render(t_state *state)
 	int		i;
 	
 	frame = new_img(state->mlx);
-	// render_map(state, frame);
-	// render_player(state, frame);
-	// render_rays(state, frame, rays);
-	draw_walls(state, rays, frame);
+	render_map(state, frame);
+	render_player(state, frame);
+	render_rays(state, frame, rays);
+	//draw_walls(state, rays, frame);
 	mlx_put_image_to_window(state->mlx, state->win, frame->img_ptr, 0, 0);
 	free_img(state->mlx, frame);
 	i = 0;

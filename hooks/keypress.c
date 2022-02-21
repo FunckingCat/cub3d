@@ -1,15 +1,28 @@
 #include "./hooks.h"
 
+t_vec	make_step(t_state *state, int dir, int ang)
+{
+	t_vec	res;
+
+	res.dist = state->size * STEP_SIZE * dir;
+	res.angle = state->pl.angle;
+	if (ang < 0)
+		res.angle -= PI / 2;
+	res.x = res.dist * cosf(res.angle);
+	res.y = res.dist * sinf(res.angle);
+	return (vec_add(state->pl, res));
+}
+
 int	key_press(int keycode, t_state *state)
 {
 	if (keycode == W_KEY)
-		state->pl.y -= state->size / 4;
+		state->pl = make_step(state, -1, 1);
 	if (keycode == S_KEY)
-		state->pl.y += state->size / 4;
+		state->pl = make_step(state, 1, 1);
 	if (keycode == A_KEY)
-		state->pl.x -= state->size / 4;
+		state->pl = make_step(state, -1, -1);
 	if (keycode == D_KEY)
-		state->pl.x += state->size / 4;
+		state->pl = make_step(state, 1, -1);
 	if (keycode == Q_KEY)
 		state->pl.angle -= 2 * DEG;
 	if (keycode == E_KEY)

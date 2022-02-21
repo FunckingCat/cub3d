@@ -32,6 +32,7 @@ t_vec	new_player(t_map *map)
 		}
 		i++;
 	}
+	pl.dist = vec_len(pl);
 	return(pl);
 }
 

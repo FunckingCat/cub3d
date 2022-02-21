@@ -19,17 +19,6 @@ STATE		=	./state/state.c
 
 ERROR		=	./error/error.c
 
-VECT		=	./vector/vec_add.c \
-				./vector/vec_dot.c \
-				./vector/vec_len.c \
-				./vector/vec_mul.c \
-				./vector/vec_new.c \
-				./vector/vec_norm.c \
-				./vector/vec_rot.c \
-				./vector/vec_sub.c \
-				./vector/vec_dist.c \
-				./vector/new_vec.c
-
 PARSING		=	./parsing/parse_map.c \
 				./parsing/parse_utils.c \
 				./parsing/validate.c \
@@ -61,7 +50,8 @@ VECT		=	./vector/vec_add.c \
 				./vector/vec_rot.c \
 				./vector/vec_sub.c \
 				./vector/vec_dist.c \
-				./vector/vec_scal_prod.c
+				./vector/vec_scal_prod.c \
+				./vector/print_vec.c
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER) \
