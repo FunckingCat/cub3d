@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 09:12:04 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/15 03:59:36 by rusty            ###   ########.fr       */
+/*   Updated: 2022/02/21 16:21:34 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ struct s_vec
 	float	dist;
 };
 
+t_vec	new_vec(float dist, float ang);
 t_vec	vec_add(t_vec v1, t_vec v2);
 float	vec_dot(t_vec v1, t_vec v2);
 float	vec_len(t_vec v);

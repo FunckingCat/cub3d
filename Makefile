@@ -27,7 +27,8 @@ VECT		=	./vector/vec_add.c \
 				./vector/vec_norm.c \
 				./vector/vec_rot.c \
 				./vector/vec_sub.c \
-				./vector/vec_dist.c
+				./vector/vec_dist.c \
+				./vector/new_vec.c
 
 PARSING		=	./parsing/parse_map.c \
 				./parsing/parse_utils.c \
