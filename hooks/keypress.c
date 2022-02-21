@@ -10,7 +10,10 @@ t_vec	make_step(t_state *state, int dir, int ang)
 		res.angle -= PI / 2;
 	res.x = res.dist * cosf(res.angle);
 	res.y = res.dist * sinf(res.angle);
-	return (vec_add(state->pl, res));
+	res = vec_add(state->pl, res);
+	if (state->map->map[(int)(res.y / state->size)][(int)(res.x / state->size)] == '1')
+		return (state->pl);
+	return (res);
 }
 
 int	key_press(int keycode, t_state *state)
