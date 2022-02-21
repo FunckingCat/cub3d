@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 01:31:57 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/15 23:08:21 by david            ###   ########.fr       */
+/*   Updated: 2022/02/21 16:30:06 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	draw_map(t_state *state, t_img *img)
 			rec.height = (int)(rec.y + size);
 			if (ft_strchr(" 1", state->map->map[i][j]))
 				rec.color = COL_DGRAY;
-			else if (state->pl->x == i && state->pl->y == j)
+			else if (state->pl.x == i && state->pl.y == j)
 				rec.color = 0xFF0000;
 			else
 				rec.color = COL_LGRAY;

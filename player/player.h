@@ -4,19 +4,9 @@
 # include "../libft/libft.h"
 # include "../map/map.h"
 # include "../constants.h"
+# include "../vector/vector.h"
 
-typedef struct s_player
-{
-	double	size;
-	int		grid_x;
-	int		grid_y;
-	float	x;
-	float	y;
-	float	a;
-}	t_player;
-
-t_player	*new_player(t_map *map);
-void		print_player(t_player *pl);
-int			grid_coord(t_player *pl, float c);
+t_vec		new_player(t_map *map);
+void		print_player(t_vec pl);
 
 #endif

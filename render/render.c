@@ -65,17 +65,17 @@ void	render_player(t_state *state, t_img *img)
 	int		dx;
 	int		dy;
 
-	for (size_t i = state->pl->x - pl_size; i < state->pl->x + pl_size; i++)
+	for (size_t i = state->pl.x - pl_size; i < state->pl.x + pl_size; i++)
 	{
-		for (size_t j = state->pl->y - pl_size; j < state->pl->y + pl_size; j++)
+		for (size_t j = state->pl.y - pl_size; j < state->pl.y + pl_size; j++)
 		{
-			dx = i - state->pl->x;
-			dy = j - state->pl->y;
+			dx = i - state->pl.x;
+			dy = j - state->pl.y;
 			if (dx * dx + dy * dy < pl_size * pl_size)
 				put_pixel(img, i, j, COL_GREEN);
 		}
 	}
-	put_pixel(img, state->pl->x, state->pl->y, COL_RED);
+	put_pixel(img, state->pl.x, state->pl.y, COL_RED);
 }
 
 void	draw_rec(t_img *img, t_rec *rec)
@@ -83,14 +83,7 @@ void	draw_rec(t_img *img, t_rec *rec)
 	for (int i = rec->x; i < rec->width; i++)
 	{
 		for (int j = rec->y; j < rec->height; j++)
-		{
-			if (i == rec->x || j == rec->y)
-				put_pixel(img, i, j, COL_DGRAY);
-			else if (i == rec->width - 1 || j == rec->height - 1)
-				put_pixel(img, i, j, COL_DGRAY);
-			else
-				put_pixel(img, i, j, rec->color);
-		}
+			put_pixel(img, i, j, rec->color);
 	}
 }
 
@@ -102,15 +95,13 @@ void	render_map(t_state *state, t_img *img)
 	{
 		for (size_t j = 0; j < state->map->width; j++)
 		{
-			rec.x = (int)(j * state->pl->size);
-			rec.y = (int)(i * state->pl->size);
-			rec.width = (int)(rec.x + state->pl->size);
-			rec.height = (int)(rec.y + state->pl->size);
-			if (ft_strchr(" 1", state->map->map[i][j]))
-				rec.color = COL_DGRAY;
-			else
-				rec.color = COL_LGRAY;
-			draw_rec(img, &rec);
+			rec.x = (int)(j * state->size);
+			rec.y = (int)(i * state->size);
+			rec.width = (int)(rec.x + state->size);
+			rec.height = (int)(rec.y + state->size);
+			rec.color = COL_LGRAY;
+			if (!ft_strchr(" 1", state->map->map[i][j]))
+				draw_rec(img, &rec);
 		}
 	}
 }
@@ -122,10 +113,10 @@ void	render(t_state *state)
 	int		i;
 	
 	frame = new_img(state->mlx);
-	// render_map(state, frame);
-	// render_player(state, frame);
-	// render_rays(state, frame, rays);
-	draw_walls(state, rays, frame);
+	render_map(state, frame);
+	render_player(state, frame);
+	render_rays(state, frame, rays);
+	//draw_walls(state, rays, frame);
 	mlx_put_image_to_window(state->mlx, state->win, frame->img_ptr, 0, 0);
 	free_img(state->mlx, frame);
 	i = 0;
