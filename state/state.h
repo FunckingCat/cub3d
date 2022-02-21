@@ -10,7 +10,7 @@ typedef struct s_state
 	void	*mlx;
 	void	*win;
 	t_map	*map;
-	t_vec	*pl;
+	t_vec	pl;
 	float	size;
 }	t_state;
 

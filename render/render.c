@@ -65,17 +65,17 @@ void	render_player(t_state *state, t_img *img)
 	int		dx;
 	int		dy;
 
-	for (size_t i = state->pl->x - pl_size; i < state->pl->x + pl_size; i++)
+	for (size_t i = state->pl.x - pl_size; i < state->pl.x + pl_size; i++)
 	{
-		for (size_t j = state->pl->y - pl_size; j < state->pl->y + pl_size; j++)
+		for (size_t j = state->pl.y - pl_size; j < state->pl.y + pl_size; j++)
 		{
-			dx = i - state->pl->x;
-			dy = j - state->pl->y;
+			dx = i - state->pl.x;
+			dy = j - state->pl.y;
 			if (dx * dx + dy * dy < pl_size * pl_size)
 				put_pixel(img, i, j, COL_GREEN);
 		}
 	}
-	put_pixel(img, state->pl->x, state->pl->y, COL_RED);
+	put_pixel(img, state->pl.x, state->pl.y, COL_RED);
 }
 
 void	draw_rec(t_img *img, t_rec *rec)
