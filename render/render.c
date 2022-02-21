@@ -102,10 +102,10 @@ void	render_map(t_state *state, t_img *img)
 	{
 		for (size_t j = 0; j < state->map->width; j++)
 		{
-			rec.x = (int)(j * state->pl->size);
-			rec.y = (int)(i * state->pl->size);
-			rec.width = (int)(rec.x + state->pl->size);
-			rec.height = (int)(rec.y + state->pl->size);
+			rec.x = (int)(j * state->size);
+			rec.y = (int)(i * state->size);
+			rec.width = (int)(rec.x + state->size);
+			rec.height = (int)(rec.y + state->size);
 			if (ft_strchr(" 1", state->map->map[i][j]))
 				rec.color = COL_DGRAY;
 			else

@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/16 17:29:03 by david            ###   ########.fr       */
+/*   Updated: 2022/02/21 16:11:42 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	float	max_dist;
 
 
-	plr = vec_new(state->pl->x / state->pl->size, state->pl->y / state->pl->size);
+	plr = vec_new(state->pl->x / state->size, state->pl->y / state->size);
 	unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
 	map_check.x = (int)plr.x;
 	map_check.y = (int)plr.y;
@@ -124,11 +124,11 @@ t_vec	**raycasting_fov(t_state *state)
 	i = 0;
 	while (i < RES_X)
 	{
-		t_vec dir = vec_rot(vec_new(-1.0f, 0.0f), state->pl->a + start);
+		t_vec dir = vec_rot(vec_new(-1.0f, 0.0f), state->pl->angle + start);
 		ray = malloc(sizeof(t_vec));
 		*ray = raycasting(state, dir);
 		rays[i] = ray;
-		rays[i]->angle = state->pl->a + start;
+		rays[i]->angle = state->pl->angle + start;
 		start += step;
 		i++;
 	}
