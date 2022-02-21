@@ -83,14 +83,7 @@ void	draw_rec(t_img *img, t_rec *rec)
 	for (int i = rec->x; i < rec->width; i++)
 	{
 		for (int j = rec->y; j < rec->height; j++)
-		{
-			if (i == rec->x || j == rec->y)
-				put_pixel(img, i, j, COL_DGRAY);
-			else if (i == rec->width - 1 || j == rec->height - 1)
-				put_pixel(img, i, j, COL_DGRAY);
-			else
-				put_pixel(img, i, j, rec->color);
-		}
+			put_pixel(img, i, j, rec->color);
 	}
 }
 
@@ -106,11 +99,9 @@ void	render_map(t_state *state, t_img *img)
 			rec.y = (int)(i * state->size);
 			rec.width = (int)(rec.x + state->size);
 			rec.height = (int)(rec.y + state->size);
-			if (ft_strchr(" 1", state->map->map[i][j]))
-				rec.color = COL_DGRAY;
-			else
-				rec.color = COL_LGRAY;
-			draw_rec(img, &rec);
+			rec.color = COL_LGRAY;
+			if (!ft_strchr(" 1", state->map->map[i][j]))
+				draw_rec(img, &rec);
 		}
 	}
 }
