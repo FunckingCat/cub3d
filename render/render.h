@@ -45,5 +45,6 @@ t_img	*new_img(void *mlx);
 void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
 void	putline_bresenham(t_img *img, t_vec start, t_vec end);
+void	render_map(t_state *state, t_img *img, t_vec **rays);
 
 #endif
