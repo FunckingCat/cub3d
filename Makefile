@@ -32,7 +32,8 @@ MAP			=	./map/map.c
 PLAYER		=	./player/player.c
 
 RENDER		=	./render/render.c \
-				./render/image.c
+				./render/image.c \
+				./render/minimap.c
 
 DRAW		=	./draw/draw_map.c \
 				./draw/line.c \

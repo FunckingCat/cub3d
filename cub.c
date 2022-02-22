@@ -6,6 +6,7 @@ int	main(int ac, char **av)
 
 	validate(ac ,av);
 	state.map = parse_map(av[1]);
+	print_map(state.map);
 	state.pl = new_player(state.map);
 	state.mlx = mlx_init();
 	state.size = (float)RES_X / (float)state.map->width;

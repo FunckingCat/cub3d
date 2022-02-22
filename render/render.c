@@ -47,65 +47,6 @@ void draw_walls(t_state *state, t_vec **rays, t_img *img)
 	}
 }
 
-void	render_rays(t_state *state, t_img *img, t_vec **rays)
-{
-	float size = RES_X / state->map->width;
-
-	for (int i = 0; i < RES_X - 1; i++) {
-		rays[i]->x = rays[i]->x * size;
-		rays[i]->y = rays[i]->y * size;
-		put_pixel(img, rays[i]->x, rays[i]->y, COL_YELLOW);
-	}
-}
-
-void	render_player(t_state *state, t_img *img)
-{
-	size_t	size = (RES_X / state->map->width);
-	size_t	pl_size = size / 3;
-	int		dx;
-	int		dy;
-
-	for (size_t i = state->pl.x - pl_size; i < state->pl.x + pl_size; i++)
-	{
-		for (size_t j = state->pl.y - pl_size; j < state->pl.y + pl_size; j++)
-		{
-			dx = i - state->pl.x;
-			dy = j - state->pl.y;
-			if (dx * dx + dy * dy < pl_size * pl_size)
-				put_pixel(img, i, j, COL_GREEN);
-		}
-	}
-	put_pixel(img, state->pl.x, state->pl.y, COL_RED);
-}
-
-void	draw_rec(t_img *img, t_rec *rec)
-{
-	for (int i = rec->x; i < rec->width; i++)
-	{
-		for (int j = rec->y; j < rec->height; j++)
-			put_pixel(img, i, j, rec->color);
-	}
-}
-
-void	render_map(t_state *state, t_img *img)
-{
-	t_rec	rec;
-
-	for (size_t i = 0; i < state->map->height; i++)
-	{
-		for (size_t j = 0; j < state->map->width; j++)
-		{
-			rec.x = (int)(j * state->size);
-			rec.y = (int)(i * state->size);
-			rec.width = (int)(rec.x + state->size);
-			rec.height = (int)(rec.y + state->size);
-			rec.color = COL_LGRAY;
-			if (!ft_strchr(" 1", state->map->map[i][j]))
-				draw_rec(img, &rec);
-		}
-	}
-}
-
 void	render(t_state *state)
 {
 	t_img	*frame;
@@ -113,10 +54,8 @@ void	render(t_state *state)
 	int		i;
 	
 	frame = new_img(state->mlx);
-	render_map(state, frame);
-	render_player(state, frame);
-	render_rays(state, frame, rays);
-	//draw_walls(state, rays, frame);
+	draw_walls(state, rays, frame);
+	render_map(state, frame, rays);
 	mlx_put_image_to_window(state->mlx, state->win, frame->img_ptr, 0, 0);
 	free_img(state->mlx, frame);
 	i = 0;
