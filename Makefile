@@ -10,7 +10,6 @@ HEADERS		=	./cub.h \
 				./player/player.h \
 				./render/render.h \
 				./vector/vector.h \
-				./draw/draw.h \
 				./raycasting/raycasting.h
 
 MAIN		=	./cub.c
@@ -33,12 +32,9 @@ PLAYER		=	./player/player.c
 
 RENDER		=	./render/render.c \
 				./render/image.c \
-				./render/minimap.c
-
-DRAW		=	./draw/draw_map.c \
-				./draw/line.c \
-				./draw/line_utils.c \
-				./draw/rectangle.c
+				./render/minimap.c \
+				./render/line.c \
+				./render/line_utils.c
 
 RAYCAST		=	./raycasting/raycasting.c
 
