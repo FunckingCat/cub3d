@@ -20,12 +20,36 @@ void	render_column(t_state *st, t_img *img, t_vec *ray, int col)
 	put_line(img, start, end);
 }
 
+void	put_floor_and_celing(t_state *st, t_img *img)
+{
+	size_t	i;
+	size_t	j;
+
+	j = 0;
+	while (j < RES_Y / 2)
+	{
+		i = 0;
+		while (i < RES_X)
+			put_pixel(img, i++, j, st->map->ceiling_color);
+		j++;
+	}
+	j = RES_Y / 2;
+	while (j < RES_Y)
+	{
+		i = 0;
+		while (i < RES_X)
+			put_pixel(img, i++, j, st->map->floor_col);
+		j++;
+	}
+}
+
 void	render_walls(t_state *st, t_vec **rays, t_img *img)
 {
 	float	scalar_prod;
 	int		i;
 
 	i = 0;
+	put_floor_and_celing(st, img);
 	while (i < RES_X)
 	{
 		render_column(st, img, rays[i], i);

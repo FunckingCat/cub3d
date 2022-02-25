@@ -4,7 +4,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
-#include "../error/error.h"
+# include "../error/error.h"
 
 typedef struct s_map
 {
@@ -19,8 +19,6 @@ typedef struct s_map
 	char	**map;
 }	t_map;
 
-int		rgb_to_hex(int r, int g, int b);
-int		char_to_hex(char **arr);
 int		split_size(char **arr);
 t_map	*new_map(void);
 void	print_map(t_map *map);

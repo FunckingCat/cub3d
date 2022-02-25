@@ -9,6 +9,7 @@
 # include "../constants.h"
 # include "../error/error.h"
 # include "../map/map.h"
+# include "../render/render.h"
 
 void	validate(int ac ,char **av);
 int		split_size(char **arr);

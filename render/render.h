@@ -51,6 +51,9 @@ void	render_minimap(t_state *state, t_img *img, t_vec **rays);
 void	render_walls(t_state *st, t_vec **rays, t_img *img);
 
 void	put_line(t_img *img, t_vec start, t_vec end);
+int		create_trgb(int t, int r, int g, int b);
+int		char_to_hex(char **arr);
+int		col_add(int col, int t);
 
 # define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000
