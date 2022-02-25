@@ -1,5 +1,37 @@
 #include "./render.h"
 
+void	init_utils_points(t_point *dpoint, t_point *incs, t_vec start, \
+t_vec end)
+{
+	if (end.x >= start.x)
+	{
+		dpoint->x = (int)(end.x - start.x);
+		incs->x = 1;
+	}
+	else
+	{
+		dpoint->x = (int)(start.x - end.x);
+		incs->x = -1;
+	}
+	if (end.y >= start.y)
+	{
+		dpoint->y = (int)(end.y - start.y);
+		incs->y = 1;
+	}
+	else
+	{
+		dpoint->y = (int)(start.y - end.y);
+		incs->y = -1;
+	}
+}
+
+void	init_point_bresenham(t_point *point, t_vec cell)
+{
+	point->x = (int)cell.x;
+	point->y = (int)cell.y;
+	point->color = cell.color;
+}
+
 void	bresenham_1(t_img *img, t_vec start, t_vec end)
 {
 	t_point	point;
@@ -16,7 +48,6 @@ void	bresenham_1(t_img *img, t_vec start, t_vec end)
 	while (point.x != (int)end.x)
 	{
 		color = COL_LGRAY;
-		//color = get_color(point, start, end, dpoint);
 		put_pixel(img, point.x, point.y, color);
 		if (balance >= 0)
 		{
@@ -27,7 +58,6 @@ void	bresenham_1(t_img *img, t_vec start, t_vec end)
 		point.x += incs.x;
 	}
 	color = COL_LGRAY;
-	// color = get_color(point, start, end, dpoint);
 	put_pixel(img, point.x, point.y, color);
 }
 
@@ -47,7 +77,6 @@ void	bresenham_2(t_img *img, t_vec start, t_vec end)
 	while (point.y != (int)end.y)
 	{
 		color = COL_LGRAY;
-		// color = get_color(point, start, end, dpoint);
 		put_pixel(img, point.x, point.y, color);
 		if (balance >= 0)
 		{
@@ -58,11 +87,10 @@ void	bresenham_2(t_img *img, t_vec start, t_vec end)
 		point.y += incs.y;
 	}
 	color = COL_LGRAY;
-	// color = get_color(point, start, end, dpoint);
 	put_pixel(img, point.x, point.y, color);
 }
 
-void	putline_bresenham(t_img *img, t_vec start, t_vec end)
+void	put_line(t_img *img, t_vec start, t_vec end)
 {
 	t_point	dpoint;
 	t_point	incs;

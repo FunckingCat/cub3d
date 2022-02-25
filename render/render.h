@@ -50,15 +50,7 @@ void	render_minimap(t_state *state, t_img *img, t_vec **rays);
 
 void	render_walls(t_state *st, t_vec **rays, t_img *img);
 
-void	init_utils_points(t_point *dpoint, t_point *incs, t_vec start, \
-t_vec end);
-double	percent(int start, int end, int current);
-int		get_light(int start, int end, double percentage);
-int		get_color(t_point current, t_vec start, t_vec end, t_point delta);
-void	init_point_bresenham(t_point *point, t_vec cell);
-void	bresenham_1(t_img *img, t_vec start, t_vec end);
-void	bresenham_2(t_img *img, t_vec start, t_vec end);
-void	putline_bresenham(t_img *img, t_vec start, t_vec end);
+void	put_line(t_img *img, t_vec start, t_vec end);
 
 # define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000
