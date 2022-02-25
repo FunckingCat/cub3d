@@ -55,7 +55,7 @@ void	render(t_state *state)
 	
 	frame = new_img(state->mlx);
 	draw_walls(state, rays, frame);
-	render_map(state, frame, rays);
+	render_minimap(state, frame, rays);
 	mlx_put_image_to_window(state->mlx, state->win, frame->img_ptr, 0, 0);
 	free_img(state->mlx, frame);
 	i = 0;

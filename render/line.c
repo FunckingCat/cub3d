@@ -15,7 +15,8 @@ void	bresenham_1(t_img *img, t_vec start, t_vec end)
 	dpoint.x <<= 1;
 	while (point.x != (int)end.x)
 	{
-		color = get_color(point, start, end, dpoint);
+		color = COL_LGRAY;
+		//color = get_color(point, start, end, dpoint);
 		put_pixel(img, point.x, point.y, color);
 		if (balance >= 0)
 		{
@@ -25,7 +26,8 @@ void	bresenham_1(t_img *img, t_vec start, t_vec end)
 		balance += dpoint.y;
 		point.x += incs.x;
 	}
-	color = get_color(point, start, end, dpoint);
+	color = COL_LGRAY;
+	// color = get_color(point, start, end, dpoint);
 	put_pixel(img, point.x, point.y, color);
 }
 
@@ -44,7 +46,8 @@ void	bresenham_2(t_img *img, t_vec start, t_vec end)
 	dpoint.y <<= 1;
 	while (point.y != (int)end.y)
 	{
-		color = get_color(point, start, end, dpoint);
+		color = COL_LGRAY;
+		// color = get_color(point, start, end, dpoint);
 		put_pixel(img, point.x, point.y, color);
 		if (balance >= 0)
 		{
@@ -54,7 +57,8 @@ void	bresenham_2(t_img *img, t_vec start, t_vec end)
 		balance += dpoint.x;
 		point.y += incs.y;
 	}
-	color = get_color(point, start, end, dpoint);
+	color = COL_LGRAY;
+	// color = get_color(point, start, end, dpoint);
 	put_pixel(img, point.x, point.y, color);
 }
 

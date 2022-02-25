@@ -72,7 +72,7 @@ float	calc_scale(t_state *state)
 	return ((float)max_width / (float)RES_X);
 }
 
-void	render_map(t_state *state, t_img *img, t_vec **rays)
+void	render_minimap(t_state *state, t_img *img, t_vec **rays)
 {
 	t_rec	rec;
 	float	scale;
