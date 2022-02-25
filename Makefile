@@ -34,7 +34,8 @@ RENDER		=	./render/render.c \
 				./render/image.c \
 				./render/minimap.c \
 				./render/line.c \
-				./render/line_utils.c
+				./render/line_utils.c \
+				./render/render_walls.c
 
 RAYCAST		=	./raycasting/raycasting.c
 

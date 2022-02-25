@@ -11,6 +11,8 @@ typedef struct s_img t_img;
 # include "../vector/vector.h"
 # include "../raycasting/raycasting.h"
 
+# define VFOV 0.5 * RES_Y / (0.5 * RES_X / tanf(0.5 * FOV))
+
 struct	s_img
 {
 	void	*img_ptr;
@@ -45,6 +47,8 @@ void	put_pixel(t_img *img, int x, int y, int color);
 
 void	putline_bresenham(t_img *img, t_vec start, t_vec end);
 void	render_minimap(t_state *state, t_img *img, t_vec **rays);
+
+void	render_walls(t_state *st, t_vec **rays, t_img *img);
 
 void	init_utils_points(t_point *dpoint, t_point *incs, t_vec start, \
 t_vec end);

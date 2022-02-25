@@ -9,6 +9,6 @@
 # define STEP_SIZE	0.3f
 # define PI			3.141592653
 # define DEG		PI / 180.0f
-# define FOV		PI / 2
+# define FOV		PI / 2.5
 
 #endif
