@@ -57,7 +57,7 @@ SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 
 OBJS		=	$(SRCS:%.c=%.o)
 
-CC			=	gcc -g -fsanitize=address
+CC			=	gcc -pg -fsanitize=address
 # CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
