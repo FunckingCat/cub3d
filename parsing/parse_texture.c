@@ -28,7 +28,10 @@ void	parse_colors(t_tex *res, int fd)
 		split = ft_split(ft_strtrim(line, "\","), 'c');
 		res->chars[i] = ft_malloc(sizeof(char) * res->chpp + 1);
 		ft_memmove(res->chars[i], split[0], res->chpp);
-		res->ints[i] = hex_to_int(ft_strtrim(split[1], " #"));
+		if (ft_strchr(split[1], 'n') && i > 0)
+			res->ints[i] = res->ints[i - 1];
+		else
+			res->ints[i] = hex_to_int(ft_strtrim(split[1], " #"));
 		i++;
 		line = gnl(fd);
 	}
@@ -56,12 +59,12 @@ void	parse_grid(t_tex *res, int fd)
 
 	res->d = ft_malloc(sizeof(int *) * res->height);
 	i = 0;
-	while (i < res->width)
+	while (i < res->height)
 	{
 		res->d[i] = ft_malloc(sizeof(int) * res->width);
 		line = ft_strtrim(gnl(fd), "\",");
 		j = 0;
-		while (j < 1)
+		while (j < res->width)
 		{
 			res->d[i][j] = find_color(res, line);
 			line += res->chpp;
@@ -71,16 +74,17 @@ void	parse_grid(t_tex *res, int fd)
 	}
 }
 
-t_tex	parse_xpm_texture(char *path)
+t_tex	*parse_xpm_texture(char *path)
 {
-	t_tex	res;
+	t_tex	*res;
 	int		fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		put_ext_error_exit(path, ERR_TEXTURE_NF);
-	parse_meta(&res, fd);
-	parse_colors(&res, fd);
-	parse_grid(&res, fd);
+	res = ft_malloc(sizeof(t_tex));
+	parse_meta(res, fd);
+	parse_colors(res, fd);
+	parse_grid(res, fd);
 	return (res);
 }

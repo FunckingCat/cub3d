@@ -23,10 +23,10 @@ typedef struct s_map
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	t_tex	no_tex;
-	t_tex	so_tex;
-	t_tex	we_tex;
-	t_tex	ea_tex;
+	t_tex	*no_tex;
+	t_tex	*so_tex;
+	t_tex	*we_tex;
+	t_tex	*ea_tex;
 	int		floor_col;
 	int		ceiling_color;
 	size_t	width;
