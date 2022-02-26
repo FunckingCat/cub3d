@@ -24,21 +24,20 @@ void	put_floor_and_celing(t_state *st, t_img *img)
 {
 	size_t	i;
 	size_t	j;
+	size_t	half;
+	int		color;
 
 	j = 0;
-	while (j < RES_Y / 2)
+	half = RES_Y / 2;
+	while (j < half)
 	{
 		i = 0;
 		while (i < RES_X)
-			put_pixel(img, i++, j, st->map->ceiling_color);
-		j++;
-	}
-	j = RES_Y / 2;
-	while (j < RES_Y)
-	{
-		i = 0;
-		while (i < RES_X)
-			put_pixel(img, i++, j, st->map->floor_col);
+		{
+			put_pixel(img, i, j, st->map->ceiling_color);
+			put_pixel(img, i, j + half, st->map->floor_col);
+			i++;
+		}
 		j++;
 	}
 }

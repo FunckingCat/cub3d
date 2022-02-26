@@ -95,6 +95,9 @@ re:			fclean all
 run:		all
 			./cub3D ./maps/map1.cub
 
+prof:		all
+			./cub3D ./maps/map1.cub && gprof ./cub3D | head -n 50
+
 val:		all
 			valgrind ./cub3D ./maps/map1.cub
 

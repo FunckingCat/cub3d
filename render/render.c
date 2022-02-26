@@ -5,7 +5,7 @@ void	render(t_state *state)
 	t_img	*frame;
 	t_vec	**rays = raycasting_fov(state);
 	int		i;
-	
+
 	frame = new_img(state->mlx);
 	render_walls(state, rays, frame);
 	render_minimap(state, frame, rays);
