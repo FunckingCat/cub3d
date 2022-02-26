@@ -17,6 +17,7 @@ void	put_ext_error_exit(char *obj, char *msg);
 # define ERR_CONF_TAB	"conif file can't contain tabs"
 # define ERR_MAP_FORMAT	"config file must be *.cub"
 # define ERR_TEXTURE	"wall texture not defined"
+# define ERR_TEXTURE_NF	"wall texture not found"
 # define ERR_XPM_FORMAT	"config file: the wall texture should be *.xpm"
 # define ERR_COL_FORMAT	"color format error (0-255,0-255,0-255 reqired)"
 # define ERR_NO_F_COL	"floor color not set"

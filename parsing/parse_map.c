@@ -86,5 +86,9 @@ t_map	*parse_map(char *path)
 	read_map(map, fd);
 	close(fd);
 	check_map(map);
+	map->no_tex = parse_xpm_texture(map->no_path);
+	map->so_tex = parse_xpm_texture(map->so_path);
+	map->we_tex = parse_xpm_texture(map->we_path);
+	map->ea_tex = parse_xpm_texture(map->ea_path);
 	return (map);
 }

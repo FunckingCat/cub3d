@@ -11,17 +11,12 @@
 # include "../map/map.h"
 # include "../render/render.h"
 
-typedef struct s_tex
-{
-	size_t	width;
-	size_t	height;
-	int		**t;
-}	t_tex;
-
 void	validate(int ac ,char **av);
 int		split_size(char **arr);
 t_map	*parse_map(char	*path);
 void	check_map(t_map *map);
+int		hex_to_int(char *str);
+t_tex	parse_xpm_texture(char *path);
 
 # define C_CUB	".cub"
 # define C_XPM	".xpm"
@@ -31,6 +26,8 @@ void	check_map(t_map *map);
 # define C_EA	"EA"
 # define C_F	"F"
 # define C_C	"C"
-# define MAP_SYMBOLS " 10NSEW"
+# define MAP_SYMBOLS	" 10NSEW"
+# define CHARS_HEADER	"/* columns rows colors chars-per-pixel */"
+# define PIXELS_HEADER	"/* pixels */"
 
 #endif
