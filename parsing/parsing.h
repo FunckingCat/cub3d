@@ -16,7 +16,6 @@ int		split_size(char **arr);
 t_map	*parse_map(char	*path);
 void	check_map(t_map *map);
 int		hex_to_int(char *str);
-t_tex	*parse_xpm_texture(char *path);
 
 # define C_CUB	".cub"
 # define C_XPM	".xpm"

@@ -21,8 +21,7 @@ ERROR		=	./error/error.c
 PARSING		=	./parsing/parse_map.c \
 				./parsing/parse_utils.c \
 				./parsing/validate.c \
-				./parsing/check_map.c \
-				./parsing/parse_texture.c
+				./parsing/check_map.c
 
 HOOKS		=	./hooks/keypress.c \
 				./hooks/set_hooks.c
