@@ -11,6 +11,13 @@
 # include "../map/map.h"
 # include "../render/render.h"
 
+typedef struct s_tex
+{
+	size_t	width;
+	size_t	height;
+	int		**t;
+}	t_tex;
+
 void	validate(int ac ,char **av);
 int		split_size(char **arr);
 t_map	*parse_map(char	*path);
