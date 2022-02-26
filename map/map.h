@@ -1,6 +1,8 @@
 #ifndef MAP_H
 # define MAP_H
 
+typedef struct s_img t_img;
+
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
@@ -23,6 +25,10 @@ typedef struct s_map
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	t_img	*no;
+	t_img	*so;
+	t_img	*we;
+	t_img	*ea;
 	int		floor_col;
 	int		ceiling_color;
 	size_t	width;
