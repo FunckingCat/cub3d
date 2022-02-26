@@ -13,7 +13,7 @@ void	render_rays(t_state *state, t_img *img, t_vec **rays, float scale)
 		vec.x = rays[i]->x * size;
 		vec.y = rays[i]->y * size;
 		put_pixel(img, (int)(vec.x), (int)(vec.y), COL_YELLOW);
-		i += 10;
+		i += 8;
 	}
 }
 
@@ -54,7 +54,10 @@ void	draw_rec(t_img *img, t_rec *rec)
 		j = rec->y;
 		while (j < rec->height + 1)
 		{
-			put_pixel(img, i, j, rec->color);
+			if (i == rec->x || j == rec->y || i == rec->width || j == rec->height)
+				put_pixel(img, i, j, COL_DGRAY);
+			else
+				put_pixel(img, i, j, rec->color);
 			j++;
 		}
 		i++;

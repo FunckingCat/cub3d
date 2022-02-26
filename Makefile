@@ -34,7 +34,8 @@ RENDER		=	./render/render.c \
 				./render/image.c \
 				./render/minimap.c \
 				./render/line.c \
-				./render/line_utils.c
+				./render/render_walls.c \
+				./render/color.c
 
 RAYCAST		=	./raycasting/raycasting.c
 
@@ -56,7 +57,7 @@ SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 
 OBJS		=	$(SRCS:%.c=%.o)
 
-CC			=	gcc -g -fsanitize=address
+CC			=	gcc -pg -fsanitize=address
 # CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
@@ -93,6 +94,9 @@ re:			fclean all
 
 run:		all
 			./cub3D ./maps/map1.cub
+
+prof:		all
+			./cub3D ./maps/map1.cub && gprof ./cub3D | head -n 50
 
 val:		all
 			valgrind ./cub3D ./maps/map1.cub
