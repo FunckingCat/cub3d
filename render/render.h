@@ -20,6 +20,8 @@ struct	s_img
 	int		bpp;
 	int		size_l;
 	int		endian;
+	int		width;
+	int		height;
 };
 
 typedef struct s_point
@@ -42,6 +44,7 @@ typedef struct s_rec
 void	render(t_state *state);
 
 t_img	*new_img(void *mlx);
+t_img	*new_img_xpm(void *mlx, char *path);
 void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
 

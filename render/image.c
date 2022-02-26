@@ -11,6 +11,17 @@ t_img	*new_img(void *mlx)
 	return (img);
 }
 
+t_img	*new_img_xpm(void *mlx, char *path)
+{
+	t_img	*img;
+
+	img = malloc(sizeof(t_img));
+	img->img_ptr = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
+	img->data = (int *)mlx_get_data_addr(img->img_ptr,
+		&img->bpp, &img->size_l, &img->endian);
+	return (img);
+}
+
 void	free_img(void *mlx, t_img *img)
 {
 	mlx_destroy_image(mlx, img->img_ptr);
