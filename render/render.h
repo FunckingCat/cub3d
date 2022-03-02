@@ -67,4 +67,9 @@ int		col_add(int col, int t);
 # define COL_BLUE	0x000d85
 # define COL_GREEN	0x2d752e
 
+# define TYPE_NO 1
+# define TYPE_SO 2
+# define TYPE_WE 3
+# define TYPE_EA 4
+
 #endif
