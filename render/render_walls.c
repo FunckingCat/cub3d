@@ -5,17 +5,17 @@ int		define_wall_type(t_vec *ray)
 	float	diff_x;
 	float	diff_y;
 
-	ray->x = roundf(ray->x * 1000) / 1000;
-	ray->y = roundf(ray->y * 1000) / 1000;
+	ray->x = roundf(ray->x * 10000) / 10000;
+	ray->y = roundf(ray->y * 10000) / 10000;
 	if (ray->angle > PI * 2)
 		ray->angle -= PI * 2;
 	if (ray->angle < 0)
 		ray->angle += PI * 2;
-	diff_x = ray->x - floorf(ray->x);
+	diff_x = ray->x - (float)((int)ray->x);
 	diff_y = ray->y - (float)((int)ray->y);
 	//printf("X: %.10f Y: %.10f A: %f DX: %.10f DY: %.10f", ray->x, ray->y, ray->angle, diff_x, diff_y);
 	if (diff_x == 0) // WE or EA
-	{	//1.5707    4.7123
+	{
 		if (ray->angle > PI / 2 && ray->angle < 3 * PI / 2)
 			return (TYPE_WE);
 		else
@@ -39,18 +39,6 @@ void	render_column(t_state *st, t_img *img, t_vec *ray, int col)
 	float	wall_heigh;
 	int		type;
 
-	// if (col == 427)
-	// {
-	// 	type = define_wall_type(ray);
-	// 	if (type == TYPE_NO)
-	// 		printf("NO\n");
-	// 	if (type == TYPE_SO)
-	// 		printf("SO\n");
-	// 	if (type == TYPE_EA)
-	// 		printf("EA\n");
-	// 	if (type == TYPE_WE)
-	// 		printf("WE\n");
-	// }
 	wall_heigh = RES_Y / (2 * cosf(st->pl.angle - ray->angle) * tan(VFOV) * ray->dist);
 	//printf("col %d --- dist %f; height %f\n", col, ray->dist, wall_heigh * 2);
 	top = (int)((RES_Y / 2) - wall_heigh);
