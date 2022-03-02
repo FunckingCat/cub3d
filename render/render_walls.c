@@ -32,12 +32,20 @@ int		define_wall_type(t_vec *ray)
 
 void	put_column(t_column *col, t_vec *ray, t_img *img)
 {
-	int	i;
+	int		i;
+	float		i_tex;
+	float		step_tex;
+	int		tex_col;
 
+	tex_col = (int)roundf(col->texture->width * (ray->x - (float)((int)ray->x) + ray->y - (float)((int)ray->y)));
 	i = col->top;
+	i_tex = 0;
+	col->wall_height = col->bot - col->top;
+	step_tex = col->texture->height / col->wall_height;
 	while (i < col->bot)
 	{
-		put_pixel(img, col->col, i++, COL_RED);
+		put_pixel(img, col->col, i++, get_pixel(col->texture, tex_col, i_tex));
+		i_tex += step_tex;
 	}
 }
 
@@ -62,10 +70,6 @@ void	render_column(t_state *st, t_img *img, t_vec *ray, int col)
 	column.top = (int)((RES_Y / 2) - column.wall_height);
 	column.bot = (int)((RES_Y / 2) + column.wall_height);
 	column.col = col;
-	if (column.top < 0)
-		column.top = 0;
-	if (column.bot > RES_Y)
-		column.bot = RES_Y;
 	i = 0;
 	while (i < column.top)
 		put_pixel(img, col, i++, st->map->ceiling_color);
