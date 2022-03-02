@@ -20,6 +20,8 @@ struct	s_img
 	int		bpp;
 	int		size_l;
 	int		endian;
+	int		width;
+	int		height;
 };
 
 typedef struct s_point
@@ -38,12 +40,22 @@ typedef struct s_rec
 	int	color;
 }	t_rec;
 
+typedef struct s_column
+{
+	t_img	*texture;
+	float	wall_height;
+	int		top;
+	int		bot;
+	int		col;
+}	t_column;
 
 void	render(t_state *state);
 
 t_img	*new_img(void *mlx);
+t_img	*new_img_xpm(void *mlx, char *path);
 void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
+int		get_pixel(t_img *img, int x, int y);
 
 void	putline_bresenham(t_img *img, t_vec start, t_vec end);
 void	render_minimap(t_state *state, t_img *img, t_vec **rays);
@@ -63,5 +75,10 @@ int		col_add(int col, int t);
 # define COL_YELLOW	0xFFF700
 # define COL_BLUE	0x000d85
 # define COL_GREEN	0x2d752e
+
+# define TYPE_NO 1
+# define TYPE_SO 2
+# define TYPE_WE 3
+# define TYPE_EA 4
 
 #endif

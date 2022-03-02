@@ -32,7 +32,7 @@ int	key_press(int keycode, t_state *state)
 		state->pl.angle += 2 * DEG;
 	if (keycode == ESC)
 		endgame(state);
-	if (state->pl.angle >= PI * 2)
+	if (state->pl.angle > PI * 2)
 			state->pl.angle -= PI * 2;
 	if (state->pl.angle < 0)
 			state->pl.angle += PI * 2;

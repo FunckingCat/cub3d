@@ -1,10 +1,23 @@
 #ifndef MAP_H
 # define MAP_H
 
+typedef struct s_img t_img;
+
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
 # include "../error/error.h"
+
+typedef struct s_tex
+{
+	size_t	width;
+	size_t	height;
+	size_t	colors;
+	size_t	chpp;
+	char	**chars;
+	int		*ints;
+	int		**d;
+}	t_tex;
 
 typedef struct s_map
 {
@@ -12,6 +25,10 @@ typedef struct s_map
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	t_img	*no;
+	t_img	*so;
+	t_img	*we;
+	t_img	*ea;
 	int		floor_col;
 	int		ceiling_color;
 	size_t	width;

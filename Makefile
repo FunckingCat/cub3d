@@ -87,6 +87,7 @@ clean:
 
 fclean:		clean
 			$(RM) $(NAME)
+			$(RM) ./gmon.out
 			make clean -s -C $(LIBFT_DIR)
 			make clean -s -C $(MLXDIR)
 
