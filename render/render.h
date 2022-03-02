@@ -40,6 +40,14 @@ typedef struct s_rec
 	int	color;
 }	t_rec;
 
+typedef struct s_column
+{
+	t_img	*texture;
+	float	wall_height;
+	int		top;
+	int		bot;
+	int		col;
+}	t_column;
 
 void	render(t_state *state);
 
@@ -47,6 +55,7 @@ t_img	*new_img(void *mlx);
 t_img	*new_img_xpm(void *mlx, char *path);
 void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
+int		get_pixel(t_img *img, int x, int y);
 
 void	putline_bresenham(t_img *img, t_vec start, t_vec end);
 void	render_minimap(t_state *state, t_img *img, t_vec **rays);

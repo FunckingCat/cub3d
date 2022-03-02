@@ -33,3 +33,8 @@ void	put_pixel(t_img *img, int x, int y, int color)
 	if (x < RES_X && y < RES_Y && x >= 0 && y >= 0)
 		img->data[y * RES_X + x] = color;
 }
+
+int		get_pixel(t_img *img, int x, int y)
+{
+	return(img->data[y * RES_X + x]);
+}

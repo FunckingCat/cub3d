@@ -14,7 +14,7 @@ int		define_wall_type(t_vec *ray)
 	diff_x = ray->x - (float)((int)ray->x);
 	diff_y = ray->y - (float)((int)ray->y);
 	//printf("X: %.10f Y: %.10f A: %f DX: %.10f DY: %.10f", ray->x, ray->y, ray->angle, diff_x, diff_y);
-	if (diff_x == 0) // WE or EA
+	if (diff_x == 0)
 	{
 		if (ray->angle > PI / 2 && ray->angle < 3 * PI / 2)
 			return (TYPE_WE);
@@ -30,43 +30,49 @@ int		define_wall_type(t_vec *ray)
 	}
 }
 
+void	put_column(t_column *col, t_vec *ray, t_img *img)
+{
+	int	i;
+
+	i = col->top;
+	while (i < col->bot)
+	{
+		put_pixel(img, col->col, i++, COL_RED);
+	}
+}
+
 void	render_column(t_state *st, t_img *img, t_vec *ray, int col)
 {
-	float	half_heigh;
-	int		top;
-	int		bot;
-	int		i;
-	float	wall_heigh;
-	int		type;
+	t_column	column;
+	int			type;
+	int			i;
 
-	wall_heigh = RES_Y / (2 * cosf(st->pl.angle - ray->angle) * tan(VFOV) * ray->dist);
-	//printf("col %d --- dist %f; height %f\n", col, ray->dist, wall_heigh * 2);
-	top = (int)((RES_Y / 2) - wall_heigh);
-	bot = (int)((RES_Y / 2) + wall_heigh);
-	if (top < 0)
-		top = 0;
-	if (bot > RES_Y)
-		bot = RES_Y;
-	//printf("COL %d TOP %d BOT %d\n", col, top, bot);
-	i = 0;
 	//printf("col: %d ", col);
 	type = define_wall_type(ray);
 	//printf(" TYPE: %d\n", type);
-	while (i < top)
+	if (type == TYPE_NO)
+		column.texture = st->map->no;
+	else if (type == TYPE_SO)
+		column.texture = st->map->so;
+	else if (type == TYPE_EA)
+		column.texture = st->map->ea;
+	else if (type == TYPE_WE)
+		column.texture = st->map->we;
+	column.wall_height = RES_Y / (2 * cosf(st->pl.angle - ray->angle) * tan(VFOV) * ray->dist);
+	column.top = (int)((RES_Y / 2) - column.wall_height);
+	column.bot = (int)((RES_Y / 2) + column.wall_height);
+	column.col = col;
+	if (column.top < 0)
+		column.top = 0;
+	if (column.bot > RES_Y)
+		column.bot = RES_Y;
+	i = 0;
+	while (i < column.top)
 		put_pixel(img, col, i++, st->map->ceiling_color);
-	while (i < bot)
-	{
-		if (type == TYPE_NO)
-			put_pixel(img, col, i++, COL_BLUE);
-		else if (type == TYPE_SO)
-			put_pixel(img, col, i++, COL_RED);
-		else if (type == TYPE_EA)
-			put_pixel(img, col, i++, COL_GREEN);
-		else if (type == TYPE_WE)
-			put_pixel(img, col, i++, COL_YELLOW);
-	}
+	i = column.bot;
 	while (i < RES_Y)
 		put_pixel(img, col, i++, st->map->floor_col);
+	put_column(&column, ray, img);
 }
 
 void	render_walls(t_state *st, t_vec **rays, t_img *img)
