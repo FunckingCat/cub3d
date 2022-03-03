@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:04:24 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:04:25 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./render.h"
 
 void	render_rays(t_state *state, t_img *img, t_vec **rays, float scale)
 {
-	float size;
+	float	size;
 	size_t	i;
 	t_vec	vec;
 
@@ -35,7 +47,7 @@ void	render_player(t_state *state, t_img *img, float scale)
 			dx = i - state->pl.x;
 			dy = j - state->pl.y;
 			if (dx * dx + dy * dy < pl_size * pl_size)
-				put_pixel(img, i * scale, j  * scale, COL_GREEN);
+				put_pixel(img, i * scale, j * scale, COL_GREEN);
 			j++;
 		}
 		i++;
@@ -54,7 +66,8 @@ void	draw_rec(t_img *img, t_rec *rec)
 		j = rec->y;
 		while (j < rec->height + 1)
 		{
-			if (i == rec->x || j == rec->y || i == rec->width || j == rec->height)
+			if (i == rec->x || j == rec->y || \
+				i == rec->width || j == rec->height)
 				put_pixel(img, i, j, COL_DGRAY);
 			else
 				put_pixel(img, i, j, rec->color);

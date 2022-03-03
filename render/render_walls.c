@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_walls.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:05:36 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:06:37 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./render.h"
 
-int		define_wall_type(t_vec *ray)
+int	define_wall_type(t_vec *ray)
 {
 	float	diff;
 
@@ -14,7 +26,7 @@ int		define_wall_type(t_vec *ray)
 	if (diff == 0 && (ray->angle > PI / 2 && ray->angle < 3 * PI / 2))
 		return (TYPE_WE);
 	else if (diff == 0)
-			return (TYPE_EA);
+		return (TYPE_EA);
 	else if (ray->angle > 0 && ray->angle <= PI)
 		return (TYPE_NO);
 	else
@@ -30,7 +42,8 @@ void	put_column(t_column *col, t_vec *ray, t_img *img)
 
 	col->wall_height = col->bot - col->top;
 	step_tex = col->texture->height / col->wall_height;
-	tex_col = (int)roundf(col->texture->width * (ray->x - (float)((int)ray->x) + ray->y - (float)((int)ray->y)));
+	tex_col = (int)roundf(col->texture->width * (ray->x - (float)((int)ray->x) \
+		+ ray->y - (float)((int)ray->y)));
 	if (tex_col >= col->texture->width)
 		tex_col = col->texture->width - 1;
 	i_tex = 0;
@@ -42,7 +55,8 @@ void	put_column(t_column *col, t_vec *ray, t_img *img)
 	}
 	while (i < col->bot && i < RES_Y)
 	{
-		img->data[i * RES_X + col->col] =  get_pixel(col->texture, tex_col, i_tex);
+		img->data[i * RES_X + col->col] = \
+			get_pixel(col->texture, tex_col, i_tex);
 		i++;
 		i_tex += step_tex;
 	}
@@ -63,7 +77,8 @@ void	render_column(t_state *st, t_img *img, t_vec *ray, int col)
 		column.texture = st->map->ea;
 	else if (type == TYPE_WE)
 		column.texture = st->map->we;
-	column.wall_height = RES_Y / (2 * cosf(st->pl.angle - ray->angle) * tan(VFOV) * ray->dist);
+	column.wall_height = RES_Y / (2 * cosf(st->pl.angle - ray->angle) \
+		* tan(VFOV) * ray->dist);
 	column.top = (int)((RES_Y / 2) - column.wall_height);
 	column.bot = (int)((RES_Y / 2) + column.wall_height);
 	column.col = col;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   state.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:02:31 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:02:32 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STATE_H
 # define STATE_H
 
@@ -9,7 +21,7 @@
 # include "../error/error.h"
 # include "../vector/vector.h"
 
-typedef struct s_img t_img;
+typedef struct s_img	t_img;
 
 typedef struct s_map
 {

@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
-/*   Updated: 2022/03/03 16:22:28 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/03 17:05:15 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	int		foundWall;
 	float	dist;
 	float	max_dist;
-
 
 	plr = vec_new(state->pl.x / state->size, state->pl.y / state->size);
 	unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
@@ -108,10 +107,11 @@ t_vec	**raycasting_fov(t_state *state)
 	t_vec	*ray;
 	int		i;
 	float	step;
+	float	start;
 
 	rays = (t_vec **)malloc(sizeof(t_vec *) * RES_X);
 	step = (float)FOV / RES_X;
-	float start = - FOV / 2;
+	start = -FOV / 2;
 	i = 0;
 	while (i < RES_X)
 	{

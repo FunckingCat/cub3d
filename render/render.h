@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:07:24 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:07:44 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RENDER_H
 # define RENDER_H
-
-typedef struct s_img t_img;
 
 # include <math.h>
 # include "../libft/libft.h"
@@ -11,6 +21,8 @@ typedef struct s_img t_img;
 # include "../vector/vector.h"
 
 # define VFOV 0.5 * RES_Y / (0.5 * RES_X / tanf(0.5 * FOV))
+
+typedef struct s_img	t_img;
 
 struct	s_img
 {
@@ -63,7 +75,6 @@ t_vec	**raycasting_fov(t_state *state);
 void	render_minimap(t_state *state, t_img *img, t_vec **rays);
 
 void	render_walls(t_state *st, t_vec **rays, t_img *img);
-
 
 # define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000

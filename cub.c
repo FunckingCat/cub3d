@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 16:59:26 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 16:59:39 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub.h"
 
-int	main(int ac, char **av) 
+int	main(int ac, char **av)
 {
-	t_state state;
+	t_state	state;
 
-	validate(ac ,av);
+	validate(ac, av);
 	state.map = parse_map(av[1]);
 	state.pl = new_player(state.map);
 	state.mlx = mlx_init();
