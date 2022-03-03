@@ -33,6 +33,8 @@ void	put_column(t_column *col, t_vec *ray, t_img *img)
 	col->wall_height = col->bot - col->top;
 	step_tex = col->texture->height / col->wall_height;
 	tex_col = (int)roundf(col->texture->width * (ray->x - (float)((int)ray->x) + ray->y - (float)((int)ray->y)));
+	if (tex_col >= col->texture->width)
+		tex_col = col->texture->width - 1;
 	i_tex = 0;
 	i = col->top;
 	if (col->top < 0)
