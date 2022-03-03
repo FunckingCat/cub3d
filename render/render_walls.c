@@ -37,12 +37,17 @@ void	put_column(t_column *col, t_vec *ray, t_img *img)
 	float		step_tex;
 	int		tex_col;
 
-	tex_col = (int)roundf(col->texture->width * (ray->x - (float)((int)ray->x) + ray->y - (float)((int)ray->y)));
-	i = col->top;
-	i_tex = 0;
 	col->wall_height = col->bot - col->top;
 	step_tex = col->texture->height / col->wall_height;
-	while (i < col->bot)
+	tex_col = (int)roundf(col->texture->width * (ray->x - (float)((int)ray->x) + ray->y - (float)((int)ray->y)));
+	i_tex = 0;
+	i = col->top;
+	if (col->top < 0)
+	{
+		i_tex += step_tex * abs(col->top);
+		i = 0;
+	}
+	while (i < col->bot && i < RES_Y)
 	{
 		put_pixel(img, col->col, i++, get_pixel(col->texture, tex_col, i_tex));
 		i_tex += step_tex;
