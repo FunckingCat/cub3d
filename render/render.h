@@ -9,7 +9,6 @@ typedef struct s_img t_img;
 # include "../constants.h"
 # include "../state/state.h"
 # include "../vector/vector.h"
-# include "../raycasting/raycasting.h"
 
 # define VFOV 0.5 * RES_Y / (0.5 * RES_X / tanf(0.5 * FOV))
 
@@ -22,6 +21,14 @@ struct	s_img
 	int		endian;
 	int		width;
 	int		height;
+};
+
+struct	s_ray
+{
+	t_vec	start_point;
+	t_vec	map_check_digit;
+	t_vec	unit_step;
+	t_vec	stap_digit;
 };
 
 typedef struct s_rec
@@ -50,6 +57,9 @@ void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
 int		char_to_hex(char **arr);
+
+t_vec	raycasting(t_state *state, t_vec dir);
+t_vec	**raycasting_fov(t_state *state);
 
 void	render_minimap(t_state *state, t_img *img, t_vec **rays);
 

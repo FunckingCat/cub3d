@@ -6,11 +6,11 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
-/*   Updated: 2022/03/03 15:17:35 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/03 15:45:12 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycasting.h"
+#include "render.h"
 
 t_vec	find_intersection(t_vec plr, t_vec dir, float dist)
 {

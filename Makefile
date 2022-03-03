@@ -7,8 +7,7 @@ HEADERS		=	./cub.h \
 				./parsing/parsing.h \
 				./hooks/hooks.h \
 				./render/render.h \
-				./vector/vector.h \
-				./raycasting/raycasting.h
+				./vector/vector.h 
 
 MAIN		=	./cub.c
 
@@ -27,9 +26,8 @@ RENDER		=	./render/render.c \
 				./render/image.c \
 				./render/minimap.c \
 				./render/render_walls.c \
-				./render/color.c
-
-RAYCAST		=	./raycasting/raycasting.c
+				./render/color.c \
+				./render/raycasting.c
 
 VECT		=	./vector/vec_add.c \
 				./vector/vec_dot.c \
