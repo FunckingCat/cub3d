@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 23:21:32 by rusty             #+#    #+#             */
-/*   Updated: 2022/03/03 15:25:47 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/03 15:39:16 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RAYCASTING_H
 
 # include "../vector/vector.h"
-# include "../essences/state.h"
+# include "../state/state.h"
 # include "../libft/libft.h"
 
 # include "../constants.h"

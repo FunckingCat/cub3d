@@ -26,7 +26,6 @@ HOOKS		=	./hooks/set_hooks.c
 RENDER		=	./render/render.c \
 				./render/image.c \
 				./render/minimap.c \
-				./render/line.c \
 				./render/render_walls.c \
 				./render/color.c
 

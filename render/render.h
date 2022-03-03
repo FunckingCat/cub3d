@@ -7,7 +7,7 @@ typedef struct s_img t_img;
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include "../constants.h"
-# include "../essences/state.h"
+# include "../state/state.h"
 # include "../vector/vector.h"
 # include "../raycasting/raycasting.h"
 
@@ -23,13 +23,6 @@ struct	s_img
 	int		width;
 	int		height;
 };
-
-typedef struct s_point
-{
-	int	x;
-	int	y;
-	int	color;
-}	t_point;
 
 typedef struct s_rec
 {
@@ -56,15 +49,12 @@ t_img	*new_img_xpm(void *mlx, char *path);
 void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
+int		char_to_hex(char **arr);
 
-void	putline_bresenham(t_img *img, t_vec start, t_vec end);
 void	render_minimap(t_state *state, t_img *img, t_vec **rays);
 
 void	render_walls(t_state *st, t_vec **rays, t_img *img);
 
-void	put_line(t_img *img, t_vec start, t_vec end);
-int		char_to_hex(char **arr);
-int		col_add(int col, int t);
 
 # define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000
