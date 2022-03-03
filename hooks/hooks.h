@@ -10,8 +10,6 @@
 # include "../vector/vector.h"
 
 void	set_hooks(t_state *state);
-int		key_press(int keycode, t_state *state);
-int		endgame(t_state *state);
 
 // # define KEYPRESS	2
 // # define KEYEXIT	17

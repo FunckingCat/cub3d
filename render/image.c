@@ -36,7 +36,7 @@ void	put_pixel(t_img *img, int x, int y, int color)
 
 int		get_pixel(t_img *img, int x, int y)
 {
-	if (x >= img->width || y >= img->height)
+	if (x >= img->width || y >= img->height || x < 0 || y < 0)
 		return (0);
 	return(img->data[y * img->width + x]);
 }
