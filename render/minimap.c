@@ -22,8 +22,8 @@ void	render_player(t_state *state, t_img *img, float scale)
 	size_t	pl_size;
 	size_t	i;
 	size_t	j;
-	int		dx;
-	int		dy;
+	size_t	dx;
+	size_t	dy;
 
 	pl_size = state->size / 3;
 	i = state->pl.x - pl_size;
@@ -45,8 +45,8 @@ void	render_player(t_state *state, t_img *img, float scale)
 
 void	draw_rec(t_img *img, t_rec *rec)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = rec->x;
 	while (i < rec->width + 1)
@@ -67,7 +67,6 @@ void	draw_rec(t_img *img, t_rec *rec)
 float	calc_scale(t_state *state)
 {
 	int	max_width;
-	float	res;
 
 	max_width = (int)floorf(RES_X * MINI_MAP_W);
 	while (max_width % state->map->width != 0)

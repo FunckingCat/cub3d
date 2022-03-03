@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vec_scal_prod.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 03:51:29 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/15 07:02:09 by rusty            ###   ########.fr       */
+/*   Updated: 2022/03/03 16:23:22 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-static float	absf(float num)
-{
-	if (num < 0)
-		num *= -1;
-	return (num);
-}
-
-static float	to_rad(float deg)
+float	to_rad(float deg)
 {
 	return (deg * 3.14f / 180.0f);
 }

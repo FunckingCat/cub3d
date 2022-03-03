@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
-/*   Updated: 2022/03/03 15:45:12 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/03 16:22:28 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_vec	raycasting(t_state *state, t_vec dir)
 {
 	t_vec	plr;
 	t_vec	map_check;
-	t_vec	plane;
 	t_vec	unit_step;
 	t_vec	step;
 	t_vec	ray_lend;

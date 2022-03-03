@@ -2,8 +2,7 @@
 
 int		define_wall_type(t_vec *ray)
 {
-	float	diff_x;
-	float	diff_y;
+	float	diff;
 
 	ray->x = roundf(ray->x * 10000) / 10000;
 	ray->y = roundf(ray->y * 10000) / 10000;
@@ -11,11 +10,10 @@ int		define_wall_type(t_vec *ray)
 		ray->angle -= PI * 2;
 	if (ray->angle < 0)
 		ray->angle += PI * 2;
-	diff_x = ray->x - (float)((int)ray->x);
-	diff_y = ray->y - (float)((int)ray->y);
-	if (diff_x == 0 && (ray->angle > PI / 2 && ray->angle < 3 * PI / 2))
+	diff = ray->x - (float)((int)ray->x);
+	if (diff == 0 && (ray->angle > PI / 2 && ray->angle < 3 * PI / 2))
 		return (TYPE_WE);
-	else if (diff_x == 0)
+	else if (diff == 0)
 			return (TYPE_EA);
 	else if (ray->angle > 0 && ray->angle <= PI)
 		return (TYPE_NO);

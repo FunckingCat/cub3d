@@ -46,7 +46,7 @@ SRCS		=	$(MAIN)		$(PARSING)	$(ERROR) \
 OBJS		=	$(SRCS:%.c=%.o)
 
 CC			=	gcc -pg
-# CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
 LIBFT		=	libft/libft.a
