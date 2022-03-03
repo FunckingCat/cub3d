@@ -26,7 +26,6 @@ RENDER		=	./render/render.c \
 				./render/image.c \
 				./render/minimap.c \
 				./render/render_walls.c \
-				./render/color.c \
 				./render/raycasting.c
 
 VECT		=	./vector/vec_add.c \
@@ -38,8 +37,7 @@ VECT		=	./vector/vec_add.c \
 				./vector/vec_rot.c \
 				./vector/vec_sub.c \
 				./vector/vec_dist.c \
-				./vector/vec_scal_prod.c \
-				./vector/print_vec.c
+				./vector/vec_scal_prod.c
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR) \
 				$(HOOKS)	$(STATE)	$(RENDER) \

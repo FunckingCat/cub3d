@@ -15,7 +15,7 @@ void	validate(int ac ,char **av);
 int		split_size(char **arr);
 t_map	*parse_map(char	*path);
 void	check_map(t_map *map);
-int		hex_to_int(char *str);
+int		char_to_hex(char **arr);
 
 # define C_CUB	".cub"
 # define C_XPM	".xpm"
@@ -26,7 +26,5 @@ int		hex_to_int(char *str);
 # define C_F	"F"
 # define C_C	"C"
 # define MAP_SYMBOLS	" 10NSEW"
-# define CHARS_HEADER	"/* columns rows colors chars-per-pixel */"
-# define PIXELS_HEADER	"/* pixels */"
 
 #endif

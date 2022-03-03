@@ -56,7 +56,6 @@ t_img	*new_img_xpm(void *mlx, char *path);
 void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
-int		char_to_hex(char **arr);
 
 t_vec	raycasting(t_state *state, t_vec dir);
 t_vec	**raycasting_fov(t_state *state);

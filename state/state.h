@@ -1,8 +1,6 @@
 #ifndef STATE_H
 # define STATE_H
 
-typedef struct s_img t_img;
-
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
@@ -10,6 +8,8 @@ typedef struct s_img t_img;
 # include "../constants.h"
 # include "../error/error.h"
 # include "../vector/vector.h"
+
+typedef struct s_img t_img;
 
 typedef struct s_map
 {
@@ -37,7 +37,6 @@ typedef struct s_state
 	float	size;
 }	t_state;
 
-int			split_size(char **arr);
 t_map		*new_map(void);
 t_vec		new_player(t_map *map);
 
