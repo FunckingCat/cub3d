@@ -5,7 +5,7 @@ typedef struct s_img t_img;
 
 # include <math.h>
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
+# include "../libmlx/mlx.h"
 # include "../constants.h"
 # include "../state/state.h"
 # include "../vector/vector.h"

@@ -54,12 +54,12 @@ RM			=	rm -f
 LIBFT		=	libft/libft.a
 LIBFT_DIR	=	libft
 
-MLXFLAGS	=	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
-MLXDIR		=	./mlx/
+MLXFLAGS	=	-L ./libmlx/ -lmlx -framework OpenGL -framework AppKit -lz
+MLXDIR		=	./libmlx/
 
 ifeq ($(shell uname), Linux)
-MLXFLAGS	=	-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
-MLXDIR		=	./mlx_linux/
+MLXFLAGS	=	-L ./libmlx_linux/ -lmlx -Ilmlx -lXext -lX11
+MLXDIR		=	./libmlx_linux/
 endif
 
 all:		$(NAME)

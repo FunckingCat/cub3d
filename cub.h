@@ -3,7 +3,7 @@
 
 # include <stdio.h>
 # include "./libft/libft.h"
-# include "./mlx/mlx.h"
+# include "./libmlx/mlx.h"
 # include "./parsing/parsing.h"
 # include "./state/state.h"
 # include "./hooks/hooks.h"

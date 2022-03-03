@@ -1,7 +1,7 @@
 #ifndef HOOKS_H
 # define HOOKS_H
 
-# include "../mlx/mlx.h"
+# include "../libmlx/mlx.h"
 # include "../libft/libft.h"
 # include "../state/state.h"
 # include "../constants.h"
