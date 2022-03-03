@@ -14,8 +14,6 @@ HEADERS		=	./cub.h \
 
 MAIN		=	./cub.c
 
-STATE		=	./state/state.c
-
 ERROR		=	./error/error.c
 
 PARSING		=	./parsing/parse_map.c \
@@ -57,7 +55,7 @@ SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
 
 OBJS		=	$(SRCS:%.c=%.o)
 
-CC			=	gcc -pg -fsanitize=address
+CC			=	gcc -pg
 # CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 

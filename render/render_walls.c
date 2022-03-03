@@ -13,28 +13,21 @@ int		define_wall_type(t_vec *ray)
 		ray->angle += PI * 2;
 	diff_x = ray->x - (float)((int)ray->x);
 	diff_y = ray->y - (float)((int)ray->y);
-	//printf("X: %.10f Y: %.10f A: %f DX: %.10f DY: %.10f", ray->x, ray->y, ray->angle, diff_x, diff_y);
-	if (diff_x == 0)
-	{
-		if (ray->angle > PI / 2 && ray->angle < 3 * PI / 2)
-			return (TYPE_WE);
-		else
+	if (diff_x == 0 && (ray->angle > PI / 2 && ray->angle < 3 * PI / 2))
+		return (TYPE_WE);
+	else if (diff_x == 0)
 			return (TYPE_EA);
-	}
-	else if (diff_y == 0)
-	{
-		if (ray->angle > 0 && ray->angle <= PI)
-			return (TYPE_NO);
-		else
-			return (TYPE_SO);
-	}
+	else if (ray->angle > 0 && ray->angle <= PI)
+		return (TYPE_NO);
+	else
+		return (TYPE_SO);
 }
 
 void	put_column(t_column *col, t_vec *ray, t_img *img)
 {
 	int		i;
-	float		i_tex;
-	float		step_tex;
+	float	i_tex;
+	float	step_tex;
 	int		tex_col;
 
 	col->wall_height = col->bot - col->top;
@@ -60,9 +53,7 @@ void	render_column(t_state *st, t_img *img, t_vec *ray, int col)
 	int			type;
 	int			i;
 
-	//printf("col: %d ", col);
 	type = define_wall_type(ray);
-	//printf(" TYPE: %d\n", type);
 	if (type == TYPE_NO)
 		column.texture = st->map->no;
 	else if (type == TYPE_SO)
