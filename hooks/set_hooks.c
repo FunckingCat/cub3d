@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_hooks.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:11:30 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:11:59 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./hooks.h"
 
 int	endgame(t_state *state)
@@ -22,7 +34,8 @@ t_vec	make_step(t_state *state, int dir, int ang)
 	res.x = res.dist * cosf(res.angle);
 	res.y = res.dist * sinf(res.angle);
 	res = vec_add(state->pl, res);
-	if (state->map->map[(int)(res.y / state->size)][(int)(res.x / state->size)] == '1')
+	if (state->map->map[(int)(res.y / state->size)][(int)(res.x \
+		/ state->size)] == '1')
 		return (state->pl);
 	return (res);
 }

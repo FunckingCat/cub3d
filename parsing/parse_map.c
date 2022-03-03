@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:09:53 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:09:58 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./parsing.h"
 
 void	set_map_prop(t_map *map, char **arr)
@@ -56,7 +68,7 @@ size_t	map_to_list(t_list **list, int fd)
 void	read_map(t_map *map, int fd)
 {
 	t_list	*list;
-	size_t		i;
+	size_t	i;
 
 	list = ft_lstnew(NULL);
 	map->width = map_to_list(&list, fd);

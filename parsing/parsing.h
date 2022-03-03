@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:10:49 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:10:50 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSING_H
 # define PARSING_H
 
@@ -11,7 +23,7 @@
 # include "../state/state.h"
 # include "../render/render.h"
 
-void	validate(int ac ,char **av);
+void	validate(int ac, char **av);
 int		split_size(char **arr);
 t_map	*parse_map(char	*path);
 void	check_map(t_map *map);

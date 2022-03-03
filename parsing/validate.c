@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:10:58 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:11:11 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./parsing.h"
 
 int	validate_conf_str(char *str)
@@ -70,7 +82,7 @@ void	validate_map(int fd)
 	}
 }
 
-void	validate(int ac ,char **av)
+void	validate(int ac, char **av)
 {
 	int	conf;
 
