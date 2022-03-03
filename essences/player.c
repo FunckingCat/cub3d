@@ -35,12 +35,3 @@ t_vec	new_player(t_map *map)
 	pl.dist = vec_len(pl);
 	return(pl);
 }
-
-void	print_player(t_vec pl)
-{
-	printf("-------  PLAYER  --------\n");
-	printf("player x\t%f\n", pl.x);
-	printf("player y\t%f\n", pl.y);
-	printf("player ang\t%f\n", pl.angle);
-	printf("--------------------------\n");
-}

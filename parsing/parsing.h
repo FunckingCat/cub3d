@@ -8,7 +8,7 @@
 # include "../libft/libft.h"
 # include "../constants.h"
 # include "../error/error.h"
-# include "../map/map.h"
+# include "../essences/map.h"
 # include "../render/render.h"
 
 void	validate(int ac ,char **av);

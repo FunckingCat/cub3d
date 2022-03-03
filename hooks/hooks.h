@@ -3,7 +3,7 @@
 
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
-# include "../state/state.h"
+# include "../essences/state.h"
 # include "../constants.h"
 # include "../error/error.h"
 # include "../render/render.h"

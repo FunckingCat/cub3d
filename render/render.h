@@ -7,7 +7,7 @@ typedef struct s_img t_img;
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 # include "../constants.h"
-# include "../state/state.h"
+# include "../essences/state.h"
 # include "../vector/vector.h"
 # include "../raycasting/raycasting.h"
 

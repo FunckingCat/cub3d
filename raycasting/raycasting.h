@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 23:21:32 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/14 22:15:40 by rusty            ###   ########.fr       */
+/*   Updated: 2022/03/03 15:25:47 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define RAYCASTING_H
 
 # include "../vector/vector.h"
-# include "../state/state.h"
-# include "../map/map.h"
+# include "../essences/state.h"
 # include "../libft/libft.h"
 
 # include "../constants.h"

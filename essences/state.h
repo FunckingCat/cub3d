@@ -2,8 +2,8 @@
 # define STATE_H
 
 #include "../mlx/mlx.h"
-#include "../map/map.h"
-#include "../player/player.h"
+#include "./map.h"
+#include "./player.h"
 
 typedef struct s_state
 {
