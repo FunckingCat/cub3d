@@ -1,20 +1,29 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/03 16:59:18 by tyamcha           #+#    #+#              #
+#    Updated: 2022/03/03 16:59:19 by tyamcha          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		=	cub3D
 
 HEADERS		=	./cub.h \
 				./constants.h \
 				./error/error.h \
-				./map/map.h \
+				./state/state.h \
 				./parsing/parsing.h \
 				./hooks/hooks.h \
-				./state/state.h \
-				./player/player.h \
 				./render/render.h \
-				./vector/vector.h \
-				./raycasting/raycasting.h
+				./vector/vector.h 
 
 MAIN		=	./cub.c
 
-STATE		=	./state/state.c
+STATE	=		./state/state.c
 
 ERROR		=	./error/error.c
 
@@ -23,21 +32,13 @@ PARSING		=	./parsing/parse_map.c \
 				./parsing/validate.c \
 				./parsing/check_map.c
 
-HOOKS		=	./hooks/keypress.c \
-				./hooks/set_hooks.c
-
-MAP			=	./map/map.c
-
-PLAYER		=	./player/player.c
+HOOKS		=	./hooks/set_hooks.c
 
 RENDER		=	./render/render.c \
 				./render/image.c \
 				./render/minimap.c \
-				./render/line.c \
 				./render/render_walls.c \
-				./render/color.c
-
-RAYCAST		=	./raycasting/raycasting.c
+				./render/raycasting.c
 
 VECT		=	./vector/vec_add.c \
 				./vector/vec_dot.c \
@@ -48,28 +49,27 @@ VECT		=	./vector/vec_add.c \
 				./vector/vec_rot.c \
 				./vector/vec_sub.c \
 				./vector/vec_dist.c \
-				./vector/vec_scal_prod.c \
-				./vector/print_vec.c
+				./vector/vec_scal_prod.c
 
-SRCS		=	$(MAIN)		$(PARSING)	$(ERROR)	$(MAP) \
-				$(STATE)	$(HOOKS)	$(PLAYER)	$(RENDER) \
+SRCS		=	$(MAIN)		$(PARSING)	$(ERROR) \
+				$(HOOKS)	$(STATE)	$(RENDER) \
 				$(RAYCAST)	$(VECT)		$(DRAW)
 
 OBJS		=	$(SRCS:%.c=%.o)
 
-CC			=	gcc -pg -fsanitize=address
-# CFLAGS		=	-Wall -Wextra -Werror
+CC			=	gcc -pg
+CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
 LIBFT		=	libft/libft.a
 LIBFT_DIR	=	libft
 
-MLXFLAGS	=	-L ./mlx/ -lmlx -framework OpenGL -framework AppKit -lz
-MLXDIR		=	./mlx/
+MLXFLAGS	=	-L ./libmlx/ -lmlx -framework OpenGL -framework AppKit -lz
+MLXDIR		=	./libmlx/
 
 ifeq ($(shell uname), Linux)
-MLXFLAGS	=	-L ./mlx_linux/ -lmlx -Ilmlx -lXext -lX11
-MLXDIR		=	./mlx_linux/
+MLXFLAGS	=	-L ./libmlx_linux/ -lmlx -Ilmlx -lXext -lX11
+MLXDIR		=	./libmlx_linux/
 endif
 
 all:		$(NAME)

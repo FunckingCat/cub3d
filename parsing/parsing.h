@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:10:49 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:10:50 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSING_H
 # define PARSING_H
 
@@ -8,14 +20,14 @@
 # include "../libft/libft.h"
 # include "../constants.h"
 # include "../error/error.h"
-# include "../map/map.h"
+# include "../state/state.h"
 # include "../render/render.h"
 
-void	validate(int ac ,char **av);
+void	validate(int ac, char **av);
 int		split_size(char **arr);
 t_map	*parse_map(char	*path);
 void	check_map(t_map *map);
-int		hex_to_int(char *str);
+int		char_to_hex(char **arr);
 
 # define C_CUB	".cub"
 # define C_XPM	".xpm"
@@ -26,7 +38,5 @@ int		hex_to_int(char *str);
 # define C_F	"F"
 # define C_C	"C"
 # define MAP_SYMBOLS	" 10NSEW"
-# define CHARS_HEADER	"/* columns rows colors chars-per-pixel */"
-# define PIXELS_HEADER	"/* pixels */"
 
 #endif

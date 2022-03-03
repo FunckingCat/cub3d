@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:07:24 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:19:16 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RENDER_H
 # define RENDER_H
 
-typedef struct s_img t_img;
-
 # include <math.h>
 # include "../libft/libft.h"
-# include "../mlx/mlx.h"
+# include "../libmlx/mlx.h"
 # include "../constants.h"
 # include "../state/state.h"
 # include "../vector/vector.h"
-# include "../raycasting/raycasting.h"
 
-# define VFOV 0.5 * RES_Y / (0.5 * RES_X / tanf(0.5 * FOV))
+# define FOV	1.2
+# define VFOV	0.523614
+
+typedef struct s_img	t_img;
 
 struct	s_img
 {
@@ -24,12 +36,13 @@ struct	s_img
 	int		height;
 };
 
-typedef struct s_point
+struct	s_ray
 {
-	int	x;
-	int	y;
-	int	color;
-}	t_point;
+	t_vec	start_point;
+	t_vec	map_check_digit;
+	t_vec	unit_step;
+	t_vec	stap_digit;
+};
 
 typedef struct s_rec
 {
@@ -57,15 +70,12 @@ void	free_img(void *mlx, t_img *img);
 void	put_pixel(t_img *img, int x, int y, int color);
 int		get_pixel(t_img *img, int x, int y);
 
-void	putline_bresenham(t_img *img, t_vec start, t_vec end);
+t_vec	raycasting(t_state *state, t_vec dir);
+t_vec	**raycasting_fov(t_state *state);
+
 void	render_minimap(t_state *state, t_img *img, t_vec **rays);
 
 void	render_walls(t_state *st, t_vec **rays, t_img *img);
-
-void	put_line(t_img *img, t_vec start, t_vec end);
-int		create_trgb(int t, int r, int g, int b);
-int		char_to_hex(char **arr);
-int		col_add(int col, int t);
 
 # define COL_WHITE	0xffffff
 # define COL_BLACK	0x000000

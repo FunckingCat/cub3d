@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minimap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 17:04:24 by tyamcha           #+#    #+#             */
+/*   Updated: 2022/03/03 17:27:16 by tyamcha          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./render.h"
 
 void	render_rays(t_state *state, t_img *img, t_vec **rays, float scale)
 {
-	float size;
+	float	size;
 	size_t	i;
 	t_vec	vec;
 
@@ -22,8 +34,8 @@ void	render_player(t_state *state, t_img *img, float scale)
 	size_t	pl_size;
 	size_t	i;
 	size_t	j;
-	int		dx;
-	int		dy;
+	size_t	dx;
+	size_t	dy;
 
 	pl_size = state->size / 3;
 	i = state->pl.x - pl_size;
@@ -35,7 +47,7 @@ void	render_player(t_state *state, t_img *img, float scale)
 			dx = i - state->pl.x;
 			dy = j - state->pl.y;
 			if (dx * dx + dy * dy < pl_size * pl_size)
-				put_pixel(img, i * scale, j  * scale, COL_GREEN);
+				put_pixel(img, i * scale, j * scale, COL_GREEN);
 			j++;
 		}
 		i++;
@@ -45,8 +57,8 @@ void	render_player(t_state *state, t_img *img, float scale)
 
 void	draw_rec(t_img *img, t_rec *rec)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = rec->x;
 	while (i < rec->width + 1)
@@ -54,7 +66,8 @@ void	draw_rec(t_img *img, t_rec *rec)
 		j = rec->y;
 		while (j < rec->height + 1)
 		{
-			if (i == rec->x || j == rec->y || i == rec->width || j == rec->height)
+			if (i == rec->x || j == rec->y || \
+				i == rec->width || j == rec->height)
 				put_pixel(img, i, j, COL_DGRAY);
 			else
 				put_pixel(img, i, j, rec->color);
@@ -67,7 +80,6 @@ void	draw_rec(t_img *img, t_rec *rec)
 float	calc_scale(t_state *state)
 {
 	int	max_width;
-	float	res;
 
 	max_width = (int)floorf(RES_X * MINI_MAP_W);
 	while (max_width % state->map->width != 0)

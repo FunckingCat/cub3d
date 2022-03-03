@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
-/*   Updated: 2022/02/21 16:28:05 by david            ###   ########.fr       */
+/*   Updated: 2022/03/03 17:05:15 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "raycasting.h"
+#include "render.h"
 
 t_vec	find_intersection(t_vec plr, t_vec dir, float dist)
 {
@@ -33,7 +33,6 @@ t_vec	raycasting(t_state *state, t_vec dir)
 {
 	t_vec	plr;
 	t_vec	map_check;
-	t_vec	plane;
 	t_vec	unit_step;
 	t_vec	step;
 	t_vec	ray_lend;
@@ -41,7 +40,6 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	int		foundWall;
 	float	dist;
 	float	max_dist;
-
 
 	plr = vec_new(state->pl.x / state->size, state->pl.y / state->size);
 	unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
@@ -96,17 +94,9 @@ t_vec	raycasting(t_state *state, t_vec dir)
 	intersection.color = 0xFF0000;
 	if (foundWall == 1)
 	{
-		// printf("player is on x %f y %f\n", plr.x, plr.y);
-		//printf((("dir x %f y %f len %f\n", dir.x, dir.y, vec_len(dir));
 		intersection = find_intersection(plr, dir, dist);
 		intersection.color = 0xFF0000;
 		intersection.dist = dist;
-		// printf("ray hit the wall in x %f y %f\n", intersection.x, intersection.y);
-		// printf("len from plr to wall %f\n", vec_dist(plr, intersection));
-		// printf("len from plr to wall %f\n", dist);
-
-		// intersection.x = RES_X / intersection.x;
-		// intersection.y = RES_Y / intersection.y;
 	}
 	return (intersection);
 }
@@ -117,10 +107,11 @@ t_vec	**raycasting_fov(t_state *state)
 	t_vec	*ray;
 	int		i;
 	float	step;
+	float	start;
 
 	rays = (t_vec **)malloc(sizeof(t_vec *) * RES_X);
 	step = (float)FOV / RES_X;
-	float start = - FOV / 2;
+	start = -FOV / 2;
 	i = 0;
 	while (i < RES_X)
 	{
