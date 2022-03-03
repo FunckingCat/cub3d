@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:07:24 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/03 17:07:44 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/03 17:19:16 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 # include "../state/state.h"
 # include "../vector/vector.h"
 
-# define VFOV 0.5 * RES_Y / (0.5 * RES_X / tanf(0.5 * FOV))
+# define FOV	1.2
+# define VFOV	0.523614
 
 typedef struct s_img	t_img;
 

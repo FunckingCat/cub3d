@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:01:43 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/03 17:01:58 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/03 17:26:59 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ t_map	*new_map(void)
 	return (map);
 }
 
+void	set_ang(t_vec *pl, char dir)
+{
+	if (dir == 'E')
+		pl->angle = 0;
+	if (dir == 'S')
+		pl->angle = (3 * PI) / 2;
+	if (dir == 'W')
+		pl->angle = PI;
+	if (dir == 'N')
+		pl->angle = PI / 2;
+}
+
 t_vec	new_player(t_map *map)
 {
 	t_vec	pl;
@@ -47,20 +59,12 @@ t_vec	new_player(t_map *map)
 			{
 				pl.y = i * size + size / 2;
 				pl.x = j * size + size / 2;
-				if (map->map[i][j] == 'E')
-					pl.angle = 0;
-				if (map->map[i][j] == 'S')
-					pl.angle = (3 * PI) / 2;
-				if (map->map[i][j] == 'W')
-					pl.angle = PI;
-				if (map->map[i][j] == 'N')
-					pl.angle = PI / 2;
+				set_ang(&pl, map->map[i][j]);
 				map->map[i][j] = '0';
 			}
 			j++;
 		}
 		i++;
 	}
-	pl.dist = vec_len(pl);
 	return (pl);
 }
