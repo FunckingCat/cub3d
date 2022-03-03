@@ -42,7 +42,8 @@ void	put_column(t_column *col, t_vec *ray, t_img *img)
 	}
 	while (i < col->bot && i < RES_Y)
 	{
-		put_pixel(img, col->col, i++, get_pixel(col->texture, tex_col, i_tex));
+		img->data[i * RES_X + col->col] =  get_pixel(col->texture, tex_col, i_tex);
+		i++;
 		i_tex += step_tex;
 	}
 }
