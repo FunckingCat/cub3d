@@ -3,9 +3,7 @@ NAME		=	cub3D
 HEADERS		=	./cub.h \
 				./constants.h \
 				./error/error.h \
-				./essences/map.h \
-				./essences/state.h \
-				./essences/player.h \
+				./state/state.h \
 				./parsing/parsing.h \
 				./hooks/hooks.h \
 				./render/render.h \
@@ -14,8 +12,7 @@ HEADERS		=	./cub.h \
 
 MAIN		=	./cub.c
 
-ESSENCES	=	./essences/map.c \
-				./essences/player.c
+STATE	=		./state/state.c
 
 ERROR		=	./error/error.c
 
@@ -48,7 +45,7 @@ VECT		=	./vector/vec_add.c \
 				./vector/print_vec.c
 
 SRCS		=	$(MAIN)		$(PARSING)	$(ERROR) \
-				$(HOOKS)	$(ESSENCES)	$(RENDER) \
+				$(HOOKS)	$(STATE)	$(RENDER) \
 				$(RAYCAST)	$(VECT)		$(DRAW)
 
 OBJS		=	$(SRCS:%.c=%.o)

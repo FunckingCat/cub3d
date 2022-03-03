@@ -1,23 +1,15 @@
-#ifndef MAP_H
-# define MAP_H
+#ifndef STATE_H
+# define STATE_H
 
 typedef struct s_img t_img;
 
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
+# include "../mlx/mlx.h"
+# include "../constants.h"
 # include "../error/error.h"
-
-typedef struct s_tex
-{
-	size_t	width;
-	size_t	height;
-	size_t	colors;
-	size_t	chpp;
-	char	**chars;
-	int		*ints;
-	int		**d;
-}	t_tex;
+# include "../vector/vector.h"
 
 typedef struct s_map
 {
@@ -36,8 +28,17 @@ typedef struct s_map
 	char	**map;
 }	t_map;
 
-int		split_size(char **arr);
-t_map	*new_map(void);
-void	print_map(t_map *map);
+typedef struct s_state
+{
+	void	*mlx;
+	void	*win;
+	t_map	*map;
+	t_vec	pl;
+	float	size;
+}	t_state;
+
+int			split_size(char **arr);
+t_map		*new_map(void);
+t_vec		new_player(t_map *map);
 
 #endif
