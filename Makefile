@@ -6,7 +6,7 @@
 #    By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/03 16:59:18 by tyamcha           #+#    #+#              #
-#    Updated: 2022/03/03 16:59:19 by tyamcha          ###   ########.fr        #
+#    Updated: 2022/03/07 11:59:30 by tyamcha          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ SRCS		=	$(MAIN)		$(PARSING)	$(ERROR) \
 
 OBJS		=	$(SRCS:%.c=%.o)
 
-CC			=	gcc -pg
+CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 

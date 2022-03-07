@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:11:24 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/03 17:11:25 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/07 12:07:04 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 
 void	set_hooks(t_state *state);
 
-// # define KEYPRESS	2
-// # define KEYEXIT	17
-// # define A_KEY		0
-// # define S_KEY		1
-// # define D_KEY		2
-// # define W_KEY		13
-// # define ESC 		53
+# define MAC_A_KEY		0
+# define MAC_S_KEY		1
+# define MAC_D_KEY		2
+# define MAC_W_KEY		13
+# define MAC_Q_KEY		12
+# define MAC_E_KEY		14
+# define MAC_ESC		53
 
 # define KEYEXIT	17
 # define KEYPRESS	2
@@ -39,6 +39,6 @@ void	set_hooks(t_state *state);
 # define D_KEY		100
 # define Q_KEY		113
 # define E_KEY		101
-# define ESC 		65307
+# define ESC		65307
 
 #endif
