@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:11:24 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/07 12:07:04 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/07 12:28:26 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	set_hooks(t_state *state);
 # define MAC_S_KEY		1
 # define MAC_D_KEY		2
 # define MAC_W_KEY		13
-# define MAC_Q_KEY		12
-# define MAC_E_KEY		14
+# define MAC_Q_KEY		123
+# define MAC_E_KEY		124
 # define MAC_ESC		53
 
 # define KEYEXIT	17
