@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:07:24 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/03 17:19:16 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/10 03:57:07 by rusty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,19 @@ typedef struct s_column
 	int		bot;
 	int		col;
 }	t_column;
+
+typedef struct s_raycast
+{
+	t_vec	plr;
+	t_vec	map_check;
+	t_vec	unit_step;
+	t_vec	step;
+	t_vec	ray_lend;
+	t_vec	intersection;
+	int		found_wall;
+	float	dist;
+	float	max_dist;
+}	t_raycast;
 
 void	render(t_state *state);
 
