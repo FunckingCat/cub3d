@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rusty <rusty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 07:02:27 by rusty             #+#    #+#             */
-/*   Updated: 2022/03/03 17:05:15 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/10 04:27:15 by rusty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
-
-t_vec	find_intersection(t_vec plr, t_vec dir, float dist)
-{
-	t_vec	ret;
-	t_vec	ray;
-
-	ray = vec_mul(dir, dist);
-	ret = vec_add(plr, ray);
-	return (ret);
-}
 
 float	absf(float num)
 {
@@ -29,74 +19,75 @@ float	absf(float num)
 	return (num);
 }
 
-t_vec	raycasting(t_state *state, t_vec dir)
+void	init_ray(t_state *state, t_raycast *rc, t_vec dir)
 {
-	t_vec	plr;
-	t_vec	map_check;
-	t_vec	unit_step;
-	t_vec	step;
-	t_vec	ray_lend;
-	t_vec	intersection;
-	int		foundWall;
-	float	dist;
-	float	max_dist;
-
-	plr = vec_new(state->pl.x / state->size, state->pl.y / state->size);
-	unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
-	map_check.x = (int)plr.x;
-	map_check.y = (int)plr.y;
+	rc->plr = vec_new(state->pl.x / state->size, state->pl.y / state->size);
+	rc->unit_step = vec_new(absf(1.0f / dir.x), absf(1.0f / dir.y));
+	rc->map_check.x = (int)rc->plr.x;
+	rc->map_check.y = (int)rc->plr.y;
 	if (dir.x < 0)
 	{
-		step.x = -1.0f;
-		ray_lend.x = (plr.x - map_check.x) * unit_step.x;
+		rc->step.x = -1.0f;
+		rc->ray_lend.x = (rc->plr.x - rc->map_check.x) * rc->unit_step.x;
 	}
 	else
 	{
-		step.x = 1.0f;
-		ray_lend.x = (map_check.x + 1 - plr.x) * unit_step.x;
+		rc->step.x = 1.0f;
+		rc->ray_lend.x = (rc->map_check.x + 1 - rc->plr.x) * rc->unit_step.x;
 	}
 	if (dir.y < 0)
 	{
-		step.y = -1.0f;
-		ray_lend.y = (plr.y - map_check.y) * unit_step.y;
+		rc->step.y = -1.0f;
+		rc->ray_lend.y = (rc->plr.y - rc->map_check.y) * rc->unit_step.y;
 	}
 	else
 	{
-		step.y = 1.0f;
-		ray_lend.y = (map_check.y + 1 - plr.y) * unit_step.y;
+		rc->step.y = 1.0f;
+		rc->ray_lend.y = (rc->map_check.y + 1 - rc->plr.y) * rc->unit_step.y;
 	}
-	foundWall = 0;
-	max_dist = 50000.0f;
-	dist = 0.0f;
-	while (!foundWall && dist < max_dist)
+}
+
+void	cast_ray(t_state *state, t_raycast *rc)
+{
+	while (!rc->found_wall && rc->dist < rc->max_dist)
 	{
-		if (ray_lend.x < ray_lend.y)
+		if (rc->ray_lend.x < rc->ray_lend.y)
 		{
-			map_check.x += step.x;
-			dist = ray_lend.x;
-			ray_lend.x += unit_step.x;
+			rc->map_check.x += rc->step.x;
+			rc->dist = rc->ray_lend.x;
+			rc->ray_lend.x += rc->unit_step.x;
 		}
 		else
 		{
-			map_check.y += step.y;
-			dist = ray_lend.y;
-			ray_lend.y += unit_step.y;
+			rc->map_check.y += rc->step.y;
+			rc->dist = rc->ray_lend.y;
+			rc->ray_lend.y += rc->unit_step.y;
 		}
-		if (map_check.x >= 0 && map_check.y >= 0 && \
-		map_check.x < state->map->width && map_check.y < state->map->height)
+		if (rc->map_check.x >= 0 && rc->map_check.y >= 0 && rc->map_check.x < \
+		state->map->width && rc->map_check.y < state->map->height)
 		{
-			if (ft_strchr(" 1", state->map->map[(int)map_check.y][(int)map_check.x]))
-				foundWall = 1;
+			if (ft_strchr(" 1", state->map->map[(int)rc->map_check.y] \
+			[(int)rc->map_check.x]))
+				rc->found_wall = 1;
 		}
 	}
-	intersection.x = 0;
-	intersection.y = 0;
-	intersection.color = 0xFF0000;
-	if (foundWall == 1)
+}
+
+t_vec	raycasting(t_state *state, t_vec dir)
+{
+	t_raycast	rc;
+	t_vec		intersection;
+
+	ft_bzero(&rc, sizeof(t_raycast));
+	ft_bzero(&intersection, sizeof(t_vec));
+	rc.max_dist = 50000.0f;
+	init_ray(state, &rc, dir);
+	cast_ray(state, &rc);
+	if (rc.found_wall == 1)
 	{
-		intersection = find_intersection(plr, dir, dist);
-		intersection.color = 0xFF0000;
-		intersection.dist = dist;
+		intersection = vec_add(rc.plr, vec_mul(dir, rc.dist));
+		intersection.color = 0;
+		intersection.dist = rc.dist;
 	}
 	return (intersection);
 }
@@ -115,9 +106,9 @@ t_vec	**raycasting_fov(t_state *state)
 	i = 0;
 	while (i < RES_X)
 	{
-		t_vec dir = vec_rot(vec_new(-1.0f, 0.0f), state->pl.angle + start);
 		ray = malloc(sizeof(t_vec));
-		*ray = raycasting(state, dir);
+		*ray = raycasting(state, vec_rot(vec_new(-1.0f, 0.0f), \
+		state->pl.angle + start));
 		rays[i] = ray;
 		rays[i]->angle = state->pl.angle + start;
 		start += step;
