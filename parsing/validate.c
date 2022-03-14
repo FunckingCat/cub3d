@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:10:58 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/03 17:11:11 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:30:18 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	validate_map(int fd)
 	str = gnl(fd);
 	while (str && ft_strlen(ft_strtrim(str, " ")) == 0)
 		str = gnl(fd);
-	while (str && ft_strlen(ft_strtrim(str, " ")) != 0)
+	while (str)
 	{
 		tmp = ft_strdup(str);
 		while (*str)
@@ -71,13 +71,6 @@ void	validate_map(int fd)
 				put_ext_error_exit(ERR_UNEXP_NEAR, tmp);
 			str++;
 		}
-		str = gnl(fd);
-	}
-	str = gnl(fd);
-	while (str)
-	{
-		if (str && ft_strlen(ft_strtrim(str, " ")) != 0)
-			put_ext_error_exit(ERR_CONF_UNEXP, str);
 		str = gnl(fd);
 	}
 }

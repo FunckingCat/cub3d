@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:09:53 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/14 15:51:25 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:25:39 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ size_t	map_to_list(t_list **list, int fd)
 	while (ft_strlen(ft_strtrim(str, " ")) == 0)
 		str = gnl(fd);
 	len = 0;
-	while (str && ft_strlen(ft_strtrim(str, " ")) != 0)
+	while (str)
 	{
 		if (len < ft_strlen(str))
 			len = ft_strlen(str);
