@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:11:30 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/07 12:28:43 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:08:42 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ t_vec	make_step(t_state *state, int dir, int ang)
 	res.x = res.dist * cosf(res.angle);
 	res.y = res.dist * sinf(res.angle);
 	res = vec_add(state->pl, res);
+	if (state->map->map[(int)(res.y / state->size)][(int)(state->pl.x \
+		/ state->size)] == '1' && \
+		state->map->map[(int)(state->pl.y / state->size)][(int)(res.x \
+		/ state->size)] == '1')
+		return (state->pl);
 	if (state->map->map[(int)(res.y / state->size)][(int)(res.x \
 		/ state->size)] == '1')
 		return (state->pl);
