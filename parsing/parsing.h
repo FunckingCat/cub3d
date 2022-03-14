@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:10:49 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/03 17:10:50 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/14 15:50:58 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		split_size(char **arr);
 t_map	*parse_map(char	*path);
 void	check_map(t_map *map);
 int		char_to_hex(char **arr);
+void	check_texture_path(t_map *map);
 
 # define C_CUB	".cub"
 # define C_XPM	".xpm"

@@ -6,7 +6,7 @@
 /*   By: tyamcha <tyamcha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:09:53 by tyamcha           #+#    #+#             */
-/*   Updated: 2022/03/03 17:09:58 by tyamcha          ###   ########.fr       */
+/*   Updated: 2022/03/14 15:51:25 by tyamcha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ t_map	*parse_map(char *path)
 	read_map(map, fd);
 	close(fd);
 	check_map(map);
+	check_texture_path(map);
 	return (map);
 }
